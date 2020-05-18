@@ -9,6 +9,7 @@
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
 			<item value="tiles"/>
+			<item value="&lt;div class=&quot;top&quot;&gt;"/>
 		</list>
 		<list key="replacehistory">
 		</list>

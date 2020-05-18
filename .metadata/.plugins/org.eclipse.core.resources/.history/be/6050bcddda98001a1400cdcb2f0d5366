@@ -1,0 +1,10 @@
+package com.wsl.web;
+
+@Controller
+public class MainController {
+	@RequestMapping("main.do")
+	public String main_page()
+	{
+		return "main";
+	}
+}

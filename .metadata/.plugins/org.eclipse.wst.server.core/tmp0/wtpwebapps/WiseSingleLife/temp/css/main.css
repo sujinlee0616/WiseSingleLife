@@ -1,0 +1,25 @@
+.slider_search_area{
+    padding-top: 30px;
+    padding-left: 330px;
+    /* background-color: pink; */
+    width: 100%;
+}
+
+.img_slider_search{
+    height: 45px; width: 400px;
+    padding-left: 10px;
+    border: 1px solid #ffffff;
+}
+
+.sliderBtn{
+    width: 60px; height: 45px; 
+    background-color: #FF9800;
+    color: #ffffff;
+    border: 1px solid #ffffff5e;
+}
+
+.heading-section h2::after, .heading-section h2::before {
+    background: #FF9800;
+}
+.slider_txt1{color:#ffffff; text-align: center; padding-top: 200px;}
+.slider_txt2{color:#ffffff; text-align: center; padding-top: 10px;}
