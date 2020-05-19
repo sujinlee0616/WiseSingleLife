@@ -20,35 +20,12 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- MainCSS -->
+	<link rel="stylesheet" href="css/main.css">
   </head>
   <body>
     <!-- ================================ NAVBAR ================================ -->
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">슬기로운 자취생활</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-		  </button>
-		  <div class="">
-			<input type="search" placeholder="검색어를 입력하세요."> 
-			<button>검색</button>
-		  </div>
-		  <!-- ===== MENUS ===== -->
-	      <!-- <div class="collapse navbar-collapse" id="ftco-nav">
-			  <input type="search">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="property.html" class="nav-link">Property</a></li>
-	          <li class="nav-item"><a href="agents.html" class="nav-link">Agents</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="contact.html" class="nav-link ml-lg-2"><span class="icon-user"></span> Sign-In</a></li>
-	          <li class="nav-item cta cta-colored"><a href="contact.html" class="nav-link"><span class="icon-pencil"></span> Sign-Up</a></li>
-	        </ul>
-	      </div> -->
-		</div>
-	  </nav>
+    <tiles:insertAttribute name="nav"/>
     <!-- END nav -->
 
 	<!-- ================================ IMAGE SLIDER ================================ -->
