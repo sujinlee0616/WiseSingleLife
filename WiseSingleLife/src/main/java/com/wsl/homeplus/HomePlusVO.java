@@ -9,7 +9,10 @@ import lombok.Getter;
 @Setter
 public class HomePlusVO {
 	private String productcode;
+	
+	//추후 삭제 인스턴스 
 	private int codeno;
+	
 	private String name;
 	private int price;
 	private String unitprice;
@@ -17,6 +20,8 @@ public class HomePlusVO {
 	private int reviewcount;
 	private int lookup;
 	private Date lookuptime;
+	
+	//추후 삭제 인스턴스 
 	private int rank;
 	private String img;
 }
