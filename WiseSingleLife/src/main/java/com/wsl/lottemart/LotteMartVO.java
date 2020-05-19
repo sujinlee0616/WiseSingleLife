@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class LotteProductVO {
+public class LotteMartVO {
 
 	private String productCode;		
 	private int codeNo;				
