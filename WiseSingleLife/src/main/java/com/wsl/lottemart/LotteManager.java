@@ -18,7 +18,7 @@ public class LotteManager {
 	@Autowired
 	private LotteMartDAO dao;
 	
-	public List<LotteMartVO> getDataBySearch(SearchKeywordVO skvo) {
+	public List<LotteMartVO> crawlingDataBySearchKeyword(SearchKeywordVO skvo) {
 		List<LotteMartVO> list = new ArrayList<LotteMartVO>();
 		
 		try {
@@ -116,11 +116,13 @@ public class LotteManager {
 					vo.setRank(rank);
 					
 					System.out.println("================");
-					//dao.lotterMartInsert(vo);
+					dao.lotteMartInsert(vo);
 					rank++;
 					Thread.sleep(10);
 					//if(true) return list;
-				} catch (Exception e) {}
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 			
 		} catch (Exception e) {
