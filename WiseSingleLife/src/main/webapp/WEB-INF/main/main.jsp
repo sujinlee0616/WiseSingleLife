@@ -70,126 +70,95 @@
 	<div class="row d-flex">
 	  <div class="col-md-3 d-flex ftco-animate">
 		<div class="blog-entry align-self-stretch">
-		  <a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank" class="block-20" style="background-image: url('images/emart1.jpg');">
+		  <a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank" class="block-20" style="background-image: url('images/mart_event_1.png');">
 		  </a>
 		  <div class="text mt-3 d-block">
-			<h3 class="heading mt-3">
-				<a href="#">[이마트] 이번 주 이마트 전단 광고</a>
-			</h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
+				<a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank">
+					<h3 class="heading mt-3 event">[이마트] 이번 주 이마트 전단 광고</h3>
+				</a>
 		  </div>
 		</div>
 	  </div>
 	  <div class="col-md-3 d-flex ftco-animate">
 		<div class="blog-entry align-self-stretch">
-		  <a href="http://emart.ssg.com/event/eventDetail.ssg?promId=1100526737" target="_blank" class="block-20" style="background-image: url('images/emart2.jpg');">
+		  <a href="https://www.lotteon.com/p/display/shop/seltDpShop/12919" target="_blank" class="block-20" style="background-image: url('images/mart_event_2.png');">
 		  </a>
 		  <div class="text mt-3">
-			<h3 class="heading mt-3">
-				<a href="#">[이마트] 홈핑&홈크닉은 Emartmall life</a>
-			</h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
+				<a href="https://www.lotteon.com/p/display/shop/seltDpShop/12919" target="_blank">
+					<h3 class="heading mt-3 event">[롯데마트] 이번 주 롯데마트 전단 광고</h3>
+				</a>
 		  </div>
 		</div>
 	  </div>
 	  <div class="col-md-3 d-flex ftco-animate">
 		<div class="blog-entry align-self-stretch">
-		  <a href="http://www.homeplus.co.kr/app.exhibition.eplacard.Eplacard.ghs?comm=usr.eplacard.inf&WT.ac=Main_GNB_leaflet" target="_blank" class="block-20" style="background-image: url('images/homeplus1.jpg');">
+		  <a href="http://www.homeplus.co.kr/app.exhibition.eplacard.Eplacard.ghs?comm=usr.eplacard.inf&WT.ac=Main_GNB_leaflet" target="_blank" class="block-20" style="background-image: url('images/mart_event_3.png');">
 		  </a>
 		  <div class="text mt-3">
-			<h3 class="heading mt-3"><a href="#">[홈플러스] 이번 주 홈플러스 전단</a></h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
+				<a href="http://www.homeplus.co.kr/app.exhibition.eplacard.Eplacard.ghs?comm=usr.eplacard.inf&WT.ac=Main_GNB_leaflet"
+				target="_blank">
+					<h3 class="heading mt-3 event">[홈플러스] 이번 주 홈플러스 전단</h3>
+				</a>
 		  </div>
 		</div>
 	  </div>
 	  <div class="col-md-3 d-flex ftco-animate">
 		<div class="blog-entry align-self-stretch">
-		  <a href="blog-single.html" class="block-20" style="background-image: url('images/homeplus2.jpg');">
+		  <a href="https://www.coupang.com/np/campaigns/82" target="_blank" class="block-20" style="background-image: url('images/mart_event_4.png');">
 		  </a>
 		  <div class="text mt-3">
-			<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
+				<a href="https://www.coupang.com/np/campaigns/82" target="_blank">
+					<h3 class="heading mt-3 event">[쿠팡] 밤 12시까지 주문해도 내일 도착! 로켓배송</h3>
+				</a>
 		  </div>
 		</div>
 	  </div>
 	  <div class="col-md-3 d-flex ftco-animate">
 		<div class="blog-entry align-self-stretch">
-		  <a href="blog-single.html" class="block-20" style="background-image: url('images/lottemart1.jpg');">
+		  <a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000155081" target="_blank" class="block-20" style="background-image: url('images/mart_event_5.png');">
 		  </a>
 		  <div class="text mt-3 d-block">
-			<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
+			<h3 class="heading mt-3 event">
+				<a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000155081" target="_blank">[이마트] 과일 행사 중</a>
+			</h3>
 		  </div>
 		</div>
 	  </div>
-	  <div class="col-md-3 d-flex ftco-animate">
-		<div class="blog-entry align-self-stretch">
-		  <a href="blog-single.html" class="block-20" style="background-image: url('images/lottemart2.jpg');">
-		  </a>
-		  <div class="text mt-3">
-			<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
-		  </div>
+		<div class="col-md-3 d-flex ftco-animate">
+			<div class="blog-entry align-self-stretch">
+				<a href="https://www.lotteon.com/p/display/shop/seltDpShop/12917" target="_blank" class="block-20" style="background-image: url('images/mart_event_6.png');">
+				</a>
+				<div class="text mt-3 d-block">
+					<h3 class="heading mt-3 event">
+						<a href="https://www.lotteon.com/p/display/shop/seltDpShop/12917" target="_blank">[롯데마트] 기획전 모아보기</a>
+					</h3>
+				</div>
+			</div>
 		</div>
-	  </div>
-	  <div class="col-md-3 d-flex ftco-animate">
-		<div class="blog-entry align-self-stretch">
-		  <a href="blog-single.html" class="block-20" style="background-image: url('images/image_7.jpg');">
-		  </a>
-		  <div class="text mt-3">
-			<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
-		  </div>
+		<div class="col-md-3 d-flex ftco-animate">
+			<div class="blog-entry align-self-stretch">
+				<a href="http://www.homeplus.co.kr/app.exhibition.cheapershop.CheaperShop.ghs?comm=usr.cheapershop&WT.ac=Main_GNB_ssaday" target="_blank" class="block-20" style="background-image: url('images/mart_event_7.png');">
+				</a>
+				<div class="text mt-3 d-block">
+					<h3 class="heading mt-3 event">
+						<a href="http://www.homeplus.co.kr/app.exhibition.cheapershop.CheaperShop.ghs?comm=usr.cheapershop&WT.ac=Main_GNB_ssaday" target="_blank">[홈플러스] 싸-데이 이번주 득템상품은?</a>
+					</h3>
+				</div>
+			</div>
 		</div>
-	  </div>
-	  <div class="col-md-3 d-flex ftco-animate">
-		<div class="blog-entry align-self-stretch">
-		  <a href="blog-single.html" class="block-20" style="background-image: url('images/image_8.jpg');">
-		  </a>
-		  <div class="text mt-3">
-			<h3 class="heading mt-3"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-			<!-- <div class="meta mb-3">
-			  <div><a href="#">Dec 6, 2018</a></div>
-			  <div><a href="#">Admin</a></div>
-			  <div><a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a></div>
-			</div> -->
-		  </div>
+		<div class="col-md-3 d-flex ftco-animate">
+			<div class="blog-entry align-self-stretch">
+				<a href="https://www.coupang.com/np/coupangbenefit" target="_blank" class="block-20" style="background-image: url('images/mart_event_8.png');">
+				</a>
+				<div class="text mt-3">
+					<a href="https://www.coupang.com/np/coupangbenefit" target="_blank"><h3 class="heading mt-3 event">[쿠팡] 이벤트/쿠폰 모음</h3></a>
+				</div>
+			</div>
 		</div>
-	  </div>
 	</div>
 	
 	</div>
 	</section>	
-
-	
 
 	<!-- ================================== FOOTER ================================== -->
     <tiles:insertAttribute name="footer"/>
