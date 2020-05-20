@@ -22,7 +22,10 @@
 	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="ds"
 	/>
-	
+	<bean id="cpMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.coupang.CoupangMapper"
+	/>
 	<bean id="lmMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.wsl.lottemart.LotteMartMapper"
