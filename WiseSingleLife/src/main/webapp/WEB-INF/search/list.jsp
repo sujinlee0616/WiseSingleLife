@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
@@ -97,79 +98,146 @@
 						<td class="td3">홈플러스</td>
 						<td class="td4">쿠팡</td>
 					</tr>
-					<!-- =============== ITEM1 =============== -->
+					<!-- ============================== ITEM1 ============================== -->
 					<tr class="mall_result" id="product1">
 						<td class="product_name">바나나 우유</td>
+						<!-- =============== 1.이마트 =============== -->
 						<td class="emart">
+							<c:forEach var="em" items="${emList }">
 							<div class="list_item">
 								<a href="">
-									<img class="product_img" src="https://cr2.shopping.naver.com/adcr.nhn?x=hwUeVxnfGB55lGxxaLOIpP%2F%2F%2Fw%3D%3DsDFO6%2F9RwhXbw7344u5BCtH3fpMKd%2BnovmlkBcRRnVyTzyC8gEpMvLoPKZhTYFwc7hQgnjdZzjG1%2FJCN3JWhn45YSdJBR5LAw6lh24Pwvf%2B9lcn%2BHxHiMKYtViUf%2Bf6UXhOAxs9w6RZIfw2iqKUkxIEmwBy8vIXDZ%2BeQzLWu7XrWG%2BkLOJVaJDIQAf6gz%2BvocNd56kizxNLXAABZOk5ixZeGSdcoYGyMMnNFc8PIZbGDLd9RcrevJWpd%2B4p2MqaJ5Ko4I1rnTnHXv4zcGPZbEp6yi8AKOVUlxUqwsJaAdvBxXiZF1OGGexgVyM80TXaKnFXXV4gZFqlSAQ5Bgv2ZuEIY1Mg31y9EIXtcCdrLuPIXVEmo0CNvwRXPWTmXht0fh8t0rechpMzcFBYwXQVjoBpEbsGzqck52KEhd2m2FaRJcecu%2BkcqkXaRi98sOHDklZXJ%2Fh8R4jCmLVYlH%2Fn%2BlFz%2FWRN8SLJcwXPKcnJpL8akuHs5xPtudiphQz0gZ6BszOsIwxiVLSR4bCJK%2FN7Xll0ju7DFDJEGDmAwykhM%2BhtGIvn2wcgNbRCZ0IHdX8uab552LMmLbPEwNl2k5aWql%2FyORSCs6s59hUvwuhyxq59EZaO1NXbgkpTBydkG%2FwTW6eoKwBh8Vq%2Bdey7cQu47JtYn8m65xVkiAJyEecKTXgwIwYAa2cNmwpA9ANz2rZpPi%2FLP6D1o2Kwpkr68OxnpM4hVZ9b5U3aWvfajMnsWmMfUQalyJbLBl52UB3obGYSAQm1%2Bj68W6hyInWWy7jtoL%2FP2ikg0cDuDZerfVMn%2FJ2ysMleHfhq3fNVG8IEJvOVrIIEaysdPvhXENrHw4bsEIgw%3D%3D">
-									<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-									<p class="price">10,910원</p>
+									<img class="product_img" src="${em.img }" width="10" height="10">
+									<p class="product">${em.name }</p>
+									<p class="price">${em.price }원</p>
 								</a>
 							</div>
-							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-								<p class="price">10,910원</p>
-							</div>
-							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-								<p class="price">10,910원</p>
-							</div>
+							</c:forEach>
+							<!-- 더보기 버튼: 컨텐츠가 3개 초과일 경우 -->
+							<button type="button" class="btn btn-block">+ 더 보기</button>
 						</td>
+						<!-- =============== 2.롯데마트 =============== -->
 						<td class="lotte">
 							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 상하목장 유기농 바나나우유 125ml</p>
-								<p class="price">9,480원</p>
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
+							</div>
+							<div class="list_item">
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
 							</div>
 						</td>
+						<!-- =============== 3.홈플러스 =============== -->
 						<td class="homeplus">
 							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-								<p class="price">19,900원</p>
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
 							</div>
 						</td>
+						<!-- =============== 4.쿠팡=============== -->
 						<td class="coupang">
 							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">빙그레 바나나맛 우유 240ml</p>
-								<p class="price">1,100원</p>
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
 							</div>
 						</td>
 					</tr>
-					<!-- =============== ITEM2 =============== -->
+					<!-- ============================== ITEM2 ============================== -->
 					<tr class="mall_result" id="product1">
-						<td class="product_name">바나나 우유</td>
+						<td class="product_name">삼양 까르보 불닭볶음면</td>
 						<td class="emart">
 							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-								<p class="price">10,910원</p>
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_1304626/13046260762.20171221101956.jpg?type=f300">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">삼양 까르보 불닭볶음면 130g</p>
+										<p class="price">950원</p>
+									</a>
+								</div>
 							</div>
 						</td>
 						<td class="lotte">
 							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-								<p class="price">10,910원</p>
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20180912_218/syfood_153671034462456YVN_JPEG/19429203347270209_1392560495.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">삼양 까르보불닭볶음면 큰컵 105gx16입</p>
+										<p class="price">16,800원</p>
+									</a>
+								</div>
 							</div>
 						</td>
 						<td class="homeplus">
 							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-								<p class="price">10,910원</p>
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
 							</div>
 						</td>
 						<td class="coupang">
 							<div class="list_item">
-								<img class="product_img" src="">
-								<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-								<p class="price">10,910원</p>
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
 							</div>
 						</td>
 					</tr>
