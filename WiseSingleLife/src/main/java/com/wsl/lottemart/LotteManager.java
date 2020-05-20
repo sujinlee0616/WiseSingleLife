@@ -18,8 +18,8 @@ public class LotteManager {
 	@Autowired
 	private LotteMartDAO dao;
 	
-	public List<LotteProductVO> getDataBySearch(SearchKeywordVO skvo) {
-		List<LotteProductVO> list = new ArrayList<LotteProductVO>();
+	public List<LotteMartVO> getDataBySearch(SearchKeywordVO skvo) {
+		List<LotteMartVO> list = new ArrayList<LotteMartVO>();
 		
 		try {
 			Document srchDoc = Jsoup.connect("https://www.lotteon.com/search/search/search.ecn?render=search&platform=pc&q="+skvo.getKeyword()).get();
@@ -37,7 +37,7 @@ public class LotteManager {
 			for(Element data : datas) {
 				try {
 					System.out.println(skvo.getCodeNo() + " " + skvo.getKeyword());
-					LotteProductVO vo = new LotteProductVO();
+					LotteMartVO vo = new LotteMartVO();
 					vo.setCodeNo(skvo.getCodeNo());
 					try {
 						String productCode = data.selectFirst("a").attr("href");

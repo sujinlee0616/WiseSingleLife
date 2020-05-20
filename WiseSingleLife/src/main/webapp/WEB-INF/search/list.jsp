@@ -103,7 +103,7 @@
 						<td class="product_name">바나나 우유</td>
 						<!-- =============== 1.이마트 =============== -->
 						<td class="emart">
-							<c:forEach var="em" items="${emList }">
+							<%-- <c:forEach var="em" items="${emList }">
 							<div class="list_item">
 								<a href="">
 									<img class="product_img" src="${em.img }" width="10" height="10">
@@ -111,7 +111,34 @@
 									<p class="price">${em.price }원</p>
 								</a>
 							</div>
-							</c:forEach>
+							</c:forEach> --%>
+
+							<div class="list_item">
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
+							</div>
+							<div class="list_item">
+								<div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								</div>
+								<div class="info">
+									<a href="#">
+										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
+										<p class="price">10,910원</p>
+									</a>
+								</div>
+							</div>
 							<!-- 더보기 버튼: 컨텐츠가 3개 초과일 경우 -->
 							<button type="button" class="btn btn-block">+ 더 보기</button>
 						</td>

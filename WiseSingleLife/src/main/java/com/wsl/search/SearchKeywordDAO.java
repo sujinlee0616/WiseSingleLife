@@ -10,8 +10,8 @@ public class SearchKeywordDAO {
 	@Resource(name="skMapper")
 	private SearchKeywordMapper mapper;
 	
-	// search_keyword Å×ÀÌºí¿¡¼­ ÇØ´ç keywordÀÇ ·¹ÄÚµå ¹İÈ¯.
-	// ¾ø´Â keywordÀÇ °æ¿ì codeNo¸¦ 0À¸·Î ¼¼ÆÃ ÈÄ SearchKeywordVO ¹İÈ¯.
+	// search_keyword í…Œì´ë¸”ì—ì„œ í•´ë‹¹ keywordì˜ ë ˆì½”ë“œ ë°˜í™˜.
+	// ì—†ëŠ” keywordì˜ ê²½ìš° codeNoë¥¼ 0ìœ¼ë¡œ ì„¸íŒ… í›„ SearchKeywordVO ë°˜í™˜.
 	public SearchKeywordVO getSearchKeywordVO(String keyword) {
 		SearchKeywordVO vo = new SearchKeywordVO();
 		vo.setCodeNo(0);
@@ -23,8 +23,11 @@ public class SearchKeywordDAO {
 		return vo;
 	}
 	
-	// codeNo, keyword¸¸ ³Ñ±â¸é µÊ. count, datetimeÀº µğÆúÆ® 0, SYSDATE
-	public void searchKeywordInsert(SearchKeywordVO vo) {
+	// codeNo, keywordë§Œ ë„˜ê¸°ë©´ ë¨. count, datetimeì€ ë””í´íŠ¸ 0, SYSDATE
+	public void searchKeywordInsert(int codeNo, String keyword) {
+		SearchKeywordVO vo = new SearchKeywordVO();
+		vo.setCodeNo(codeNo);
+		vo.setKeyword(keyword);
 		mapper.searchKeywordInsert(vo);
 	}
 
