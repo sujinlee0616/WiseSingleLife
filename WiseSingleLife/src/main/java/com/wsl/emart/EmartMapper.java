@@ -1,9 +1,26 @@
 package com.wsl.emart;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+
 import java.util.*;
 
 public interface EmartMapper {
+	
+	// ============================= Å©·Ñ¸µ ==================================
+	
+	// search_keyword
+	@Select("SELECT * FROM search_keyword")
+	public List<SearchKeywordVO> searchKeywordData();
+	
+	// insert
+	@Insert("INSERT INTO emart VALUES("
+		   +"#{productcode},#{codeno},#{name},#{price},#{unitprice},"
+		   +"#{rate},#{reviewcount},#{tags},0,SYSDATE,"
+		   +"#{rank},#{img})")
+	public void insertEmartData(EmartVO vo);
+	
+	//  ===================================================================
 	
 	@Select("SELECT img,name,price,unitprice,num "
 		   +"FROM (SELECT img,name,price,unitprice,rownum as num "

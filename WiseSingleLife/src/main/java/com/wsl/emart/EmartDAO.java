@@ -7,11 +7,25 @@ import javax.annotation.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+
 @Repository
 public class EmartDAO {
 	
 	@Resource(name="emMapper")
 	private EmartMapper mapper;
+	
+	// =========================== Å©·Ñ¸µ ===========================
+	// search_keyword
+	public List<SearchKeywordVO> searchKeywordData() {
+		return mapper.searchKeywordData();
+	}
+	
+	// insert
+	public void insertEmartData(EmartVO vo) {
+		mapper.insertEmartData(vo);
+	}
+	
+	// ============================================================
 	
 	public List<EmartVO> emartSearchData(String keyword) {
 		return mapper.emartSearchData(keyword);
