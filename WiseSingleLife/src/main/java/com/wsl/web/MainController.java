@@ -18,4 +18,9 @@ public class MainController {
 	{
 		return "search";
 	}
+	
+	@RequestMapping("aaa.do")
+	public String search_react(){
+		return "searchReact";
+	}
 }
