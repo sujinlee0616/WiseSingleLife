@@ -35,8 +35,10 @@
 			<h1 class="slider_txt1">슬기로운 자취생활</h1>
 			<h5 class="slider_txt2">프로 자취러를 위한 식료품 가격비교 서비스</h5>
 			<div class="slider_search_area">
-				<input class="img_slider_search" type="search" placeholder="검색어를 입력하세요.">
-				<button class="sliderBtn">검색</button>
+				<form action="search.do" method="get">
+					<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요.">
+					<button class="sliderBtn">검색</button>
+				</form>
 			</div>
 		</div>
       </div>
