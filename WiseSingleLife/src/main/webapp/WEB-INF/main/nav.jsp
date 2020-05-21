@@ -9,13 +9,15 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
 	    <div class="container">
-	      <a class="navbar-brand" href="index.html">슬기로운 자취생활</a>
+	      <a class="navbar-brand" href="main.do">슬기로운 자취생활</a>
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
 		  </button>
 		  <div class="">
-			<input type="search" placeholder="검색어를 입력하세요."> 
-			<button>검색</button>
+		  	<form action="search.do" method="get">
+				<input type="search" name="keyword" placeholder="검색어를 입력하세요."> 
+				<button>검색</button>
+			</form>
 		  </div>
 		  <!-- ===== MENUS ===== -->
 	      <!-- <div class="collapse navbar-collapse" id="ftco-nav">
