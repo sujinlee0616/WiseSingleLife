@@ -7323,7 +7323,8 @@ h1, h2, h3, h4, h5,
     display: inline-block; }
 
 .ftco-navbar-light {
-  background: #252a2b !important;
+  /* background: #252a2b !important; */
+  background-color: #363636 !important;
   z-index: 3;
   padding: 0; }
   @media (max-width: 991.98px) {
@@ -8336,7 +8337,8 @@ textarea.form-control {
 
 .ftco-footer {
   font-size: 16px;
-  background: #252a2b;
+  /* background: #252a2b; */
+  background-color: #363636;
   padding: 3em 0; }
   .ftco-footer .ftco-footer-logo {
     text-transform: uppercase;

@@ -45,7 +45,7 @@
 
 	<!-- ================================ IMAGE SLIDER ================================ -->
     <section class="home-slider owl-carousel">
-		<div class="slider-item" style="background-image:url(images/grocery_store_1.jpg);">
+		<div class="slider-item" style="background-image:url(images/grocery_store_1_1.jpg);">
 		  <div class="container">
 			  <h1 class="slider_txt1">슬기로운 자취생활</h1>
 			  <h5 class="slider_txt2">프로 자취러를 위한 식료품 가격비교 서비스</h5>
@@ -58,7 +58,7 @@
 	  </section>
 
 	<!-- ================================== 인기검색어  ================================== -->	
-	<section class="ftco-section bg-light">
+	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center mb-5 pb-3">
 				<div class="col-md-7 heading-section text-center ftco-animate">
@@ -67,58 +67,91 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-6 pk_area">
-					<ol class="popular_keyword">
-						<li class="pop">
-							<span class="num">1</span>
-							<span id="pop1">파인애플</span>
+				<div class="col-md-6 pk_area ftco-animate">
+					<!-- 인기검색어 (좌측) -->
+					<ol class="popular_keyword mb-0">
+						<li class="pop on" id="pop1">
+							<a href="#">
+								<div class="num">1</div>
+								<span class="pk">파인애플</span>
+								<span class="rank_chg">▲</span>
+							</a>
 						</li>
 						<li class="pop" id="pop2">
-							<span class="num">2</span>
-							<span id="pop1">삼겹살</span>
+							<a href="#">
+								<div class="num">2</div>
+								<span class="pk">삼겹살</span>
+								<span class="rank_chg">-</span>
+							</a>
 						</li>
 						<li class="pop" id="pop3">
-							<span class="num">3</span>
-							<span id="pop1">체리</span>
+							<a href="#">
+								<div class="num">3</div>
+								<span class="pk">딸기</span>
+								<span class="rank_chg">▼</span>
+							</a>
 						</li>
 						<li class="pop" id="pop4">
-							<span class="num">4</span>
-							<span id="pop1">카라멜</span>
+							<a href="#">
+								<div class="num">4</div>
+								<span class="pk">인절미떡</span>
+								<span class="rank_chg">-</span>
+							</a>
 						</li>
-						<li class="pop" id="pop5">
-							<span class="num">5</span>
-							<span id="pop1">목살</span>
+						<li class="pop"  id="pop5">
+							<a href="#">
+								<div class="num">5</div>
+								<span class="pk">하리보 젤리</span>
+								<span class="rank_chg">-</span>
+							</a>
 						</li>
 						<li class="pop" id="pop6">
-							<span class="num">6</span>
-							<span id="pop1">신라면</span>
+							<a href="#">
+								<div class="num">6</div>
+								<span class="pk">허니 뻥이요</span>
+								<span class="rank_chg">▲</span>
+							</a>
 						</li>
 						<li class="pop" id="pop7">
-							<span class="num">7</span>
-							<span id="pop1">바나나 우유</span>
+							<a href="#">
+								<div class="num">7</div>
+								<span class="pk">파인애플</span>
+								<span class="rank_chg">▲</span>
+							</a>
 						</li>
 						<li class="pop" id="pop8">
-							<span class="num">8</span>
-							<span id="pop1">햇반</span>
+							<a href="#">
+								<div class="num">8</div>
+								<span class="pk">참외</span>
+								<span class="rank_chg">▼</span>
+							</a>
 						</li>
 						<li class="pop" id="pop9">
-							<span class="num">9</span>
-							<span id="pop1">카누</span>
+							<a href="#">
+								<div class="num">9</div>
+								<span class="pk">삼다수</span>
+								<span class="rank_chg">▲</span>
+							</a>
 						</li>
 						<li class="pop" id="pop10">
-							<span class="num">10</span>
-							<span id="pop1">3분카레</span>
+							<a href="#">
+								<div class="num">10</div>
+								<span class="pk">신라면</span>
+								<span class="rank_chg">▲</span>
+							</a>
 						</li>
 					</ol>
 				</div>
-				<div class="col-md-6 rk_area">
+				<!-- 연관검색어 (우측) -->
+				<div class="col-md-6 rk_area ftco-animate">
+					<p class="mt-5">그래프 담당자님 여기다가 그래프 넣으시면 됩니다</p>
 				</div>
 			</div>
 		</div>
 		</section>
 
 	<!-- ================================== PROMOTION VER2 ================================== -->	
-	<section class="ftco-section">
+	<section class="ftco-section bg-grey">
 	<div class="container">
 		<div class="row justify-content-center mb-5 pb-3">
 			<div class="col-md-7 heading-section text-center ftco-animate">
@@ -262,6 +295,17 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-    
+		
+	<!-- 실시간 인기검색어 -->
+	<script>
+		$(function () {
+			$('.popular_keyword li').hover(function(){
+				$('.popular_keyword li:not(this)').removeClass('on');
+				$(this).addClass('on');
+			});
+
+		});
+	</script>
+
   </body>
 </html>
