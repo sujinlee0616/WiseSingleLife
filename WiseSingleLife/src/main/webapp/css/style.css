@@ -4488,10 +4488,11 @@ button.close {
   .modal-sm {
     max-width: 300px; } }
 
+/* Modal 사이즈 변경 */
 @media (min-width: 992px) {
   .modal-lg {
-    max-width: 800px; } }
-
+    max-width: 1000px; } }
+    
 .tooltip {
   position: absolute;
   z-index: 1070;
