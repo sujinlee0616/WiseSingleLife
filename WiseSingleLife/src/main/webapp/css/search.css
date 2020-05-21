@@ -102,11 +102,18 @@ a:hover{color:#222222;}
     padding: 10px;
 }
 
-.btn{
+.moreBtn{
     width: 95%;
     margin: 10px auto 0;
     font-size: 13px; border-radius: 0;
     border:1px solid #DDDDDD;
 }
-/* .btn:hover{background-color: #999999; color:#FFFFFF;} */
+.moreBtn:hover{background-color: #bdbdbd; color:#FFFFFF;}
+
+
+.graph_area{column-span: all;}
+
+.close{font-size: 1.7rem;}
+
+
 

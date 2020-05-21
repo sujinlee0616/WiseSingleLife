@@ -4,7 +4,7 @@
  * Copyright 2011-2018 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
-:root {
+ :root {
   --blue: #007bff;
   --indigo: #6610f2;
   --purple: #6f42c1;
@@ -471,7 +471,9 @@ pre {
       max-width: 960px; } }
   @media (min-width: 1200px) {
     .container {
-      max-width: 1140px; } }
+      max-width: 1140px; 
+    } 
+  }
 
 .container-fluid {
   width: 100%;
@@ -4486,9 +4488,10 @@ button.close {
   .modal-sm {
     max-width: 300px; } }
 
+/* Modal 사이즈 변경 */
 @media (min-width: 992px) {
   .modal-lg {
-    max-width: 800px; } }
+    max-width: 1200px; } }
 
 .tooltip {
   position: absolute;
@@ -7335,16 +7338,16 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    font-size: 13px;
+    font-size: 15px;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     padding-left: 20px;
     padding-right: 20px;
-    color: #6c7a7d;
+    color: #fff;
     font-weight: 400;
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
-      color: #fff; }
+      color: #FF9800; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
         padding-left: 0;
@@ -7406,23 +7409,25 @@ h1, h2, h3, h4, h5,
     left: 0;
     top: 0;
     margin-top: -130px;
-    background: #fff !important;
+    /* background: #fff !important; */
     -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); }
-    .ftco-navbar-light.scrolled .nav-item.active > a {
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); 
+  }
+    /* .ftco-navbar-light.scrolled .nav-item.active > a {
       color: #26baee !important; }
     .ftco-navbar-light.scrolled .nav-item.cta > a {
       color: #fff !important;
       background: #26baee;
-      border: none !important; }
+      border: none !important; } */
       .ftco-navbar-light.scrolled .nav-item.cta > a span {
         display: inline-block;
-        color: #fff !important; }
-    .ftco-navbar-light.scrolled .nav-item.cta.cta-colored span {
-      border-color: #26baee; }
+        /* color: #fff !important;  */
+      }
+    /* .ftco-navbar-light.scrolled .nav-item.cta.cta-colored span {
+      border-color: #26baee; } */
     @media (max-width: 991.98px) {
       .ftco-navbar-light.scrolled .navbar-nav {
-        background: none;
+        /* background: none; */
         border-radius: 0px;
         padding-left: 0rem !important;
         padding-right: 0rem !important; } }
@@ -7433,8 +7438,8 @@ h1, h2, h3, h4, h5,
         padding-right: 0 !important; } }
     .ftco-navbar-light.scrolled .navbar-toggler {
       border: none;
-      color: rgba(0, 0, 0, 0.5) !important;
-      border-color: rgba(0, 0, 0, 0.5) !important;
+      /* color: rgba(0, 0, 0, 0.5) !important; */
+      /* border-color: rgba(0, 0, 0, 0.5) !important; */
       cursor: pointer;
       padding-right: 0;
       text-transform: uppercase;
@@ -7443,9 +7448,11 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light.scrolled .nav-link {
       padding-top: 0.9rem !important;
       padding-bottom: 0.9rem !important;
-      color: #000000 !important; }
+      /* color: #000000 !important;  */
+    }
       .ftco-navbar-light.scrolled .nav-link.active {
-        color: #26baee !important; }
+        /* color: #26baee !important;  */
+      }
     .ftco-navbar-light.scrolled.awake {
       margin-top: 0px;
       -webkit-transition: .3s all ease-out;
@@ -7456,7 +7463,8 @@ h1, h2, h3, h4, h5,
       -o-transition: .3s all ease-out;
       transition: .3s all ease-out; }
     .ftco-navbar-light.scrolled .navbar-brand {
-      color: #000000; }
+      /* color: #000000;  */
+    }
 
 .navbar-brand {
   font-weight: 400;
@@ -7708,10 +7716,10 @@ h1, h2, h3, h4, h5,
 
 .btn {
   cursor: pointer;
-  -webkit-border-radius: 30px;
+  /* -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
-  border-radius: 30px;
+  border-radius: 30px; */
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
   .btn:hover, .btn:active, .btn:focus {
@@ -7829,7 +7837,7 @@ h1, h2, h3, h4, h5,
     font-size: 14px;
     border: 1px solid #000000;
     color: #000000 !important;
-    background: transparent !important;
+    /* background: transparent !important; */
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
