@@ -26,12 +26,12 @@ public class EmartVO {
 	private int codeno;
 	private String name;
 	private int price;
-	private String unitprice;
-	private double rate;
-	private int reviewcount;
-	private String tags;
+	private String unitprice="";
+	private double rate=0.0;
+	private int reviewcount=0;
+	private String tags="";
 	private int lookup;
 	private Date lookuptime;
 	private int rank;
-	private String img;
+	private String img="";
 }

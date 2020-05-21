@@ -4,31 +4,47 @@ import java.util.Date;
 
 public class CoupangVO {
 
-
+	private int lookup;
+	private Date lookuptime;
+	
 	private String name;
 	private String weight;
-	private String quantity;
+	private String quantity="";
 	
 	//이미지
-	private String img;
+	private String img="";
 	//할인율
-	private String discount;
+	private String discount="";
 	// 할인 전 가격
 	private int baseprice;
 	// 유닛 가격
-	private String unitprice;
+	private String unitprice="";
 	// 판매 가격
-	private int saleprice;
+	private int saleprice=0;
 	
-	private String tags;
+	private String tags="";
 	// 검색키워드
 	
 	private int codeNo;
 	private int rank;
 	private String productCode;
 	// 리뷰
-	private double rate;
-	private int reviewcount;
+	private double rate=0.0;
+	private int reviewcount=0;
+	
+	public int getLookup() {
+		return lookup;
+	}
+	public void setLookup(int lookup) {
+		this.lookup = lookup;
+	}
+	public Date getLookuptime() {
+		return lookuptime;
+	}
+	public void setLookuptime(Date lookuptime) {
+		this.lookuptime = lookuptime;
+	}
+	
 	public String getName() {
 		return name;
 	}

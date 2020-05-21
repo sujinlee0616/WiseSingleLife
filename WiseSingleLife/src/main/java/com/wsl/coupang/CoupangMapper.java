@@ -4,7 +4,6 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 
 import com.wsl.search.SearchKeywordVO;
-import com.wsl.vo.*;
 import java.util.*;
 
 public interface CoupangMapper {
@@ -13,22 +12,23 @@ public interface CoupangMapper {
 	public List<SearchKeywordVO> keywordAllData();
 	
 	@Insert("INSERT INTO coupang("
-			+"PRODUCTCODE,TAGS,CODENO,RANK,NAME,"
-			+"BASEPRICE,UNITPRICE,RATE,REVIEWCOUNT,DISCOUNT,"
+			+"PRODUCTCODE,TAGS,NAME,"
+			+"PRICE,UNITPRICE,RATE,REVIEWCOUNT,DISCOUNTRATE,"
 			+"IMG )"
 		+"VALUES( "
 			+"#{productCode}"
 			+",#{tags}"
-			+",#{codeNo}"
-			+",#{rank}"
 			+",#{name}"
-			+",#{basePrice}"
-			+",#{unit_price}"
+			+",#{baseprice}"
+			+",#{unitprice}"
 			+",#{rate}"
-			+",#{review_count}"
+			+",#{reviewcount}"
 			+",#{discount}"
-			+",#{img}"
+			+",#{img})"
 		)
 	public void InsertCoupang(CoupangVO vo);
+	
+	@Insert("INSERT INTO keyword_mart_mapper VALUES(#{codeNo},#{productCode},#{rank})")
+	public void keywordMartMapperInsert(CoupangVO vo);
 		
 }

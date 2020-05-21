@@ -23,8 +23,8 @@ public class LotteMartDAO {
 	}
 	
 	public void lotteMartInsert(LotteMartVO vo) {
-		mapper.lotteMartInsert(vo);
 		mapper.keywordMartMapperInsert(vo);
+		mapper.lotteMartInsert(vo);
 	}
 
 }

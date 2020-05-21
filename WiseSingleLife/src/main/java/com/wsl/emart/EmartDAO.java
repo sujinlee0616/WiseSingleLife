@@ -14,7 +14,7 @@ public class EmartDAO {
 	@Resource(name="emMapper")
 	private EmartMapper mapper;
 	
-	// =========================== 农费傅 ===========================
+	// =========================== 农锟窖革拷 ===========================
 	// search_keyword
 	public List<SearchKeywordVO> searchKeywordData() {
 		return mapper.searchKeywordData();
@@ -22,6 +22,7 @@ public class EmartDAO {
 	
 	// insert
 	public void insertEmartData(EmartVO vo) {
+		mapper.keywordMartMapperInsert(vo);
 		mapper.insertEmartData(vo);
 	}
 	

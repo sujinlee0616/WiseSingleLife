@@ -20,6 +20,7 @@ public class CoupangDAO {
 	}
 	
 	public void InsertCoupang(CoupangVO vo){
+		mapper.keywordMartMapperInsert(vo);
 		mapper.InsertCoupang(vo);
 	}
 	

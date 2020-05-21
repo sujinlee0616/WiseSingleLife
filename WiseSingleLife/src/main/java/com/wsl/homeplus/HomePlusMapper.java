@@ -1,9 +1,8 @@
 package com.wsl.homeplus;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
-
-import com.wsl.lottemart.LotteMartVO;
 
 import java.util.*;
 
@@ -25,5 +24,12 @@ public interface HomePlusMapper {
 	@Select("select ROUND(AVG(reviewcount),2) from homeplustokeyword "  
 			+"WHERE codeno=#{codeNo} group by codeno")
 	public double getHomePlusAverageByReviewCount(int codeNo);
+	
+	@Insert("INSERT INTO keyword_mart_mapper VALUES(#{codeno},#{productcode},#{rank})")
+	public void keywordMartMapperInsert(HomePlusVO vo);
+	
+	@Insert("INSERT INTO homeplus VALUES(#{productcode},#{name},#{price},#{unitprice},"
+			+ "#{rate},#{reviewcount},0,SYSDATE,#{img})")
+	public void homeplusInsert(HomePlusVO vo);
 	
 }
