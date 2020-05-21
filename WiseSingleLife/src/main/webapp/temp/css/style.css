@@ -4491,7 +4491,7 @@ button.close {
 /* Modal 사이즈 변경 */
 @media (min-width: 992px) {
   .modal-lg {
-    max-width: 1000px; } }
+    max-width: 1200px; } }
 
 .tooltip {
   position: absolute;
@@ -7338,16 +7338,16 @@ h1, h2, h3, h4, h5,
     .ftco-navbar-light .navbar-nav {
       padding-bottom: 10px; } }
   .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
-    font-size: 13px;
+    font-size: 15px;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     padding-left: 20px;
     padding-right: 20px;
-    color: #6c7a7d;
+    color: #fff;
     font-weight: 400;
     opacity: 1 !important; }
     .ftco-navbar-light .navbar-nav > .nav-item > .nav-link:hover {
-      color: #fff; }
+      color: #FF9800; }
     @media (max-width: 991.98px) {
       .ftco-navbar-light .navbar-nav > .nav-item > .nav-link {
         padding-left: 0;
@@ -7716,10 +7716,10 @@ h1, h2, h3, h4, h5,
 
 .btn {
   cursor: pointer;
-  -webkit-border-radius: 30px;
+  /* -webkit-border-radius: 30px;
   -moz-border-radius: 30px;
   -ms-border-radius: 30px;
-  border-radius: 30px;
+  border-radius: 30px; */
   -webkit-box-shadow: none !important;
   box-shadow: none !important; }
   .btn:hover, .btn:active, .btn:focus {
@@ -7837,7 +7837,7 @@ h1, h2, h3, h4, h5,
     font-size: 14px;
     border: 1px solid #000000;
     color: #000000 !important;
-    background: transparent !important;
+    /* background: transparent !important; */
     -webkit-border-radius: 2px;
     -moz-border-radius: 2px;
     -ms-border-radius: 2px;
