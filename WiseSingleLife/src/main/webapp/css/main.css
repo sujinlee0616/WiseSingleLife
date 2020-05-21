@@ -25,3 +25,31 @@
 .slider_txt2{color:#ffffff; text-align: center; padding-top: 10px;}
 
 .event{display: block; width: 255px;}
+
+/* ===== 인기검색어 영역 ====== */
+.pk_area{
+    /* background-color: red; */
+}
+.popular_keyword{
+    list-style-type: none;
+
+}
+.pop{
+    height: 40px;
+    line-height: 40px;
+    font-size: 15px;
+    color: #222222;
+    vertical-align: middle;
+    border: 1px solid red;
+}
+.rk_area{
+    /* background-color: pink; */
+}
+
+.num{
+    font-weight: 600;
+    
+}
+
+
+

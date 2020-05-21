@@ -44,6 +44,66 @@
       </div>
     </section>
 	
+	<!-- ================================== 인기검색어  ================================== -->	
+	<section class="ftco-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center mb-5 pb-3">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<span class="subheading">오늘 Hot한 상품은?!</span>
+				  <h2 class="mb-4">실시간 인기검색어</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-6 pk_area">
+					<ol class="popular_keyword">
+						<li class="pop">
+							<span class="num">1</span>
+							<span id="pop1">파인애플</span>
+						</li>
+						<li class="pop" id="pop2">
+							<span class="num">2</span>
+							<span id="pop1">삼겹살</span>
+						</li>
+						<li class="pop" id="pop3">
+							<span class="num">3</span>
+							<span id="pop1">체리</span>
+						</li>
+						<li class="pop" id="pop4">
+							<span class="num">4</span>
+							<span id="pop1">카라멜</span>
+						</li>
+						<li class="pop" id="pop5">
+							<span class="num">5</span>
+							<span id="pop1">목살</span>
+						</li>
+						<li class="pop" id="pop6">
+							<span class="num">6</span>
+							<span id="pop1">신라면</span>
+						</li>
+						<li class="pop" id="pop7">
+							<span class="num">7</span>
+							<span id="pop1">바나나 우유</span>
+						</li>
+						<li class="pop" id="pop8">
+							<span class="num">8</span>
+							<span id="pop1">햇반</span>
+						</li>
+						<li class="pop" id="pop9">
+							<span class="num">9</span>
+							<span id="pop1">카누</span>
+						</li>
+						<li class="pop" id="pop10">
+							<span class="num">10</span>
+							<span id="pop1">3분카레</span>
+						</li>
+					</ol>
+				</div>
+				<div class="col-md-6 rk_area">
+				</div>
+			</div>
+		</div>
+		</section>
+	
 <!-- ================================== PROMOTION VER2 ================================== -->	
 <section class="ftco-section">
 	<div class="container">
