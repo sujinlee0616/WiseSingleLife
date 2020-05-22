@@ -33,7 +33,7 @@
 	</filter-mapping>
 	
 	<!-- [참고] 
-	    POST 방식: Spring에서 자동으로 처리해줌. 
+	     POST 방식: Spring에서 자동으로 처리해줌. 
          GET 방식: Spring에서 자동으로 처리해주지X ==> Servers > Tomcat v8.5 > Server.xml에서 URIEncoding="UTF-8" 따로 해줘야함 
          <Connector connectionTimeout="20000" port="80" protocol="HTTP/1.1" redirectPort="8443" URIEncoding="UTF-8"/>
 	 -->
