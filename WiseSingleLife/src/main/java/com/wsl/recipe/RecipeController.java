@@ -25,6 +25,8 @@ public class RecipeController {
 				case "레시피" : {
 					Map map = new HashMap();
 					map.put("keyword", keyword);
+					map.put("start", 1);
+					map.put("end", RecipeConst.ROWSIZE);
 					
 					List<RecipeVO> list = dao.getRecipeListByTitleSearch(map);
 					model.addAttribute("list", list);					
@@ -34,12 +36,16 @@ public class RecipeController {
 					if(dao.isRegisteredIngredient(keyword)!=0) {
 						Map map = new HashMap();
 						map.put("keyword", keyword);
+						map.put("start", 1);
+						map.put("end", RecipeConst.ROWSIZE);
 						
 						List<RecipeVO> list = dao.getRecipeListByIngredient(map);
 						model.addAttribute("list", list);
 					} else {
 						Map map = new HashMap();
 						map.put("keyword", keyword);
+						map.put("start", 1);
+						map.put("end", RecipeConst.ROWSIZE);
 						
 						List<RecipeVO> list = dao.getRecipeListByTitleSearch(map);
 						model.addAttribute("list", list);
@@ -49,6 +55,8 @@ public class RecipeController {
 				case "셰프" : {
 					Map map = new HashMap();
 					map.put("keyword", keyword);
+					map.put("start", 1);
+					map.put("end", RecipeConst.ROWSIZE);
 					
 					List<RecipeVO> list = dao.getRecipeListByChef(map);
 					model.addAttribute("list", list);					
