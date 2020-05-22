@@ -13,17 +13,17 @@ public class RecipeController {
 	@Autowired
 	private RecipeDAO dao;
 	
-	@RequestMapping("recipe_list.do")
+	@RequestMapping("recipe.do")
 	public String recipe_list(Model model, String category, String keyword) {
 		if(category!=null && keyword!=null) {
-			model.addAttribute("category","레시피");
-			model.addAttribute("keyword","홍초");
+			model.addAttribute("category",category);
+			model.addAttribute("keyword",keyword);
 			
 			List<RecipeVO> list = dao.getRecipeListByTitleSearch(keyword);
 			model.addAttribute("list", list);
 		}
 		
-		return "recipe_list";
+		return "recipe/list";
 	}
 
 }
