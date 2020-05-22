@@ -51,5 +51,10 @@
 		p:mapperInterface="com.wsl.board.BoardMapper"
 	/>
 
+	<bean id="recipeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.recipe.RecipeMapper"
+	/>
+
 </beans>
 

@@ -1,0 +1,18 @@
+.shop-detail-box-main {
+    padding: 70px 0px;
+}
+
+.d-block {
+    display: block!important;
+}
+
+.single-product-details h2 {
+    color: #000000;
+    font-weight: 700;
+    font-size: 24px;
+}
+.single-product-details h4 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 20px;
+}

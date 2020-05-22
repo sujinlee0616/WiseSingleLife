@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/icomoon.css">
     <link rel="stylesheet" href="css/style.css">
+    <!-- boardCSS -->
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
     <!-- MainCSS -->
 	<link rel="stylesheet" href="css/main.css">
   </head>
@@ -56,6 +59,8 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <!-- Swipper Slider JS -->
+  <script src="js/swiper.min.js"></script>
   
   <!-- 실시간 인기검색어 -->
   <script>
@@ -66,6 +71,23 @@
 			});
 
 		});
+  </script>
+  
+  <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
   </script>
     
   </body>

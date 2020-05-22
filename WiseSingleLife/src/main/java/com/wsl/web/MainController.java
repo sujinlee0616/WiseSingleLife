@@ -18,9 +18,21 @@ public class MainController {
 	{
 		return "search";
 	}
-			
+	
+	@RequestMapping("board.do")	
+	public String board_list()	
+	{	
+		return "board/list";	
+	}
+	
 	@RequestMapping("aaa.do")
 	public String search_react(){
 		return "searchReact";
+	}
+
+	@RequestMapping("search/detail.do")
+	public String detail_page(){
+	
+		return "search/detail";
 	}
 }
