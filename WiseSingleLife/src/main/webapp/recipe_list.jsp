@@ -60,9 +60,9 @@
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
 											<select name="" id="" class="form-control">
-                                                <option value="pop">재료</option>
-												<option value="asc">레시피 이름</option>
-												<option value="desc">셰프 이름</option>
+                                                <option value="pop">레시피</option>
+												<option value="asc">재료</option>
+												<option value="desc">셰프</option>
 											</select>
 										</div>
 									</div>
@@ -92,32 +92,34 @@
     
     
 	
-	<!-- ================================== PROMOTION VER2 ================================== -->	
-	<section class="ftco-section">
-		<div class="container">
-			<div class="row justify-content-center mb-5 pb-3">
-				<div class="col-md-7 heading-section text-center ftco-animate">
-					<span class="subheading">재료로 검색한 결과</span>
-				  <h2 class="mb-4">시금치</h2>
+	<!-- ================================== PROMOTION VER2 ================================== -->
+	<c:if test="${ list ne null }">
+		<section class="ftco-section">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+					<div class="col-md-7 heading-section text-center ftco-animate">
+						<span class="subheading">${ category }로 검색한 결과</span>
+					  <h2 class="mb-4">${ keyword }</h2>
+					</div>
+				</div>
+				<div class="row d-flex">
+					<c:forEach var="vo" items="${ list }">
+						<div class="col-md-3 d-flex ftco-animate">
+							<div class="blog-entry align-self-stretch">
+							  <a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank" class="block-20" style="background-image: url('${ vo.poster }');">
+							  </a>
+							  <div class="text mt-3 d-block">
+									<a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank">
+										<h3 class="heading mt-3 event">${ vo.title }</h3>
+									</a>
+							  </div>
+							</div>
+						  </div>
+					</c:forEach>
 				</div>
 			</div>
-			<div class="row d-flex">
-				<c:forEach begin="1" end="12">
-					<div class="col-md-3 d-flex ftco-animate">
-						<div class="blog-entry align-self-stretch">
-						  <a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank" class="block-20" style="background-image: url('https://recipe1.ezmember.co.kr/cache/recipe/2020/04/02/f94a91c3e171469938dfff2661782c2a1_m.png');">
-						  </a>
-						  <div class="text mt-3 d-block">
-								<a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank">
-									<h3 class="heading mt-3 event">임성근의 폭탄달걀찜, 달걀피클, 노른자장 - 알토란 276회</h3>
-								</a>
-						  </div>
-						</div>
-					  </div>
-				</c:forEach>
-			</div>
-		</div>
-	</section>	
+		</section>
+	</c:if>
 
 	<!-- ================================== FOOTER ================================== -->
     <footer class="ftco-footer ftco-bg-dark ftco-section">
@@ -162,17 +164,6 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
-  
-  <!-- 실시간 인기검색어 -->
-  <script>
-		$(function () {
-			$('.popular_keyword li').hover(function(){
-				$('.popular_keyword li:not(this)').removeClass('on');
-				$(this).addClass('on');
-			});
-
-		});
-  </script>
-    
+      
   </body>
 </html>
