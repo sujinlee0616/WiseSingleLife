@@ -22,9 +22,9 @@
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
 											<select name="category" id="" class="form-control">
-                                                <option value="레시피">레시피</option>
-												<option value="재료">재료</option>
-												<option value="셰프">셰프</option>
+												<option value="레시피" <c:if test="${ category eq '레시피' }">selected</c:if>>레시피</option>
+												<option value="재료" <c:if test="${ category eq '재료' }">selected</c:if>>재료</option>
+												<option value="셰프" <c:if test="${ category eq '셰프' }">selected</c:if>>셰프</option>
 											</select>
 										</div>
 									</div>
@@ -55,12 +55,13 @@
 					<c:forEach var="vo" items="${ list }">
 						<div class="col-md-3 d-flex ftco-animate">
 							<div class="blog-entry align-self-stretch">
-							  <a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank" class="block-20" style="background-image: url('${ vo.poster }');">
+							  <a href="recipe/detail.do?no=${ vo.no }" class="block-20" style="background-image: url('${ vo.poster }');">
 							  </a>
 							  <div class="text mt-3 d-block">
-									<a href="http://emart.ssg.com/planshop/detail.ssg?dispCmptId=6000355090" target="_blank">
+									<a href="recipe/detail.do?no=${ vo.no }">
 										<h3 class="heading mt-3 event">${ vo.title }</h3>
 									</a>
+									<h6 class="text-right">${ vo.chef }</h6>
 							  </div>
 							</div>
 						  </div>

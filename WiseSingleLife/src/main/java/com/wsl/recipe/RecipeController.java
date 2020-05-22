@@ -19,8 +19,28 @@ public class RecipeController {
 			model.addAttribute("category",category);
 			model.addAttribute("keyword",keyword);
 			
-			List<RecipeVO> list = dao.getRecipeListByTitleSearch(keyword);
-			model.addAttribute("list", list);
+			switch (category) {
+				case "레시피" : {
+					List<RecipeVO> list = dao.getRecipeListByTitleSearch(keyword);
+					model.addAttribute("list", list);					
+					break;
+				}
+				case "재료" : {
+					if(dao.isRegisteredIngredient(keyword)==1) {
+						List<RecipeVO> list = dao.getRecipeListByIngredient(keyword);
+						model.addAttribute("list", list);
+					} else {
+						List<RecipeVO> list = dao.getRecipeListByTitleSearch(keyword);
+						model.addAttribute("list", list);
+					}
+					break;
+				}
+				case "셰프" : {
+					List<RecipeVO> list = dao.getRecipeListByChef(keyword);
+					model.addAttribute("list", list);					
+					break;
+				}
+			}
 		}
 		
 		return "recipe/list";
