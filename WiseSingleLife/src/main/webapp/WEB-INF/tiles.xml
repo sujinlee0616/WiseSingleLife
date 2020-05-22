@@ -13,7 +13,7 @@
 		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp"/>
 	</definition>
 
-
+	<!-- React 페이지 용 -->
 	<definition name="searchReact" template="/WEB-INF/search/searchReact.jsp">
 		<put-attribute name="nav" value="/WEB-INF/main/nav.jsp"/>
 		<put-attribute name="content" value="/WEB-INF/search/content.jsp"/>
