@@ -5,10 +5,13 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
+=======
 
 
 
 
+>>>>>>> 7a4551fb206255da9c2b13ef7db2ea0b681be8e2
 <link href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.css" rel="stylesheet" type="text/css">
 <script src="https://d3js.org/d3.v3.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.4.11/c3.min.js"></script>
@@ -18,16 +21,22 @@
 .c3-grid line {stroke: #000000 !important; }
 </style>
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 7a4551fb206255da9c2b13ef7db2ea0b681be8e2
 </head>
 <body>
 
 
+<<<<<<< HEAD
+=======
 
 
 
+>>>>>>> 7a4551fb206255da9c2b13ef7db2ea0b681be8e2
 <script>
 var ChartProp={"data":{"columns":[["홈플","10"]
 ,["쿠팡","12"]
@@ -55,7 +64,6 @@ var ChartProp={"data":{"columns":[["홈플","10"]
 ,"size":{"width":"300","height":"400"}
 ,"padding":{"left":30,"top":30,"bottom":0,"right":0}
 }
-
 window.onload=function(){
 c3.generate(ChartProp);
 var svg = d3.select('svg');

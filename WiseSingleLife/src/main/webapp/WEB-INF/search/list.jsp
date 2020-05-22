@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- SEARCH CSS -->
     <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/main.css">
   </head>
   <body>
     <!-- ================================ NAVBAR ================================ -->
@@ -56,7 +57,7 @@
 							</div> -->
 							<div class="col-md-2 pl-0">
 								<div class="form-group">
-									<label for="#">정렬</label>
+									<!--  <label for="#">정렬</label>-->
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -67,10 +68,14 @@
 											</select>
 										</div>
 									</div>
-								</div>
+ 								</div> 	
 							</div>
-							
-                            <!-- BUTTON -->
+						
+								<!-- <div class="slider_search_area">-->
+									<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요.">
+									<button class="sliderBtn">검색</button>
+								<!--</div>-->
+						    <!-- BUTTON -->
 							<div class="col-md-2 align-self-end">
 								<div class="form-group">
 									<div class="form-field">
@@ -78,6 +83,7 @@
 									</div>
 								</div>
 							</div>
+							
 						</div>
 					</form>
 				</div>
