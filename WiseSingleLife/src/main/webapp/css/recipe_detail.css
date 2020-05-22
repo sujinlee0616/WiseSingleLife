@@ -1,3 +1,7 @@
+/* Font import  */
+@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700');
+
 .shop-detail-box-main {
     padding: 70px 0px;
 }
@@ -16,3 +20,50 @@
     font-weight: 700;
     margin-top: 20px;
 }
+
+.share-bar a {
+    background:#fad000;
+    color: #ffffff;
+    padding: 5px 10px;
+    display: inline-block;
+    /* width: 34px; */
+    width: 40px;
+    text-align: center;
+    border-radius: 0;
+}
+
+*, ::after, ::before {
+    box-sizing: border-box;
+}
+
+.fa-facebook:before {
+    font-size: 20px;
+}
+.fa-twitter:before {
+    font-size: 20px;
+
+}
+
+.recipe_desc{
+    white-space: pre-wrap;
+    font-size: 15px;
+    font-family: "Open Sans", Arial, sans-serif;
+    color:rgb(128, 128, 128);
+}
+
+.recipe_header{font-weight: 600; vertical-align: middle; margin-top: 5px; font-size: 17px;}
+
+.recipe_info{list-style-type: none; padding-left: 0;}
+
+.recipe_writer{font-size: 18px;}
+
+.fa-user,.fa-clock,.fa-star {
+    font-size: 20px;
+    margin-right: 5px;
+}
+.recipe_info{height: 30px; margin: 15px 0 10px 0;}
+.recipe_info li{display: inline; margin-right: 10px;}
+
+.recipe_area{position: relative;}
+.listBtn{display: inline-block; background-color: #fad000; border-radius: 0; color:#FFFFFF; font-weight: 600; position: absolute; right: 0; bottom: -30px;}
+
