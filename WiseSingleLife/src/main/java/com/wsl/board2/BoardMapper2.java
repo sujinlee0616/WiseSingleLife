@@ -15,11 +15,11 @@ import java.util.List;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-public interface BoardMapper {
+public interface BoardMapper2 {
 	// 게시판 상세정보
 	@Select("SELECT * FROM board "
 		   +"WHERE no=#{no}")
-	public BoardVO boardDetailData(int no);
+	public BoardVO2 boardDetailData(int no);
 	
 	// 조회수 증가
 	@Update("UPDATE board SET "
@@ -38,7 +38,7 @@ public interface BoardMapper {
 	// 해당 게시글의 댓글
 	@Select("SELECT * FROM board_reply "
 		   +"WHERE bno=#{bno}")
-	public List<ReplyVO> boardReplyData(int bno);
+	public List<ReplyVO2> boardReplyData(int bno);
 	
 	// 해당 게시글의 댓글 총 개수 
 	@Select("SELECT COUNT(*) FROM board_reply "

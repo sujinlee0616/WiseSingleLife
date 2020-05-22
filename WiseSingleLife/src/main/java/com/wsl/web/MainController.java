@@ -19,11 +19,11 @@ public class MainController {
 		return "search";
 	}
 	
-	@RequestMapping("board.do")	
+	/*@RequestMapping("board.do")	
 	public String board_list()	
 	{	
 		return "board/list";	
-	}
+	}*/
 	
 	@RequestMapping("aaa.do")
 	public String search_react(){
@@ -34,11 +34,5 @@ public class MainController {
 	public String detail_page(){
 	
 		return "search/detail";
-	}
-	@RequestMapping("search/search_detail.do")
-	public String detail_search(){
-		
-		
-		return "search/search_detail";
 	}
 }

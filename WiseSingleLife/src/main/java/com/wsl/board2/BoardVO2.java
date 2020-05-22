@@ -17,7 +17,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class BoardVO {
+public class BoardVO2 {
 	private int no;
 	private String title;
 	private String author;

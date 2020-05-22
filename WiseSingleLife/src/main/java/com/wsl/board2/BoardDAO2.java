@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class BoardDAO {
-	@Resource(name="boardMapper")
-	private BoardMapper mapper;
+public class BoardDAO2 {
+	@Resource(name="boardMapper2")
+	private BoardMapper2 mapper;
 	
 	// 게시판 상세정보
-	public BoardVO boardDetailData(int no) {
+	public BoardVO2 boardDetailData(int no) {
 		return mapper.boardDetailData(no);
 	}
 	
@@ -32,7 +32,7 @@ public class BoardDAO {
 	// ############################## 댓글 ###############################
 	
 	// 해당 게시글의 댓글
-	public List<ReplyVO> boardReplyData(int bno) {
+	public List<ReplyVO2> boardReplyData(int bno) {
 		return mapper.boardReplyData(bno);
 	}
 	
