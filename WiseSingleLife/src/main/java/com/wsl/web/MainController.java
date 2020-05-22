@@ -29,7 +29,7 @@ public class MainController {
 	public String search_react(){
 		return "searchReact";
 	}
-	
+
 	@RequestMapping("search/detail.do")
 	public String detail_page(){
 	

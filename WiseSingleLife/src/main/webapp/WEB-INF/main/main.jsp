@@ -64,6 +64,7 @@
 				$('.popular_keyword li:not(this)').removeClass('on');
 				$(this).addClass('on');
 			});
+
 		});
   </script>
     

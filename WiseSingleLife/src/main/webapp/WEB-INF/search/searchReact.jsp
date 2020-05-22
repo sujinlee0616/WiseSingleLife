@@ -1,7 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
   <head>
-    <title>Royal Estate - Free Bootstrap 4 Template by Colorlib</title>
+    <title>리액트</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -19,27 +23,17 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- SEARCH CSS -->
     <link rel="stylesheet" href="css/search.css">
-  </head>
-  <body>
-    <!-- ================================ NAVBAR ================================ -->
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="main.do">슬기로운 자취생활</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-		  </button>
-		  <!-- ===== MENUS ===== -->
-	      <div class="collapse navbar-collapse" id="ftco-nav">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="search.do" class="nav-link">가격비교</a></li>
-	          <li class="nav-item"><a href="recipe.do" class="nav-link">레시피</a></li>
-	          <li class="nav-item"><a href="board.do" class="nav-link">게시판</a></li>
-	          <!-- <li class="nav-item cta"><a href="contact.html" class="nav-link ml-lg-2"><span class="icon-user"></span> Sign-In</a></li>
-	          <li class="nav-item cta cta-colored"><a href="contact.html" class="nav-link"><span class="icon-pencil"></span> Sign-Up</a></li> -->
-	        </ul>
-	      </div>
-		</div>
-	</nav>
+    <!-- react vis graph 그릴 CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.0/vis.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+  <!-- ================================ NAVBAR ================================ -->
+    <tiles:insertAttribute name="nav"/>
     <!-- END nav -->
 
     <!-- ================================== FILTERS AND SAVE BTN================================== -->	
@@ -50,23 +44,11 @@
 					<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span>상세검색</h2>
 					<form action="#" class="search-property">
 						<div class="row">
-							<!-- <div class="col-md-2 align-items-end pl-0">
-								<div class="form-group">
-									<label for="#">마트</label>
-									<div class="form-field">
-										<div class="select-wrap">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
-												<option value="">전체</option>
-												<option value="emart">이마트</option>
-												<option value="homeplus">홈플러스</option>
-												<option value="lotte">롯데마트</option>
-												<option value="coupang">쿠팡</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div> -->
+							<div class="slider_search_area">
+								<input class="img_slider_search" name="keyword" type="search"
+									placeholder="검색어를 입력하세요." />
+								<button class="sliderBtn">검색</button>
+							</div>
 							<div class="col-md-2 pl-0">
 								<div class="form-group">
 									<label for="#">정렬</label>
@@ -112,23 +94,11 @@
 						<td class="td4">쿠팡</td>
 					</tr>
 					<!-- ============================== ITEM1 ============================== -->
+					<!-- ############################## Emart ROW ########################## -->
 					<tr class="mall_result" id="product1">
 						<td rowspan="2" class="product_name">바나나 우유</td>
 						<!-- =============== 1.이마트 =============== -->
 						<td class="emart">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
 							<div class="list_item">
 								<div class="img">
 									<a href="#">
@@ -142,40 +112,13 @@
 									</a>
 								</div>
 							</div>
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
 							<!-- 더보기 버튼: 컨텐츠가 3개 초과일 경우 -->
 							<!-- <button type="button" class="btn btn-block" id="">+ 더 보기</button> -->
 							<button type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
-							
-							
 						</td>
 						<!-- =============== 2.롯데마트 =============== -->
+						<!-- ############################## Lotte ROW ########################## -->
 						<td class="lotte">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_5761002/5761002283.20150128173135.jpg?type=f300">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
 							<div class="list_item">
 								<div class="img">
 									<a href="#">
@@ -191,6 +134,7 @@
 							</div>
 						</td>
 						<!-- =============== 3.홈플러스 =============== -->
+						<!-- ############################## HomePlust ROW ########################## -->
 						<td class="homeplus">
 							<div class="list_item">
 								<div class="img">
@@ -207,6 +151,7 @@
 							</div>
 						</td>
 						<!-- =============== 4.쿠팡=============== -->
+						<!-- ############################## Coupang ROW ########################## -->
 						<td class="coupang">
 							<div class="list_item">
 								<div class="img">
@@ -238,7 +183,7 @@
 										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_1304626/13046260762.20171221101956.jpg?type=f300">
 									</a>
 								</div>
-								<div class="info">
+								<div class="info">		
 									<a href="#">
 										<p class="product">삼양 까르보 불닭볶음면 130g</p>
 										<p class="price">950원</p>
@@ -302,49 +247,7 @@
 			<!-- 저장한 상품 -->
 			<div class="row">
 				<div class="saved">
-					<div class="title">
-						<h5 class="saved_title">저장한 상품</h5>
-					</div>
-					<div class="savedItemArea">
-						<!-- <button type="button" id="recom_btn_prev" class="btn_prev" style="display: block;">
-							<span class="blind">이전</span>
-						</button> -->
-						<!-- SAVED ITEM 1 -->
-						<div class="item">
-							<a href="#">
-								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-								<p class="price mb-0">19,900원</p>
-							</a>
-						</div>
-						<!-- SAVED ITEM 2 -->
-						<div class="item">
-							<a href="#">
-								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-								<p class="price mb-0">19,900원</p>
-							</a>
-						</div>
-						<!-- SAVED ITEM 3 -->
-						<div class="item">
-							<a href="#">
-								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-								<p class="price mb-0">19,900원</p>
-							</a>
-						</div>
-						<!-- SAVED ITEM 4 -->
-						<div class="item">
-							<a href="#">
-								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-								<p class="price mb-0">19,900원</p>
-							</a>
-						</div>
-						<!-- SAVED ITEM 5 -->
-						<!-- <div class="item">
-							<a href="#">
-								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-								<p class="price mb-0">19,900원</p>
-							</a>
-						</div> -->
-					</div>
+					<h5 class="saved_title">저장한 상품</h5>
 				</div>
 			</div>
 
@@ -541,32 +444,9 @@
     	</div>
     </section>
 		
-	
 
     <!-- ================================== FOOTER ================================== -->
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
-        <div class="container">
-          <div class="row">
-            <div class="col-md">
-              <div class="ftco-footer-widget">
-                <h2 class="ftco-heading-2">최종 프로젝트 '슬기로운 자취생활'</h2>
-                <p class="mb-0"><b>팀원:
-                    </b><a href="https://github.com/sigk77">김용희,</a> 
-                  <a href="https://github.com/pch9501">박찬휘, </a>
-                  <a href="https://github.com/sujinlee0616/">이수진, </a>
-                  <a href="https://github.com/caskercasker">조우현, </a>
-                  <a href="https://github.com/juhongseon">주홍선, </a>
-                  <a href="https://github.com/ung6039">최웅, </a>
-                  <a href="https://github.com/hajieun1218">하지은</a> 
-                  (가나다순)</p>
-                <p class="mb-0"><b>Github Repository:</b><a href="https://github.com/sujinlee0616/WiseSingleLife" target="_blank">이 곳</a>을 클릭하세요.</p>
-              </div>
-            </div>          
-          </div>
-        </div>
-      </footer>
-    
-  
+    <tiles:insertAttribute name="footer"/>
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
@@ -589,22 +469,68 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
   <script src="js/main.js"></script>
+  <script type="text/babel">
+	class App extends React.Component{
+		constructor(props){
+			super(props);
+			this.state={
+				homeplus:[],
+				keyword:''
+			}
+			this.onUserInput2=this.onUserInput2.bind(this);
+		}						
 
-  <script>
-	  $(function(){
-		$('#moreBtn').on('show.bs.modal', function (event) {
-			var button = $(event.relatedTarget) // Button that triggered the modal
-			var recipient = button.data('whatever') // Extract info from data-* attributes
-			// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-			// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-			var modal = $(this)
-			modal.find('.modal-title').text('New message to ' + recipient)
-			modal.find('.modal-body input').val(recipient)
-		});
+		onUserInput2(keyword){
+			axios.get("http://localhost:8081/web/hp/search.do",{
+				params: {
+					keyword:keyword
+				}.then(function(result){
+					console.log(result.data);
+					this.setState({homeplus:result.data});
+				})
+				
+			});
+	
+			
+			this.setState({keyword:keyword});
+		}
 
-	  })
-
-  </script>
+		
+		render(){
+			return(
+				document.write(<div className="row">
+					<SearchBar keyword={this.state.keyword} onUserInput={this.onUserInput2} />
+				</div>);	
+			);
+		}
+	}
+	class SearchBar extends React.Component{
+			constructor(props)
+			{
+				super(props);
+				// / /이벤트 등록
+				this.onChange=this.onChange.bind(this)
+				this.onClick=this.onClick.bind(this)
+				// / /this.onUserInput = this.onUserInput.bind(this)
+			}
+			onClick(e)
+			{
+				elem = documnet.getElementById("keyword");
+				this.props.onUserInput(elem.value);
+			}
+			render(){
+				return(	
+					<div className="slider_search_area">
+						<input className="img_slider_search" type="search" placeholder="검색어를 입력하세요."
+						value={this.props.keyword} id="keyword"/>
+						<button className="sliderBtn" onClick={this.onClick}>검색</button>
+					</div>
+				)
+			}
+		}
+		ReactDOM.render(<App />, document.getElementById('root'));
+</script>
   
-  </body>
+</body>
+	<script type="text/babel" src="js/search_list_react.js"></script>
 </html>
