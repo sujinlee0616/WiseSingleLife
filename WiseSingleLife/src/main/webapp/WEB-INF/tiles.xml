@@ -19,6 +19,8 @@
 		<put-attribute name="content" value="/WEB-INF/search/content.jsp"/>
 		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp"/>
 	</definition>
+	
+	<definition name="recipe_more" template="/WEB-INF/recipe/more.jsp"/>
 		
 	<!-- 1) 경로가 2개일때 -->
 	<definition name="*/*" extends="main">

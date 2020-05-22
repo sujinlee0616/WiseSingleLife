@@ -30,5 +30,17 @@ public interface RecipeMapper {
 	
 	@Select("SELECT COUNT(*) FROM recipe_ingredient_amount WHERE mname LIKE '%'||#{keyword}||'%'")
 	public int isRegisteredIngredient(String keyword);
+	
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe "
+			+ "WHERE title like '%'||#{keyword}||'%'")
+	public int recipeTitleSearchTotalPage(Map map);
+	
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe_ingredient_amount "
+			+ "WHERE mname like '%'||#{keyword}||'%'")
+	public int recipeIngredientSearchTotalPage(Map map);
+	
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe "
+			+ "WHERE chef like '%'||#{keyword}||'%'")
+	public int recipeChefSearchTotalPage(Map map);
 
 }

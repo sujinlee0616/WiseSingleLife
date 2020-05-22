@@ -51,7 +51,7 @@
 					  <h2 class="mb-4">${ keyword }</h2>
 					</div>
 				</div>
-				<div class="row d-flex">
+				<div class="row d-flex" id="recipeListMoreTarget">
 					<c:forEach var="vo" items="${ list }">
 						<div class="col-md-3 d-flex ftco-animate">
 							<div class="blog-entry align-self-stretch">
@@ -72,13 +72,36 @@
 		<div class="container">
 			<div class="row" style="margin-bottom: 50px;">
 				<div class="col-md-6">
-					<button type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
+					<button id="recipeListMoreBtn" data-category="${ category }" data-keyword="${ keyword }" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기(<span id="recipeListCurpage">${ curpage }</span> / ${ totalpage })</button>
 				</div>
 				<div class="col-md-6">
 					<button onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">맨 위로</button>
 				</div>
 			</div>
 		</div>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				$('#recipeListMoreBtn').click(function(){
+					var category = $(this).attr('data-category');
+					var page = $('#recipeListCurpage').text();
+					var keyword = $(this).attr('data-keyword');
+					
+					$.ajax({
+						url:'recipe_more.do',
+						type:'post',
+						data:{category:category,page:page,keyword:keyword},
+						success:function(res){
+							$('#recipeListMoreTarget').append(res);
+							$('#recipeListCurpage').text(Number(page)+1);
+						},
+						error:function(){
+							alert('ajax error');
+						}
+					});
+				});
+			});
+		</script>
 	</c:if>
 </body>
 </html>

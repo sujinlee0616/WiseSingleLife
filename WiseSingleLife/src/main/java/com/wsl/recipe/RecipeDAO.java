@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
+
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -26,6 +28,18 @@ public class RecipeDAO {
 	
 	public int isRegisteredIngredient(String keyword) {
 		return mapper.isRegisteredIngredient(keyword);
+	}
+	
+	public int recipeTitleSearchTotalPage(Map map) {
+		return mapper.recipeTitleSearchTotalPage(map);
+	}
+	
+	public int recipeIngredientSearchTotalPage(Map map) {
+		return mapper.recipeIngredientSearchTotalPage(map);
+	}
+	
+	public int recipeChefSearchTotalPage(Map map) {
+		return mapper.recipeChefSearchTotalPage(map);
 	}
 
 }
