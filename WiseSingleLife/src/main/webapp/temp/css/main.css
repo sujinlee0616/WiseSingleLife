@@ -1,27 +1,97 @@
 .slider_search_area{
     padding-top: 30px;
     padding-left: 330px;
-    /* background-color: pink; */
     width: 100%;
 }
 
 .img_slider_search{
     height: 45px; width: 400px;
-    padding-left: 10px;
+    /* padding-left: 10px; */
     border: 1px solid #ffffff;
 }
 
 .sliderBtn{
     width: 60px; height: 45px; 
-    background-color: #FF9800;
+    background-color: #fad000;
     color: #ffffff;
-    border: 1px solid #ffffff5e;
+    color: #191605;
+    font-weight: 600;
+    font-size: 17px;
+    border: 1px solid #fad000;
 }
 
 .heading-section h2::after, .heading-section h2::before {
-    background: #FF9800;
+    /* background: #FF9800; */
+    background-color: #fad000;
 }
 .slider_txt1{color:#ffffff; text-align: center; padding-top: 200px;}
 .slider_txt2{color:#ffffff; text-align: center; padding-top: 10px;}
 
+
+
+/* ===== 인기검색어 section ====== */
+.pk_area{
+    /* background-color: #FAFAFA;*/
+    /* background-color: #FFF8E1; */
+    background-color: #ffd437;
+    border: 1px solid #ececec;
+    padding: 10px 0;
+}
+.popular_keyword{
+    list-style-type: none;
+    padding: 20px;
+}
+.pk{padding-left: 10px;}
+.pop{
+    height: 45px;
+    line-height: 45px;
+    font-size: 15px;
+    /* color: #222222; */
+    vertical-align: middle;
+    
+    /* border: 1px solid red; */
+}
+
+.popular_keyword a{
+    color: #191605;
+    position:relative; overflow:hidden;
+    display: inline-block;
+    width: 100%;
+    z-index: 100;
+}
+.popular_keyword .on a {
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.popular_keyword .on a:after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 5px solid #FFFFFF;
+    /* border: 3px solid #ffd437; */
+    /* background-color: #FFFFFF; */
+    content: '';
+}
+
+.rk_area{
+    background-color: #FAFAFA;
+    border: 2px solid #ececec;
+}
+
+.num{
+    font-weight: 600;
+    display: inline-block;
+    width: 20px;
+    margin-left: 10px;
+    text-align: center;
+}
+.bg-grey{background-color: #ececec;}
+
+
+
+/* ===== 마트별 할인소식 section ====== */
 .event{display: block; width: 255px;}

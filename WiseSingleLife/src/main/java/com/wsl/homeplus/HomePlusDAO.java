@@ -26,6 +26,10 @@ public class HomePlusDAO {
 	public double getHomePlusAverageByReviewCount(int codeNo) {
 		return mapper.getHomePlusAverageByReviewCount(codeNo);
 	}
-
+	
+	public void homeplusInsert(HomePlusVO vo) {
+		mapper.keywordMartMapperInsert(vo);
+		mapper.homeplusInsert(vo);
+	}
 
 }

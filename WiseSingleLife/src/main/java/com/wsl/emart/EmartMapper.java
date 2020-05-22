@@ -7,7 +7,7 @@ import java.util.*;
 
 public interface EmartMapper {
 	
-	// ============================= 农费傅 ==================================
+	// ============================= 农锟窖革拷 ==================================
 	
 	// search_keyword
 	@Select("SELECT * FROM search_keyword")
@@ -15,9 +15,9 @@ public interface EmartMapper {
 	
 	// insert
 	@Insert("INSERT INTO emart VALUES("
-		   +"#{productcode},#{codeno},#{name},#{price},#{unitprice},"
+		   +"#{productcode},#{name},#{price},#{unitprice},"
 		   +"#{rate},#{reviewcount},#{tags},0,SYSDATE,"
-		   +"#{rank},#{img})")
+		   +"#{img})")
 	public void insertEmartData(EmartVO vo);
 	
 	//  ===================================================================
@@ -43,5 +43,8 @@ WHERE emart.productcode=km.productcode;
 			+ "ORDER BY rank) km "
 			+ "WHERE emart.productcode=km.productcode")
 	public List<EmartVO> emartSearchData2(int codeno);
+	
+	@Insert("INSERT INTO keyword_mart_mapper VALUES(#{codeno},#{productcode},#{rank})")
+	public void keywordMartMapperInsert(EmartVO vo);
 	
 }

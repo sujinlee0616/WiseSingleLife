@@ -15,13 +15,13 @@ public class HomePlusVO {
 	
 	private String name;
 	private int price;
-	private String unitprice;
-	private int rate;
-	private int reviewcount;
+	private String unitprice="";
+	private int rate=0;
+	private int reviewcount=0;
 	private int lookup;
 	private Date lookuptime;
 	
 	//추후 삭제 인스턴스 
 	private int rank;
-	private String img;
+	private String img="";
 }

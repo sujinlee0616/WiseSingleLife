@@ -24,4 +24,9 @@ public class MainController {
 	{
 		return "board/list";
 	}
+		
+	@RequestMapping("aaa.do")
+	public String search_react(){
+		return "searchReact";
+	}
 }

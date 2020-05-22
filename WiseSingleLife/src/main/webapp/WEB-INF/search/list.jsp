@@ -37,7 +37,7 @@
 					<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span>상세검색</h2>
 					<form action="#" class="search-property">
 						<div class="row">
-							<div class="col-md-2 align-items-end pl-0">
+							<!-- <div class="col-md-2 align-items-end pl-0">
 								<div class="form-group">
 									<label for="#">마트</label>
 									<div class="form-field">
@@ -53,8 +53,8 @@
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="col-md-2">
+							</div> -->
+							<div class="col-md-2 pl-0">
 								<div class="form-group">
 									<label for="#">정렬</label>
 									<div class="form-field">
@@ -100,18 +100,9 @@
 					</tr>
 					<!-- ============================== ITEM1 ============================== -->
 					<tr class="mall_result" id="product1">
-						<td class="product_name">바나나 우유</td>
+						<td rowspan="2" class="product_name">바나나 우유</td>
 						<!-- =============== 1.이마트 =============== -->
 						<td class="emart">
-							<%-- <c:forEach var="em" items="${emList }">
-							<div class="list_item">
-								<a href="">
-									<img class="product_img" src="${em.img }" width="10" height="10">
-									<p class="product">${em.name }</p>
-									<p class="price">${em.price }원</p>
-								</a>
-							</div>
-							</c:forEach> --%>
 							<div class="list_item">
 								<div class="img">
 									<a href="#">
@@ -128,7 +119,7 @@
 							<div class="list_item">
 								<div class="img">
 									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_2285035/22850351426.20200513172849.jpg?type=f300">
 									</a>
 								</div>
 								<div class="info">
@@ -152,14 +143,17 @@
 								</div>
 							</div>
 							<!-- 더보기 버튼: 컨텐츠가 3개 초과일 경우 -->
-							<button type="button" class="btn btn-block">+ 더 보기</button>
+							<!-- <button type="button" class="btn btn-block" id="">+ 더 보기</button> -->
+							<button type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
+							
+							
 						</td>
 						<!-- =============== 2.롯데마트 =============== -->
 						<td class="lotte">
 							<div class="list_item">
 								<div class="img">
 									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_5761002/5761002283.20150128173135.jpg?type=f300">
 									</a>
 								</div>
 								<div class="info">
@@ -216,9 +210,14 @@
 							</div>
 						</td>
 					</tr>
+					<!-- ============================== ITEM1 GRAPH ============================== -->
+					<tr class="mall_result" id="graph1">
+						<!-- <td class="graph_left"></td> -->
+						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
+					</tr>
 					<!-- ============================== ITEM2 ============================== -->
 					<tr class="mall_result" id="product1">
-						<td class="product_name">삼양 까르보 불닭볶음면</td>
+						<td rowspan="2" class="product_name">삼양 까르보 불닭볶음면</td>
 						<td class="emart">
 							<div class="list_item">
 								<div class="img">
@@ -280,12 +279,205 @@
 							</div>
 						</td>
 					</tr>
+					<!-- ============================== ITEM2 GRAPH ============================== -->
+					<tr class="mall_result" id="graph1">
+						<!-- <td class="graph_left"></td> -->
+						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
+					</tr>
 				</table>
 			</div>
 			<!-- 저장한 상품 -->
 			<div class="row">
 				<div class="saved">
 					<h5 class="saved_title">저장한 상품</h5>
+				</div>
+			</div>
+
+			<!-- ============================== 더보기 MODAL ============================== -->
+			<div class="modal fade" id="moreBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-lg" role="document">
+				  <div class="modal-content">
+					<div class="modal-header">
+					  <h5 class="mb-0">[이마트] 바나나우유 전체보기</h5>
+					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					  </button>
+					</div>
+					<div class="modal-body">
+						<section class="ftco-section py-2">
+							<div class="container">
+							<div class="row d-flex">
+							  <!-- ========== Start of Modal Item ========== -->
+							  <!-- MODAL ITEM 1 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 2 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 3 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 4 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 5 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 6 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 7 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 8 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 9 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- MODAL ITEM 10 -->
+							  <div class="col-md-3 d-flex ftco-animate">
+								<div class="blog-entry align-self-stretch">
+								  <div class="img">
+									<a href="#">
+										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_5761002/5761002283.20150128173135.jpg?type=f300">
+									</a>
+								  </div>
+								  <div class="text mt-3 d-block">
+									<a href="#">
+										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+										<p class="price">19,900원</p>
+									</a>
+								  </div>
+								</div>
+							  </div>
+							  <!-- ========== End of Modal Item ========== -->
+							</div>
+							</div>
+						</section>
+
+					</div>
+					<!-- <div class="modal-footer">
+					  <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+					</div> -->
+				  </div>
 				</div>
 			</div>
 
