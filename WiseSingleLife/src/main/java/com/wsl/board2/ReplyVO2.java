@@ -14,7 +14,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ReplyVO {
+public class ReplyVO2 {
 	private int rno;
 	private int bno; // board테이블의 no
 	private String name;

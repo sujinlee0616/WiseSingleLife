@@ -19,11 +19,11 @@ public class MainController {
 		return "search";
 	}
 	
-	@RequestMapping("board.do")	
+	/*@RequestMapping("board.do")	
 	public String board_list()	
 	{	
 		return "board/list";	
-	}
+	}*/
 	
 	@RequestMapping("aaa.do")
 	public String search_react(){

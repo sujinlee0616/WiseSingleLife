@@ -56,9 +56,9 @@
 		p:mapperInterface="com.wsl.recipe.RecipeMapper"
 	/>
 	
-	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+	<bean id="boardMapper2" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
-		p:mapperInterface="com.wsl.board2.BoardMapper"
+		p:mapperInterface="com.wsl.board2.BoardMapper2"
 	/>
 	
 
