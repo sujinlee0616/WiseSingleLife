@@ -22,6 +22,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- MainCSS -->
 	<link rel="stylesheet" href="css/main.css">
+	<!-- Board CSS -->
+    <link rel="stylesheet" href="css/board.css">
   </head>
   <body>
     <!-- ================================ NAVBAR ================================ -->
