@@ -35,4 +35,10 @@ public class MainController {
 	
 		return "search/detail";
 	}
+	@RequestMapping("search/search_detail.do")
+	public String detail_search(){
+		
+		
+		return "search/search_detail";
+	}
 }
