@@ -289,7 +289,49 @@
 			<!-- 저장한 상품 -->
 			<div class="row">
 				<div class="saved">
-					<h5 class="saved_title">저장한 상품</h5>
+					<div class="title">
+						<h5 class="saved_title">저장한 상품</h5>
+					</div>
+					<div class="savedItemArea">
+						<!-- <button type="button" id="recom_btn_prev" class="btn_prev" style="display: block;">
+							<span class="blind">이전</span>
+						</button> -->
+						<!-- SAVED ITEM 1 -->
+						<div class="item">
+							<a href="#">
+								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+								<p class="price mb-0">19,900원</p>
+							</a>
+						</div>
+						<!-- SAVED ITEM 2 -->
+						<div class="item">
+							<a href="#">
+								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+								<p class="price mb-0">19,900원</p>
+							</a>
+						</div>
+						<!-- SAVED ITEM 3 -->
+						<div class="item">
+							<a href="#">
+								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+								<p class="price mb-0">19,900원</p>
+							</a>
+						</div>
+						<!-- SAVED ITEM 4 -->
+						<div class="item">
+							<a href="#">
+								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+								<p class="price mb-0">19,900원</p>
+							</a>
+						</div>
+						<!-- SAVED ITEM 5 -->
+						<!-- <div class="item">
+							<a href="#">
+								<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+								<p class="price mb-0">19,900원</p>
+							</a>
+						</div> -->
+					</div>
 				</div>
 			</div>
 
@@ -492,7 +534,6 @@
 
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
