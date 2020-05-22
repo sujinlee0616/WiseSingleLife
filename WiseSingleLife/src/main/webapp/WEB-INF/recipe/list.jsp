@@ -61,6 +61,13 @@
 									<a href="recipe/detail.do?no=${ vo.no }">
 										<h3 class="heading mt-3 event">${ vo.title }</h3>
 									</a>
+									<h5>
+										<c:if test="${ vo.imgsrc ne null }">
+											<img src="${ vo.imgsrc }" style="width: 30px; height: 30px; border-radius: 5px;">
+										</c:if>
+										<c:if test="${ vo.mname ne null }">&nbsp;${ vo.mname }</c:if>
+										<c:if test="${ vo.amount ne null }"> : ${ vo.amount }</c:if>
+									</h5>
 									<h6 class="text-right">${ vo.chef }</h6>
 							  </div>
 							</div>
@@ -72,19 +79,25 @@
 		<div class="container">
 			<div class="row" style="margin-bottom: 50px;">
 				<div class="col-md-6">
-					<button id="recipeListMoreBtn" data-category="${ category }" data-keyword="${ keyword }" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기(<span id="recipeListCurpage">${ curpage }</span> / ${ totalpage })</button>
+					<button id="recipeListMoreBtn" data-category="${ category }" data-keyword="${ keyword }" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">▽ 더 보기 ( <span id="recipeListCurpage">${ curpage }</span> / <span id="recipeListTotalpage">${ totalpage }</span> )</button>
 				</div>
 				<div class="col-md-6">
-					<button onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">맨 위로</button>
+					<button onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">맨 위로 △</button>
 				</div>
 			</div>
 		</div>
 		<script src="js/jquery.min.js"></script>
 		<script type="text/javascript">
 			$(function(){
+				if($('#recipeListCurpage').text()==$('#recipeListTotalpage').text()) {
+					$('#recipeListMoreBtn').text('마지막 페이지');
+					$('#recipeListMoreBtn').attr('disabled',true);
+				}
+				
 				$('#recipeListMoreBtn').click(function(){
-					var category = $(this).attr('data-category');
 					var page = $('#recipeListCurpage').text();
+					page = Number(page)+1;
+					var category = $(this).attr('data-category');
 					var keyword = $(this).attr('data-keyword');
 					
 					$.ajax({
@@ -93,10 +106,12 @@
 						data:{category:category,page:page,keyword:keyword},
 						success:function(res){
 							$('#recipeListMoreTarget').append(res);
-							$('#recipeListCurpage').text(Number(page)+1);
-						},
-						error:function(){
-							alert('ajax error');
+							$('#recipeListCurpage').text(page);
+							var total = $('#recipeListTotalpage').text();
+							if(page==total){
+								$('#recipeListMoreBtn').text('마지막 페이지');
+								$('#recipeListMoreBtn').attr('disabled',true);
+							}
 						}
 					});
 				});

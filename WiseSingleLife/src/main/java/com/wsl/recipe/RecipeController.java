@@ -71,7 +71,7 @@ public class RecipeController {
 	@RequestMapping("recipe_more.do")
 	public String recipe_more(Model model, String category, int page, String keyword) {
 		int end = RecipeConst.ROWSIZE*page;
-		int start = end - RecipeConst.ROWSIZE;
+		int start = end - RecipeConst.ROWSIZE + 1;
 		
 		Map map = new HashMap();
 		map.put("keyword", keyword);

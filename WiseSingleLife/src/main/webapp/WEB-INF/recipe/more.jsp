@@ -10,8 +10,16 @@
 				<a href="recipe/detail.do?no=${ vo.no }">
 					<h3 class="heading mt-3 event">${ vo.title }</h3>
 				</a>
+				<h5>
+					<c:if test="${ vo.imgsrc ne null }">
+						<img src="${ vo.imgsrc }" style="width: 30px; height: 30px; border-radius: 5px;">
+					</c:if>
+					<c:if test="${ vo.mname ne null }">&nbsp;${ vo.mname }</c:if>
+					<c:if test="${ vo.amount ne null }"> : ${ vo.amount }</c:if>
+				</h5>
 				<h6 class="text-right">${ vo.chef }</h6>
 		  </div>
 		</div>
 	  </div>
 </c:forEach>
+<script src="js/main.js"></script>
