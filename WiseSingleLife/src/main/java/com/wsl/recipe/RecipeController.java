@@ -1,6 +1,8 @@
 package com.wsl.recipe;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,22 +23,34 @@ public class RecipeController {
 			
 			switch (category) {
 				case "레시피" : {
-					List<RecipeVO> list = dao.getRecipeListByTitleSearch(keyword);
+					Map map = new HashMap();
+					map.put("keyword", keyword);
+					
+					List<RecipeVO> list = dao.getRecipeListByTitleSearch(map);
 					model.addAttribute("list", list);					
 					break;
 				}
 				case "재료" : {
-					if(dao.isRegisteredIngredient(keyword)==1) {
-						List<RecipeVO> list = dao.getRecipeListByIngredient(keyword);
+					if(dao.isRegisteredIngredient(keyword)!=0) {
+						Map map = new HashMap();
+						map.put("keyword", keyword);
+						
+						List<RecipeVO> list = dao.getRecipeListByIngredient(map);
 						model.addAttribute("list", list);
 					} else {
-						List<RecipeVO> list = dao.getRecipeListByTitleSearch(keyword);
+						Map map = new HashMap();
+						map.put("keyword", keyword);
+						
+						List<RecipeVO> list = dao.getRecipeListByTitleSearch(map);
 						model.addAttribute("list", list);
 					}
 					break;
 				}
 				case "셰프" : {
-					List<RecipeVO> list = dao.getRecipeListByChef(keyword);
+					Map map = new HashMap();
+					map.put("keyword", keyword);
+					
+					List<RecipeVO> list = dao.getRecipeListByChef(map);
 					model.addAttribute("list", list);					
 					break;
 				}
