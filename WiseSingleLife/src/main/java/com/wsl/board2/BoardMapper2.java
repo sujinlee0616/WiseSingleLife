@@ -27,9 +27,6 @@ public interface BoardMapper2 {
 		   +"WHERE no=#{no}")
 	public void hitIncrement(int no);
 	
-	// 총 글 수
-	@Select("SELECT COUNT(*) FROM board")
-	public int boardContentsCount();
 	
 	
 	

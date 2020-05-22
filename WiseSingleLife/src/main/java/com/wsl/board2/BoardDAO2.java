@@ -22,11 +22,6 @@ public class BoardDAO2 {
 		mapper.hitIncrement(no);
 	}
 	
-	// 총 글 수
-	public int boardContentsCount() {
-		return mapper.boardContentsCount();
-	}
-	
 	
 	
 	// ############################## 댓글 ###############################
