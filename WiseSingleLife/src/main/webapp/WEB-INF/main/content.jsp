@@ -81,7 +81,7 @@
 						<li class="pop" id="pop7">
 							<a href="#">
 								<div class="num">7</div>
-								<span class="pk">파인애플</span>
+								<span class="pk">포도</span>
 								<span class="rank_chg">▲</span>
 							</a>
 						</li>
@@ -110,7 +110,9 @@
 				</div>
 				<!-- 연관검색어 (우측) -->
 				<div class="col-md-6 rk_area ftco-animate">
-					<p class="mt-5">그래프 담당자님 여기다가 그래프 넣으시면 됩니다</p>
+					<p class="mt-5">
+						<img src="images/wordChart.png" width="530" height="450"/>
+					</p>
 				</div>
 			</div>
 		</div>
