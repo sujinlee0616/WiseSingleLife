@@ -30,9 +30,10 @@ public class MainController {
 		return "searchReact";
 	}
 
-	@RequestMapping("search/detail.do")
+	@RequestMapping("detail.do")
 	public String detail_page(){
 	
 		return "search/detail";
 	}
+	
 }
