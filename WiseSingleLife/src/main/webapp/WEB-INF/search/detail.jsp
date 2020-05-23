@@ -59,6 +59,7 @@
 		    		<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
+		              	<!-- 추천 점수별 rank ex) 추천 점수 /상품코드가 같은 상품 -->
 		                <span>Rank</span>
 		                <strong class="number">1</strong>
 		              </div>
@@ -67,6 +68,7 @@
 		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
+		              <!-- 평점 -->
 		                <span>RATE</span>
 		                <strong class="number" id="rate">3.5</strong>
 		              </div>
@@ -75,6 +77,7 @@
 		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
+		              <!-- 전체 리뷰 수 -->
 		                <span>ReviewCount</span>
 		                <strong class="number" data-number="15">15</strong>
 		              </div>
@@ -83,6 +86,7 @@
 		          <div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
+		              <!-- (codeno가 같은) 전체 상품 수 -->
 		                <span>Products</span>
 		                <strong class="number" data-number="170">170</strong>
 		              </div>
