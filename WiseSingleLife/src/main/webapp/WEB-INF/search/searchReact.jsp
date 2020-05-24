@@ -35,8 +35,8 @@
   <!-- ================================ NAVBAR ================================ -->
     <tiles:insertAttribute name="nav"/>
     <!-- END nav -->
-
-    <!-- ================================== FILTERS AND SAVE BTN================================== -->	
+	<div class="container" id="root"></div>
+<!--     ================================== FILTERS AND SAVE BTN==================================	
 	<section class="ftco-search bg-light">
 		<div class="container">
 			<div class="row">
@@ -65,7 +65,7 @@
 								</div>
 							</div>
 							
-                            <!-- BUTTON -->
+                            BUTTON
 							<div class="col-md-2 align-self-end">
 								<div class="form-group">
 									<div class="form-field">
@@ -80,10 +80,10 @@
 		</div>
 	</section>
     
-    <!-- ================================== CONTENTS================================== -->	    
+    ================================== CONTENTS==================================	    
     <section class="list-section mb-3 bg-light">
     	<div class="container">
-			<!-- 결과 -->
+			결과
 			<div class="row">
 				<table class="result">
 					<tr class="mall_list">
@@ -93,11 +93,11 @@
 						<td class="td3">홈플러스</td>
 						<td class="td4">쿠팡</td>
 					</tr>
-					<!-- ============================== ITEM1 ============================== -->
-					<!-- ############################## Emart ROW ########################## -->
+					============================== ITEM1 ==============================
+					############################## Emart ROW ##########################
 					<tr class="mall_result" id="product1">
 						<td rowspan="2" class="product_name">바나나 우유</td>
-						<!-- =============== 1.이마트 =============== -->
+						=============== 1.이마트 ===============
 						<td class="emart">
 							<div class="list_item">
 								<div class="img">
@@ -112,12 +112,12 @@
 									</a>
 								</div>
 							</div>
-							<!-- 더보기 버튼: 컨텐츠가 3개 초과일 경우 -->
-							<!-- <button type="button" class="btn btn-block" id="">+ 더 보기</button> -->
+							더보기 버튼: 컨텐츠가 3개 초과일 경우
+							<button type="button" class="btn btn-block" id="">+ 더 보기</button>
 							<button type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
 						</td>
-						<!-- =============== 2.롯데마트 =============== -->
-						<!-- ############################## Lotte ROW ########################## -->
+						=============== 2.롯데마트 ===============
+						############################## Lotte ROW ##########################
 						<td class="lotte">
 							<div class="list_item">
 								<div class="img">
@@ -133,8 +133,8 @@
 								</div>
 							</div>
 						</td>
-						<!-- =============== 3.홈플러스 =============== -->
-						<!-- ############################## HomePlust ROW ########################## -->
+						=============== 3.홈플러스 ===============
+						############################## HomePlust ROW ##########################
 						<td class="homeplus">
 							<div class="list_item">
 								<div class="img">
@@ -150,8 +150,8 @@
 								</div>
 							</div>
 						</td>
-						<!-- =============== 4.쿠팡=============== -->
-						<!-- ############################## Coupang ROW ########################## -->
+						=============== 4.쿠팡===============
+						############################## Coupang ROW ##########################
 						<td class="coupang">
 							<div class="list_item">
 								<div class="img">
@@ -168,12 +168,12 @@
 							</div>
 						</td>
 					</tr>
-					<!-- ============================== ITEM1 GRAPH ============================== -->
+					============================== ITEM1 GRAPH ==============================
 					<tr class="mall_result" id="graph1">
-						<!-- <td class="graph_left"></td> -->
+						<td class="graph_left"></td>
 						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
 					</tr>
-					<!-- ============================== ITEM2 ============================== -->
+					============================== ITEM2 ==============================
 					<tr class="mall_result" id="product1">
 						<td rowspan="2" class="product_name">삼양 까르보 불닭볶음면</td>
 						<td class="emart">
@@ -237,21 +237,21 @@
 							</div>
 						</td>
 					</tr>
-					<!-- ============================== ITEM2 GRAPH ============================== -->
+					============================== ITEM2 GRAPH ==============================
 					<tr class="mall_result" id="graph1">
-						<!-- <td class="graph_left"></td> -->
+						<td class="graph_left"></td>
 						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
 					</tr>
 				</table>
 			</div>
-			<!-- 저장한 상품 -->
+			저장한 상품
 			<div class="row">
 				<div class="saved">
 					<h5 class="saved_title">저장한 상품</h5>
 				</div>
 			</div>
 
-			<!-- ============================== 더보기 MODAL ============================== -->
+			============================== 더보기 MODAL ==============================
 			<div class="modal fade" id="moreBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-lg" role="document">
 				  <div class="modal-content">
@@ -265,8 +265,8 @@
 						<section class="ftco-section py-2">
 							<div class="container">
 							<div class="row d-flex">
-							  <!-- ========== Start of Modal Item ========== -->
-							  <!-- MODAL ITEM 1 -->
+							  ========== Start of Modal Item ==========
+							  MODAL ITEM 1
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -282,7 +282,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 2 -->
+							  MODAL ITEM 2
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -298,7 +298,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 3 -->
+							  MODAL ITEM 3
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -314,7 +314,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 4 -->
+							  MODAL ITEM 4
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -330,7 +330,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 5 -->
+							  MODAL ITEM 5
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -346,7 +346,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 6 -->
+							  MODAL ITEM 6
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -362,7 +362,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 7 -->
+							  MODAL ITEM 7
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -378,7 +378,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 8 -->
+							  MODAL ITEM 8
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -394,7 +394,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 9 -->
+							  MODAL ITEM 9
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -410,7 +410,7 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 10 -->
+							  MODAL ITEM 10
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -426,15 +426,15 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- ========== End of Modal Item ========== -->
+							  ========== End of Modal Item ==========
 							</div>
 							</div>
 						</section>
 
 					</div>
-					<!-- <div class="modal-footer">
+					<div class="modal-footer">
 					  <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-					</div> -->
+					</div>
 				  </div>
 				</div>
 			</div>
@@ -443,7 +443,7 @@
 
     	</div>
     </section>
-		
+		 -->
 
     <!-- ================================== FOOTER ================================== -->
     <tiles:insertAttribute name="footer"/>
@@ -495,12 +495,20 @@
 			this.setState({keyword:keyword});
 		}
 
-		
+		componentDidMount()
+		{
+			
+			axios.get('http://localhost:8081/web/hp/search.do',{params : {keyword:keyword}}).then((result)=>{
+				
+				console.log(result);
+				 this.setState({music:result.data})
+			})
+		}
 		render(){
 			return(
-				document.write(<div className="row">
+				<div className="row">
 					<SearchBar keyword={this.state.keyword} onUserInput={this.onUserInput2} />
-				</div>);	
+				</div>
 			);
 		}
 	}
@@ -509,21 +517,23 @@
 			{
 				super(props);
 				// / /이벤트 등록
-				this.onChange=this.onChange.bind(this)
+				
 				this.onClick=this.onClick.bind(this)
 				// / /this.onUserInput = this.onUserInput.bind(this)
 			}
 			onClick(e)
 			{
-				elem = documnet.getElementById("keyword");
+				elem = document.getElementById("keyword").value;
+				var temp = elem;
+				console.log(temp);
 				this.props.onUserInput(elem.value);
 			}
 			render(){
 				return(	
 					<div className="slider_search_area">
-						<input className="img_slider_search" type="search" placeholder="검색어를 입력하세요."
-						value={this.props.keyword} id="keyword"/>
-						<button className="sliderBtn" onClick={this.onClick}>검색</button>
+						<input className="img_slider_search" type="search" placeholder="리액트 검색어를 입력하세요."
+						 id="keyword"/>
+						<button className="sliderBtn" onclick="onClick">검색</button>
 					</div>
 				)
 			}
@@ -532,5 +542,5 @@
 </script>
   
 </body>
-	<script type="text/babel" src="js/search_list_react.js"></script>
+	<!-- <script type="text/babel" src="js/search_list_react.js"></script> -->
 </html>

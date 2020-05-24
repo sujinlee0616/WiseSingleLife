@@ -61,6 +61,7 @@ public class CWHTestController {
 			System.out.println("이 그룹의 평균은 = " + average);
 		}
 		
+			JSONObject homeplus = new JSONObject();
 			JSONArray arr = new JSONArray();
 			
 			for(HomePlusVO hpvo:list){
@@ -78,7 +79,9 @@ public class CWHTestController {
 				
 				arr.add(json);
 			}
-			result = arr.toJSONString();
+			homeplus.put("homeplus", arr);
+			//result = arr.toJSONString();
+			result = homeplus.toJSONString();
 			}
 			System.out.println(result);
 		return result;
