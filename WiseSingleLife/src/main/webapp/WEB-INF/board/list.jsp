@@ -78,7 +78,7 @@
 	         <tr>
 	      		<td class="text-center" style="color: #212529;">${vo.no }</td>
 	      		<td style="color: #212529;">
-	      		  <a href="board_detail.do?no=${vo.no}&page=${curpage } ">${vo.title }<span class="cmtListCount">&nbsp;</span></a>
+	      		  <a href="#">${vo.title }<span class="cmtListCount">&nbsp;</span></a>
 	      		</td>
 	      		<td class="text-center" style="color: #212529;">${vo.author }</td>
 	      		<td class="text-center" style="color: #212529;">

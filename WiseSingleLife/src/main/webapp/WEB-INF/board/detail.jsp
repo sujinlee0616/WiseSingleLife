@@ -93,7 +93,7 @@ $(function(){
                 </td>
                 <td colspan="2">
                   <div class="bdDtBtnGp">
-	                  <a class="bdDtBtn" href="board.do?page=${curpage}">목록</a>
+	                  <a class="bdDtBtn" href="board.do">목록</a>
 	                  <a class="bdDtBtn" href="board_update.do?bno=${vo.no }">수정</a>
 	                  <a class="bdDtBtn" href="../board/delete.do?bno=${vo.no }">삭제</a>
 	                  <a class="bdDtBtn" href="../board/reply.do?pno=${vo.no }">답글</a>
@@ -212,7 +212,7 @@ $(function(){
 <!--============================= End of BOARD DETAIL =============================-->
 
 <!--============================= Start of BOARD LIST =============================-->
-    <%-- <section class="board-block light-bg">
+    <section class="board-block light-bg">
         <div class="container py-5">
 			<div class="row">
                 <div class="col-md-12">
@@ -323,7 +323,7 @@ $(function(){
 				</nav>
 			</div>			
 		</div>
-    </section> --%>
+    </section>
 <!--============================= End of BOARD LIST =============================-->
 
 
