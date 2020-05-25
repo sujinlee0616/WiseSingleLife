@@ -79,10 +79,10 @@
 		<div class="container">
 			<div class="row" style="margin-bottom: 50px;">
 				<div class="col-md-6">
-					<button id="recipeListMoreBtn" data-category="${ category }" data-keyword="${ keyword }" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">▽ 더 보기 ( <span id="recipeListCurpage">${ curpage }</span> / <span id="recipeListTotalpage">${ totalpage }</span> )</button>
+					<button style="background-color: #F4D047;" id="recipeListMoreBtn" data-category="${ category }" data-keyword="${ keyword }" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">▽ 더 보기 ( <span id="recipeListCurpage">${ curpage }</span> / <span id="recipeListTotalpage">${ totalpage }</span> )</button>
 				</div>
 				<div class="col-md-6">
-					<button onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">맨 위로 △</button>
+					<button style="background-color: #F4D047;" onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">맨 위로 △</button>
 				</div>
 			</div>
 		</div>
