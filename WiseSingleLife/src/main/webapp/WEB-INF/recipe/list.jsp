@@ -55,7 +55,7 @@
 					<c:forEach var="vo" items="${ list }">
 						<div class="col-md-3 d-flex ftco-animate">
 							<div class="blog-entry align-self-stretch">
-							  <a href="recipe/detail.do?no=${ vo.no }" class="block-20" style="background-image: url('${ vo.poster }');">
+							  <a href="recipe_detail.do?no=${ vo.no }" class="block-20" style="background-image: url('${ vo.poster }');">
 							  </a>
 							  <div class="text mt-3 d-block">
 									<a href="recipe/detail.do?no=${ vo.no }">
