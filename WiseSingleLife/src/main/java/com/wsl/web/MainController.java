@@ -1,12 +1,20 @@
 package com.wsl.web;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+
+import com.wsl.product_detail.*;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wsl.emart.EmartDAO;
 
 @Controller
 public class MainController {
+	
+	@Autowired
+	private MartAllDataDAO dao;
+	
 	@RequestMapping("main.do")
 	public String main_page()
 	{
@@ -31,8 +39,10 @@ public class MainController {
 	}
 
 	@RequestMapping("detail.do")
-	public String detail_page(){
-	
+	public String detail_page(Model model,String productcode){
+		MartAllDataVO vo = dao.SearchDetail(productcode);
+		
+		model.addAttribute("MaData_vo", vo);
 		return "search/detail";
 	}
 	

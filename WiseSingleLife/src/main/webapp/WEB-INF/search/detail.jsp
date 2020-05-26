@@ -12,31 +12,31 @@
     <section class="ftco-section ftc-no-pb">
 			<div class="container">
 				<div class="row no-gutters">
-					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg);">
+					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${MaData_vo.img});">
 							<span class="icon-play"></span>
 					</div>
 					<div class="col-md-7 wrap-about pb-md-5 ftco-animate">
 	          <div class="heading-section heading-section-wo-line mb-5 pl-md-5">
 	          	<div class="pl-md-5 ml-md-5">
 		          	<span class="subheading">매일유업</span>
-		            <h2 class="mb-4">매일유업매일 바나나는 원래 하얗다 190ml</h2>
+		            <h2 class="mb-4">${MaData_vo.name }</h2>
 	            </div>
 	          </div>
 	          <table class="table px-md-5 ml-md-5">
 							<tr class="text-left">
 								<td class="td1 price">
-									<h1>1,500원</h1>
+									<h1>${MaData_vo.price }</h1>
 									<span style="color:red;">
-										(100g당 1,197원)
+										${MaData_vo.unitprice }
 									</span>
 								</td>
 							</tr>
 							<tr>
 								<td class="block-23-detail" >
 									<ul>
-										<li>상품번호: 1414175451 - 2450738189</li>
+										<li>상품번호: ${MaData_vo.productcode }</li>
 										<li>총 수량: 24개</li>
-										<li>맛: 바나나우유</li>
+										<li></li>
 									</ul>
 								</td>
 							</tr>

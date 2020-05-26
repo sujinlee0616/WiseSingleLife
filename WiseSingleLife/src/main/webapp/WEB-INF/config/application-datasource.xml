@@ -61,6 +61,10 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.wsl.board2.BoardMapper2"
 	/>
+	<bean id="MartAllDataMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.product_detail.MartAllDataMapper"
+	/>
 
 </beans>
 
