@@ -1,4 +1,4 @@
-package com.wsl.web;
+package com.wsl.search;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +21,7 @@ import com.wsl.search.SearchKeywordDAO;
 import com.wsl.search.SearchKeywordVO;
 
 @RestController
-@RequestMapping("hje/")
-public class HJETestController {
+public class SearchRestController {
 	@Autowired
 	private SearchKeywordDAO skdao;
 	@Autowired
@@ -34,7 +33,7 @@ public class HJETestController {
 	@Autowired
 	private CoupangDAO cpdao;
 	
-	@RequestMapping("search.do")
+	@RequestMapping("searchrest.do")
 	public String hje_search(String keyword) {
 		keyword="시금치";  /////////임시
 		SearchKeywordVO vo=skdao.getSearchKeywordVO(keyword);
@@ -157,7 +156,7 @@ public class HJETestController {
 		String result=allobj.toJSONString();
 		System.out.println(result);
 		
-		// {"em":[{},{},{},..],"hp":[{},{},{},..], ...}
+		// {"em":[{},{},{},..],"hp":[{},{},{},..], ...}  <-- 이런 형태로 저장
 		return result;
 	}
 }
