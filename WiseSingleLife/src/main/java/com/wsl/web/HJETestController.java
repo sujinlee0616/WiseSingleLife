@@ -36,7 +36,7 @@ public class HJETestController {
 	
 	@RequestMapping("search.do")
 	public String hje_search(String keyword) {
-		keyword="시금치";  /////////임시
+		keyword="오레오";  /////////임시
 		SearchKeywordVO vo=skdao.getSearchKeywordVO(keyword);
 		
 		List<EmartVO> emlist=new ArrayList<EmartVO>();

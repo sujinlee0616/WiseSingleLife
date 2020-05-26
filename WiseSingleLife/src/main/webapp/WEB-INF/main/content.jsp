@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,7 +37,22 @@
 				<div class="col-md-6 pk_area ftco-animate">
 					<!-- 인기검색어 (좌측) -->
 					<ol class="popular_keyword mb-0">
-						<li class="pop on" id="pop1">
+						<c:forEach var="vo" items="${list }" varStatus="status">
+							<c:if test="${status.count==1 }">
+								<li class="pop on" id="pop${status.count}">
+							</c:if>
+							<c:if test="${status.count!=1 }">
+								<li class="pop" id="pop${status.count}">
+							</c:if>
+								<a href="#">
+									<div class="num">${status.count }</div>
+									<span class="pk">${vo.keyword }</span>
+									<span class="rank_chg">▲</span>
+								</a>
+							</li>
+						</c:forEach>
+						
+						<!-- <li class="pop on" id="pop1">
 							<a href="#">
 								<div class="num">1</div>
 								<span class="pk">파인애플</span>
@@ -105,7 +121,7 @@
 								<span class="pk">신라면</span>
 								<span class="rank_chg">▲</span>
 							</a>
-						</li>
+						</li> -->
 					</ol>
 				</div>
 				<!-- 연관검색어 (우측) -->
