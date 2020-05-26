@@ -23,7 +23,6 @@ public class MainController {
 	@RequestMapping("main.do")
 	public String main_page(Model model)
 	{
-		// 인기검색어
 		List<SearchKeywordVO> list=maindao.getPopularTop10();
 		model.addAttribute("list", list);
 		
@@ -43,7 +42,9 @@ public class MainController {
 	}*/
 	
 	@RequestMapping("aaa.do")
-	public String search_react(){
+	public String search_react(Model model, String keyword){
+		
+		model.addAttribute("keyword", keyword);
 		return "searchReact";
 	}
 
