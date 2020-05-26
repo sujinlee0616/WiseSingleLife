@@ -69,6 +69,47 @@
 				</div>
 			</div>
 		</section>
+		<div class="container">
+			<div class="row" style="margin-bottom: 50px;">
+				<div class="col-md-6">
+					<button style="background-color: #F4D047;" id="recipeListMoreBtn" data-category="${ category }" data-keyword="${ keyword }" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">▽ 더 보기 ( <span id="recipeListCurpage">${ curpage }</span> / <span id="recipeListTotalpage">${ totalpage }</span> )</button>
+				</div>
+				<div class="col-md-6">
+					<button style="background-color: #F4D047;" onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">맨 위로 △</button>
+				</div>
+			</div>
+		</div>
+		<script src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+			$(function(){
+				if($('#recipeListCurpage').text()==$('#recipeListTotalpage').text()) {
+					$('#recipeListMoreBtn').text('마지막 페이지');
+					$('#recipeListMoreBtn').attr('disabled',true);
+				}
+				
+				$('#recipeListMoreBtn').click(function(){
+					var page = $('#recipeListCurpage').text();
+					page = Number(page)+1;
+					var category = $(this).attr('data-category');
+					var keyword = $(this).attr('data-keyword');
+					
+					$.ajax({
+						url:'recipe_more.do',
+						type:'post',
+						data:{category:category,page:page,keyword:keyword},
+						success:function(res){
+							$('#recipeListMoreTarget').append(res);
+							$('#recipeListCurpage').text(page);
+							var total = $('#recipeListTotalpage').text();
+							if(page==total){
+								$('#recipeListMoreBtn').text('마지막 페이지');
+								$('#recipeListMoreBtn').attr('disabled',true);
+							}
+						}
+					});
+				});
+			});
+		</script>
 	</c:if>
 </body>
 </html>
