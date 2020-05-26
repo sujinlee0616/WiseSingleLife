@@ -9,19 +9,38 @@ import org.springframework.stereotype.Component;
 @Component
 public interface RecipeMapper {
 	
-	@Select("SELECT DISTINCT * FROM ("
-			+ "SELECT * FROM recipe WHERE title LIKE '%'||#{keyword}||'%'"
-			+ ") WHERE rownum <= 16")
+	@Select("SELECT no, title, poster, chef FROM ("
+			+ "SELECT rownum AS num, no, title, poster, chef FROM recipe "
+			+ "WHERE title like '%'||#{keyword}||'%') "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<RecipeVO> getRecipeListByTitleSearch(Map map);
 	
-	@Select("SELECT DISTINCT * FROM recipe_ingredient_amount "
-			+ "WHERE mname LIKE '%'||#{keyword}||'%'")
+	@Select("SELECT no, title, poster, chef, mname, imgsrc, amount FROM ("
+			+ "SELECT rownum AS num, no, title, poster, chef, mname, imgsrc, amount "
+			+ "FROM recipe_ingredient_amount "
+			+ "WHERE mname like '%'||#{keyword}||'%') "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<RecipeVO> getRecipeListByIngredient(Map map);
 	
-	@Select("SELECT DISTINCT * FROM recipe WHERE chef LIKE '%'||#{keyword}||'%'")
+	@Select("SELECT no, title, poster, chef FROM ("
+			+ "SELECT rownum AS num, no, title, poster, chef FROM recipe "
+			+ "WHERE chef like '%'||#{keyword}||'%') "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<RecipeVO> getRecipeListByChef(Map map);
 	
 	@Select("SELECT COUNT(*) FROM recipe_ingredient_amount WHERE mname LIKE '%'||#{keyword}||'%'")
 	public int isRegisteredIngredient(String keyword);
+	
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe "
+			+ "WHERE title like '%'||#{keyword}||'%'")
+	public int recipeTitleSearchTotalPage(Map map);
+	
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe_ingredient_amount "
+			+ "WHERE mname like '%'||#{keyword}||'%'")
+	public int recipeIngredientSearchTotalPage(Map map);
+	
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe "
+			+ "WHERE chef like '%'||#{keyword}||'%'")
+	public int recipeChefSearchTotalPage(Map map);
 
 }
