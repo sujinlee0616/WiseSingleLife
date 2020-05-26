@@ -21,7 +21,6 @@
 	   </repository>
 	</repositories>
 	<dependencies>
-		<!-- mongodb -->
 		<dependency>
 		    <groupId>org.springframework.data</groupId>
 		    <artifactId>spring-data-mongodb</artifactId>
@@ -46,12 +45,6 @@
 			<groupId>org.jsoup</groupId>
 		 	<artifactId>jsoup</artifactId>
 			<version>1.13.1</version>
-		</dependency>
-		<!-- mongodb -->
-		<dependency>
-		    <groupId>org.springframework.data</groupId>
-		    <artifactId>spring-data-mongodb</artifactId>
-		    <version>1.9.1.RELEASE</version>
 		</dependency>
 		<!-- Spring -->
 		<dependency>
@@ -449,4 +442,3 @@
         </plugins>
     </build>
 </project>
-	
