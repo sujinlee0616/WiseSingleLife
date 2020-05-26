@@ -8,6 +8,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+<<<<<<< HEAD
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/open-iconic-bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/animate.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/owl.carousel.min.css">
@@ -20,37 +21,34 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/flaticon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/icomoon.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+=======
+    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/ionicons.min.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/icomoon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- boardCSS -->
+    <link rel="stylesheet" href="css/board.css">
+    <link rel="stylesheet" href="css/swiper.min.css">
+    <!-- MainCSS -->
+	<link rel="stylesheet" href="css/main.css">
+	<!-- Board CSS -->
+    <link rel="stylesheet" href="css/board.css">
+>>>>>>> branch 'dev' of https://github.com/sujinlee0616/WiseSingleLife
   </head>
   <body>
     <!-- ================================ NAVBAR ================================ -->
-    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">슬기로운 자취생활</a>
-	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-	        <span class="oi oi-menu"></span> Menu
-		  </button>
-		  <div class="">
-			<input type="search" placeholder="검색어를 입력하세요."> 
-			<button>검색</button>
-		  </div>
-		  <!-- ===== MENUS ===== -->
-	      <!-- <div class="collapse navbar-collapse" id="ftco-nav">
-			  <input type="search">
-	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="property.html" class="nav-link">Property</a></li>
-	          <li class="nav-item"><a href="agents.html" class="nav-link">Agents</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-	          <li class="nav-item cta"><a href="contact.html" class="nav-link ml-lg-2"><span class="icon-user"></span> Sign-In</a></li>
-	          <li class="nav-item cta cta-colored"><a href="contact.html" class="nav-link"><span class="icon-pencil"></span> Sign-Up</a></li>
-	        </ul>
-	      </div> -->
-		</div>
-	  </nav>
+    <tiles:insertAttribute name="nav"/>
     <!-- END nav -->
 
+<<<<<<< HEAD
 	<!-- ================================ IMAGE SLIDER ================================ -->
     <section class="home-slider owl-carousel">
 	  <div class="slider-item" style="background-image:url(images/grocery_store_1.jpg);">
@@ -213,10 +211,16 @@
 	</section>	
 
 	
+=======
+	<!-- ================================ CONTENT ================================ -->
+	<tiles:insertAttribute name="content"/>
+	<!-- ======================== END CONTENT ====================== -->
+>>>>>>> branch 'dev' of https://github.com/sujinlee0616/WiseSingleLife
 
 	<!-- ================================== FOOTER ================================== -->
     <tiles:insertAttribute name="footer"/>
-  
+    <!-- ============================= END FOOTER =============================== -->
+    
   <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
 
@@ -235,8 +239,43 @@
   <script src="${pageContext.request.contextPath}/js/jquery.timepicker.min.js"></script>
   <script src="${pageContext.request.contextPath}/js/scrollax.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<<<<<<< HEAD
   <script src="${pageContext.request.contextPath}/js/google-map.js"></script>
   <script src="${pageContext.request.contextPath}/js/main.js"></script>
+=======
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+  <!-- Swipper Slider JS -->
+  <script src="js/swiper.min.js"></script>
+  
+  <!-- 실시간 인기검색어 -->
+  <script>
+		$(function () {
+			$('.popular_keyword li').hover(function(){
+				$('.popular_keyword li:not(this)').removeClass('on');
+				$(this).addClass('on');
+			});
+
+		});
+  </script>
+  
+  <script>
+        var swiper = new Swiper('.swiper-container', {
+            slidesPerView: 3,
+            slidesPerGroup: 3,
+            loop: true,
+            loopFillGroupWithBlank: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+        });
+  </script>
+>>>>>>> branch 'dev' of https://github.com/sujinlee0616/WiseSingleLife
     
   </body>
 </html>
