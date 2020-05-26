@@ -1,10 +1,18 @@
 package com.wsl.web;
 
+<<<<<<< HEAD
 import java.util.List;
 
+=======
+>>>>>>> branch 'dev' of https://github.com/sujinlee0616/WiseSingleLife.git
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
+=======
+
+import com.wsl.product_detail.*;
+>>>>>>> branch 'dev' of https://github.com/sujinlee0616/WiseSingleLife.git
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wsl.emart.EmartDAO;
@@ -13,12 +21,15 @@ import com.wsl.search.SearchKeywordVO;
 @Controller
 public class MainController {
 	@Autowired
-	private MainDAO dao;
+	private MainDAO maindao;
+	
+	@Autowired
+	private MartAllDataDAO dao;
 	
 	@RequestMapping("main.do")
 	public String main_page(Model model)
 	{
-		List<SearchKeywordVO> list=dao.getPopularTop10();
+		List<SearchKeywordVO> list=maindao.getPopularTop10();
 		model.addAttribute("list", list);
 		
 		return "main";
@@ -42,8 +53,10 @@ public class MainController {
 	}
 
 	@RequestMapping("detail.do")
-	public String detail_page(){
-	
+	public String detail_page(Model model,String productcode){
+		MartAllDataVO vo = dao.SearchDetail(productcode);
+		
+		model.addAttribute("MaData_vo", vo);
 		return "search/detail";
 	}
 	
