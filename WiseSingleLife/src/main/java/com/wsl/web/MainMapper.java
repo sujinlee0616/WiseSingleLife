@@ -10,7 +10,7 @@ public interface MainMapper {
 
 	@Select("SELECT * "
 		   +"FROM (SELECT * FROM search_keyword "
-		   +"ORDER BY count DESC) "
+		   +"ORDER BY count DESC, datetime DESC) "
 		   +"WHERE rownum<=10")
 	public List<SearchKeywordVO> getPopularTop10();
 }

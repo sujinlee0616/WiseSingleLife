@@ -47,81 +47,10 @@
 								<a href="#">
 									<div class="num">${status.count }</div>
 									<span class="pk">${vo.keyword }</span>
-									<span class="rank_chg">▲</span>
+									<!-- <span class="rank_chg">▲</span> -->
 								</a>
 							</li>
 						</c:forEach>
-						
-						<!-- <li class="pop on" id="pop1">
-							<a href="#">
-								<div class="num">1</div>
-								<span class="pk">파인애플</span>
-								<span class="rank_chg">▲</span>
-							</a>
-						</li>
-						<li class="pop" id="pop2">
-							<a href="#">
-								<div class="num">2</div>
-								<span class="pk">삼겹살</span>
-								<span class="rank_chg">-</span>
-							</a>
-						</li>
-						<li class="pop" id="pop3">
-							<a href="#">
-								<div class="num">3</div>
-								<span class="pk">딸기</span>
-								<span class="rank_chg">▼</span>
-							</a>
-						</li>
-						<li class="pop" id="pop4">
-							<a href="#">
-								<div class="num">4</div>
-								<span class="pk">인절미떡</span>
-								<span class="rank_chg">-</span>
-							</a>
-						</li>
-						<li class="pop"  id="pop5">
-							<a href="#">
-								<div class="num">5</div>
-								<span class="pk">하리보 젤리</span>
-								<span class="rank_chg">-</span>
-							</a>
-						</li>
-						<li class="pop" id="pop6">
-							<a href="#">
-								<div class="num">6</div>
-								<span class="pk">허니 뻥이요</span>
-								<span class="rank_chg">▲</span>
-							</a>
-						</li>
-						<li class="pop" id="pop7">
-							<a href="#">
-								<div class="num">7</div>
-								<span class="pk">포도</span>
-								<span class="rank_chg">▲</span>
-							</a>
-						</li>
-						<li class="pop" id="pop8">
-							<a href="#">
-								<div class="num">8</div>
-								<span class="pk">참외</span>
-								<span class="rank_chg">▼</span>
-							</a>
-						</li>
-						<li class="pop" id="pop9">
-							<a href="#">
-								<div class="num">9</div>
-								<span class="pk">삼다수</span>
-								<span class="rank_chg">▲</span>
-							</a>
-						</li>
-						<li class="pop" id="pop10">
-							<a href="#">
-								<div class="num">10</div>
-								<span class="pk">신라면</span>
-								<span class="rank_chg">▲</span>
-							</a>
-						</li> -->
 					</ol>
 				</div>
 				<!-- 연관검색어 (우측) -->

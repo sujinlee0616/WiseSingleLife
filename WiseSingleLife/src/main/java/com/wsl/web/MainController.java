@@ -23,6 +23,7 @@ public class MainController {
 	@RequestMapping("main.do")
 	public String main_page(Model model)
 	{
+		// 인기검색어
 		List<SearchKeywordVO> list=maindao.getPopularTop10();
 		model.addAttribute("list", list);
 		
