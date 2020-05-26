@@ -1,18 +1,12 @@
 package com.wsl.web;
 
-<<<<<<< HEAD
 import java.util.List;
 
-=======
->>>>>>> branch 'dev' of https://github.com/sujinlee0616/WiseSingleLife.git
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-<<<<<<< HEAD
-=======
 
 import com.wsl.product_detail.*;
->>>>>>> branch 'dev' of https://github.com/sujinlee0616/WiseSingleLife.git
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.wsl.emart.EmartDAO;
