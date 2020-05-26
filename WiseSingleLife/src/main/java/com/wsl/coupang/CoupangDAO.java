@@ -24,6 +24,11 @@ public class CoupangDAO {
 		mapper.InsertCoupang(vo);
 	}
 	
-
+	public List<CoupangVO> getCoupangVOListByCodeNo(int codeNo) {
+		return mapper.getCoupangVOListByCodeNo(codeNo);
+	}
 	
+	public List<CoupangVO> getCoupangVOListByKeyword(String keyword) {
+		return mapper.getCoupangVOListByKeyword(keyword);
+	}
 }

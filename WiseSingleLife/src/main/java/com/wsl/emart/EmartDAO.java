@@ -28,12 +28,20 @@ public class EmartDAO {
 	
 	// ============================================================
 	
-	public List<EmartVO> emartSearchData(String keyword) {
+	/*public List<EmartVO> emartSearchData(String keyword) {
 		return mapper.emartSearchData(keyword);
 	}
 	
 	public List<EmartVO> emartSearchData2(int codeno){
 		return mapper.emartSearchData2(codeno);
+	}*/
+	
+	public List<EmartVO> getEmartVOListByCodeNo(int codeNo) {
+		return mapper.getEmartVOListByCodeNo(codeNo);
+	}
+	
+	public List<EmartVO> getEmartVOListByKeyword(String keyword) {
+		return mapper.getEmartVOListByKeyword(keyword);
 	}
 	
 }
