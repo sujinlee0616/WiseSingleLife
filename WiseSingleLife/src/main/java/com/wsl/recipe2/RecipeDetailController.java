@@ -8,12 +8,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class RecipeDetailController {
-	
-	/*@Autowired
-	private RecipeDAO dao;*/
+
+	@Autowired
+	private RecipeDetailDAO dao;
 	
 	@RequestMapping("recipe_detail.do")
-	public String recipe_detail() {
+	public String recipe_detail(Model model, int no) {
+		
+		RecipeDetailVO vo=dao.recipeDetailData(no);
+		
+		model.addAttribute("vo",vo);
+		
 		
 		return "recipe/detail";
 	}
