@@ -14,6 +14,11 @@ public class RecipeController {
 	
 	@Autowired
 	private RecipeDAO dao;
+	
+	@RequestMapping("recipe_react_list.do")
+	public String react_recipe_list() {
+		return "recipe/react_list";
+	}
 
 	@RequestMapping("recipe.do")
 	public String recipe_list(Model model, String category, String keyword) {
