@@ -13,12 +13,12 @@ public class RecipeDetailController {
 	private RecipeDetailDAO dao;
 	
 	@RequestMapping("recipe_detail.do")
-	public String recipe_detail(Model model, int no) {
+	public String recipe_detail(Model model, String no) 
+	{
 		
-		RecipeDetailVO vo=dao.recipeDetailData(no);
-		
+		RecipeDetailVO vo=dao.recipeDetailData(Integer.parseInt(no));
 		model.addAttribute("vo",vo);
-		
+		System.out.println("vo="+vo); // null값
 		
 		return "recipe/detail";
 	}

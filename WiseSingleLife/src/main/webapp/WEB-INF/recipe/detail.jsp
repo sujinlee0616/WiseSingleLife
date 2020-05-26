@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="ko">
 <!-- Basic -->
@@ -28,6 +29,7 @@
                 <div class="col-xl-7 col-lg-7 col-md-6">
                     <div>
                         <h2>밥도둑 반찬 고추장 달걀조림 만들기!TV 알토란 레시피</h2>
+                        <h2>${vo.title }</h2>
                         <h5 class="recipe_writer">레시피 공유자: 뽀유TV</h5>
                         <ul class="recipe_info">
                             <li><i class="fas fa-user"></i>3인분</li>
