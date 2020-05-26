@@ -65,7 +65,7 @@ public class SearchRestController {
 		for(EmartVO emvo:emlist) {
 			JSONObject emobj=new JSONObject();
 			emobj.put("productcode", emvo.getProductcode());
-			emobj.put("codeno", emvo.getCodeno());
+			emobj.put("codeno", vo.getCodeNo());
 			emobj.put("name", emvo.getName());
 			emobj.put("price", emvo.getPrice());
 			emobj.put("unitprice", emvo.getUnitprice());
@@ -85,7 +85,7 @@ public class SearchRestController {
 		for(LotteMartVO lmvo:lmlist) {
 			JSONObject lmobj=new JSONObject();
 			lmobj.put("productcode", lmvo.getProductCode());
-			lmobj.put("codeno", lmvo.getCodeNo());
+			lmobj.put("codeno", vo.getCodeNo());
 			lmobj.put("name", lmvo.getName());
 			lmobj.put("price", lmvo.getPrice());
 			lmobj.put("unitprice", lmvo.getUnitPrice());
@@ -108,7 +108,7 @@ public class SearchRestController {
 		for(HomePlusVO hpvo:hplist) {
 			JSONObject hpobj=new JSONObject();
 			hpobj.put("productcode", hpvo.getProductcode());
-			hpobj.put("codeno", hpvo.getCodeno());
+			hpobj.put("codeno", vo.getCodeNo());
 			hpobj.put("name", hpvo.getName());
 			hpobj.put("price", hpvo.getPrice());
 			hpobj.put("unitprice", hpvo.getUnitprice());
@@ -127,7 +127,7 @@ public class SearchRestController {
 		for(CoupangVO cpvo:cplist) {
 			JSONObject cpobj=new JSONObject();
 			cpobj.put("productcode", cpvo.getProductCode());
-			cpobj.put("codeno", cpvo.getCodeNo());
+			cpobj.put("codeno", vo.getCodeNo());
 			cpobj.put("name", cpvo.getName());
 			cpobj.put("discount", cpvo.getDiscount());
 			cpobj.put("baseprice", cpvo.getBaseprice());
