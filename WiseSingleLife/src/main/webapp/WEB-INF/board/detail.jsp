@@ -9,9 +9,10 @@
 <head>
 <!-- jQuery, Bootstrap JS. -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="../js/jquery-3.2.1.min.js"></script>
+<!-- <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/popper.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script> -->
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 var u=0;
 var i=0;
@@ -94,8 +95,8 @@ $(function(){
                 <td colspan="2">
                   <div class="bdDtBtnGp">
 	                  <a class="bdDtBtn" href="board.do">목록</a>
-	                  <a class="bdDtBtn" href="board_update.do?bno=${vo.no }">수정</a>
-	                  <a class="bdDtBtn" href="../board/delete.do?bno=${vo.no }">삭제</a>
+	                  <a class="bdDtBtn" href="board_update.do?no=${vo.no }">수정</a>
+	                  <a class="bdDtBtn" href="board_delete.do?no=${vo.no }">삭제</a>
 	                  <a class="bdDtBtn" href="../board/reply.do?pno=${vo.no }">답글</a>
                   </div>
                 </td>
@@ -115,11 +116,19 @@ $(function(){
         	<div class="logged_in">
               <form method="post" action="../board/comment_insert.do">
 	              <div class="writer_info">
-	              	<input type="hidden" name="bno" value="${vo.no }">
-	                <span class="writer_nm">${sessionScope.id}</span>
+	              	<input type="hidden" name="no" value="${vo.no }">
+	                <%-- <span class="writer_nm">${sessionScope.id}</span> --%>
 	              </div>
-	              <textarea name="cmtContent" class="cmt_input" placeholder="건전한 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 내용은 입력을 지양해주세요."></textarea>
-	              <input type="submit" class="cmtBtn" value="등록">
+	              <div>
+	                <div style="float: left; width: 22%;">
+	                  <span style="margin-left: 19px;">닉네임</span>
+	                  <input type="text" style="display: block; margin: 0px auto;">
+	                  <span style="margin-left: 19px;">비밀번호</span>
+	                  <input type="password" style="display: block; margin: 0px auto;">
+	                </div>
+	              	<textarea name="cmtContent" class="cmt_input" placeholder="건전한 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 내용은 입력을 지양해주세요."></textarea>
+	              	<input type="submit" class="cmtBtn" value="등록">
+	              </div>
               </form>
             </div>
             
@@ -212,7 +221,7 @@ $(function(){
 <!--============================= End of BOARD DETAIL =============================-->
 
 <!--============================= Start of BOARD LIST =============================-->
-    <section class="board-block light-bg">
+    <%-- <section class="board-block light-bg">
         <div class="container py-5">
 			<div class="row">
                 <div class="col-md-12">
@@ -323,7 +332,7 @@ $(function(){
 				</nav>
 			</div>			
 		</div>
-    </section>
+    </section> --%>
 <!--============================= End of BOARD LIST =============================-->
 
 

@@ -15,24 +15,24 @@
                 </div>
             </div>
 			<div class="py-3">
-					<form method=post action="../board/update_ok.do">
+					 <form method=post action="board_update_ok.do">
 					 <!-- action: insert_ok.jsp 에서 데이터 받아서 처리 -->
 						 <div class="table-responsive">
 							<table class="table replyBoard reply_insert">
 							<tbody>
-								<input type="hidden" name="bno" id="bno" value=${vo.bno }>
+								<input type="hidden" name="no" id="no" value=${vo.no }>
 								<tr>
 									<th class="text-right success">이름</th>
-									<td><input type="text" name="name" required autofocus value="${vo.bname }"></td>
+									<td><input type="text" name="author" id="author" required autofocus value="${vo.author }"></td>
 								</tr>
 								<tr>
 									<th class="text-right success">제목</th>
-									<td><input type="text" name="subject" required value="${vo.bsubject }"></td>
+									<td><input type="text" name="title" id="title" required value="${vo.title }"></td>
 								</tr>
 								<tr>
 									<th class="text-right success">내용</th>
 									<td>
-										<textarea type="text" name="content" class="update_ct" required>${vo.bcontent }</textarea>
+										<textarea type="text" name="content" id="content" class="update_ct" required>${vo.content }</textarea>
 									</td>
 								</tr>
 								<tr>
@@ -58,9 +58,9 @@
 <script src="../js/jquery-3.2.1.min.js"></script>
 <script src="../js/popper.min.js"></script>
 <script src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
 $(function(){
-
 	// 비번 입력 안 한 경우 수정완료버튼 비활성화 
 	var pwdInput=$('#pwd').val();
 	if(pwdInput.trim()==''){
@@ -75,12 +75,12 @@ $(function(){
 	$('#pwd').keyup(function(){
 		var user_input_pwd=$(this).val();
 		console.log(user_input_pwd);
-		var bno=$('#bno').val();
+		var no=$('#no').val();
 
 		$.ajax({
 			type:'POST',
-			url:'../board/pwd_check.do',
-			data:{"pwd":user_input_pwd,"bno":bno}, 
+			url:'board_pwd_check.do',
+			data:{"pwd":user_input_pwd,"no":no}, 
 			success:function(result)
 			{
 				var pwdCheck=result.trim();
@@ -99,7 +99,57 @@ $(function(){
 		})
 		
 	});
+	
+	// 수정 완료하기
+	/* $('#updateBtn').click(function(){
+		var author=$('#author').val();
+		var title=$('#title').val();
+		var content=$('#content').val();
+		var pwd=$('#pwd').val();
+		var no=$('#no').val();
+		
+		$.ajax({
+			type:'POST',
+			url:'board_update_ok.do',
+			data:{"author":author,"title":title,"content":content,"pwd":pwd,"no":no},
+			success:function(res)
+			{
+				console.log(title); // 이거뜨면 성공
+			}
+			
+		})
+	}); */
 });
 </script>
+<!-- <script type="text/javascript">
+$(function(){	
+	$('#updateBtn').click(function(){
+		var author=$('#author').val();
+		var title=$('#title').val();
+		var content=$('#content').val();
+		var pwd=$('#pwd').val();
+		var no=$('#no').val();
+		
+		$.ajax({
+			type:'POST',
+			url:'board_update_ok.do',
+			data:{"author":author,"title":title,"content":content,"pwd":pwd,"no":no},
+			success:function(res)
+			{
+				if(res=="NOPWD")
+				{
+					alert("비밀번호가 틀렸습니다!");
+					$('#pwd').val("");
+					$('#pwd').focus();
+				}
+				else
+				{
+					location.href="board_detail.do?no="+no;
+				}
+			}
+		})
+	});
+})
+</script> -->
 </body>
 </html>

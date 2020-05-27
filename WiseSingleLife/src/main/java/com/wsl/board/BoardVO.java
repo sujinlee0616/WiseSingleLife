@@ -15,11 +15,11 @@ public class BoardVO {
 	private String pwd;
 	private Date regdate;
 	private int hit;
-	private int group_id;
-	private int group_step;
-	private int group_tab;
-	private int root;
-	private int depth;
+//	private int group_id;
+//	private int group_step;
+//	private int group_tab;
+//	private int root;
+//	private int depth;
 //	private String notice;
 //	private int cmtCount; // 댓글 개수
 }
