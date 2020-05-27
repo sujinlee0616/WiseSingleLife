@@ -103,6 +103,7 @@
 						<td class="td2">롯데마트</td>
 						<td class="td3">홈플러스</td>
 						<td class="td4">쿠팡</td>
+						
 					</tr>
 					<!-- ============================== ITEM1 ============================== -->
 					<tr class="mall_result" id="product1">
@@ -739,10 +740,7 @@
 				  </div>
 				</div>
 			</div>
-
-			
-
-    	</div>
+	   	</div>
     </section>
 		
 
