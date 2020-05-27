@@ -23,6 +23,8 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- SEARCH CSS -->
     <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/main.css">
+    
     <!-- react vis graph 그릴 CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.0/vis.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
@@ -35,23 +37,18 @@
   <!-- ================================ NAVBAR ================================ -->
     <tiles:insertAttribute name="nav"/>
     <!-- END nav -->
-
-    <!-- ================================== FILTERS AND SAVE BTN================================== -->	
-	<section class="ftco-search bg-light">
+	<div class="container" id="root"></div>
+<!--      ================================== FILTERS AND SAVE BTN==================================	
+ -->	<!-- <section class="ftco-search bg-light">
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12 search-wrap">
 					<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span>상세검색</h2>
 					<form action="#" class="search-property">
 						<div class="row">
-							<div class="slider_search_area">
-								<input class="img_slider_search" name="keyword" type="search"
-									placeholder="검색어를 입력하세요." />
-								<button class="sliderBtn">검색</button>
-							</div>
 							<div class="col-md-2 pl-0">
 								<div class="form-group">
-									<label for="#">정렬</label>
+									 <label for="#">정렬</label>
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -62,10 +59,10 @@
 											</select>
 										</div>
 									</div>
-								</div>
+ 								</div> 	
 							</div>
-							
-                            <!-- BUTTON -->
+								<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요.">
+								<button class="sliderBtn">검색</button>
 							<div class="col-md-2 align-self-end">
 								<div class="form-group">
 									<div class="form-field">
@@ -73,6 +70,7 @@
 									</div>
 								</div>
 							</div>
+							
 						</div>
 					</form>
 				</div>
@@ -80,10 +78,10 @@
 		</div>
 	</section>
     
-    <!-- ================================== CONTENTS================================== -->	    
+    ================================== CONTENTS==================================	    
     <section class="list-section mb-3 bg-light">
     	<div class="container">
-			<!-- 결과 -->
+			결과
 			<div class="row">
 				<table class="result">
 					<tr class="mall_list">
@@ -93,11 +91,11 @@
 						<td class="td3">홈플러스</td>
 						<td class="td4">쿠팡</td>
 					</tr>
-					<!-- ============================== ITEM1 ============================== -->
-					<!-- ############################## Emart ROW ########################## -->
+					============================== ITEM1 ==============================
+					############################## Emart ROW ##########################
 					<tr class="mall_result" id="product1">
 						<td rowspan="2" class="product_name">바나나 우유</td>
-						<!-- =============== 1.이마트 =============== -->
+						=============== 1.이마트 ===============
 						<td class="emart">
 							<div class="list_item">
 								<div class="img">
@@ -112,12 +110,12 @@
 									</a>
 								</div>
 							</div>
-							<!-- 더보기 버튼: 컨텐츠가 3개 초과일 경우 -->
-							<!-- <button type="button" class="btn btn-block" id="">+ 더 보기</button> -->
+							더보기 버튼: 컨텐츠가 3개 초과일 경우
+							<button type="button" class="btn btn-block" id="">+ 더 보기</button>
 							<button type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
 						</td>
-						<!-- =============== 2.롯데마트 =============== -->
-						<!-- ############################## Lotte ROW ########################## -->
+						=============== 2.롯데마트 ===============
+						############################## Lotte ROW ##########################
 						<td class="lotte">
 							<div class="list_item">
 								<div class="img">
@@ -133,8 +131,8 @@
 								</div>
 							</div>
 						</td>
-						<!-- =============== 3.홈플러스 =============== -->
-						<!-- ############################## HomePlust ROW ########################## -->
+						=============== 3.홈플러스 ===============
+						############################## HomePlust ROW ##########################
 						<td class="homeplus">
 							<div class="list_item">
 								<div class="img">
@@ -150,8 +148,8 @@
 								</div>
 							</div>
 						</td>
-						<!-- =============== 4.쿠팡=============== -->
-						<!-- ############################## Coupang ROW ########################## -->
+						=============== 4.쿠팡===============
+						############################## Coupang ROW ##########################
 						<td class="coupang">
 							<div class="list_item">
 								<div class="img">
@@ -168,12 +166,12 @@
 							</div>
 						</td>
 					</tr>
-					<!-- ============================== ITEM1 GRAPH ============================== -->
+					============================== ITEM1 GRAPH ==============================
 					<tr class="mall_result" id="graph1">
-						<!-- <td class="graph_left"></td> -->
+						<td class="graph_left"></td>
 						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
 					</tr>
-					<!-- ============================== ITEM2 ============================== -->
+					============================== ITEM2 ==============================
 					<tr class="mall_result" id="product1">
 						<td rowspan="2" class="product_name">삼양 까르보 불닭볶음면</td>
 						<td class="emart">
@@ -237,21 +235,21 @@
 							</div>
 						</td>
 					</tr>
-					<!-- ============================== ITEM2 GRAPH ============================== -->
+					============================== ITEM2 GRAPH ==============================
 					<tr class="mall_result" id="graph1">
-						<!-- <td class="graph_left"></td> -->
+						<td class="graph_left"></td>
 						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
 					</tr>
 				</table>
 			</div>
-			<!-- 저장한 상품 -->
+			저장한 상품
 			<div class="row">
 				<div class="saved">
 					<h5 class="saved_title">저장한 상품</h5>
 				</div>
 			</div>
 
-			<!-- ============================== 더보기 MODAL ============================== -->
+			============================== 더보기 MODAL ==============================
 			<div class="modal fade" id="moreBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-lg" role="document">
 				  <div class="modal-content">
@@ -265,8 +263,8 @@
 						<section class="ftco-section py-2">
 							<div class="container">
 							<div class="row d-flex">
-							  <!-- ========== Start of Modal Item ========== -->
-							  <!-- MODAL ITEM 1 -->
+							  ========== Start of Modal Item ==========
+							  MODAL ITEM 1
 							  <div class="col-md-3 d-flex ftco-animate">
 								<div class="blog-entry align-self-stretch">
 								  <div class="img">
@@ -282,159 +280,15 @@
 								  </div>
 								</div>
 							  </div>
-							  <!-- MODAL ITEM 2 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 3 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 4 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 5 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 6 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 7 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 8 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 9 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- MODAL ITEM 10 -->
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_5761002/5761002283.20150128173135.jpg?type=f300">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  <!-- ========== End of Modal Item ========== -->
+							  ========== End of Modal Item ==========
 							</div>
 							</div>
 						</section>
 
 					</div>
-					<!-- <div class="modal-footer">
+					<div class="modal-footer">
 					  <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-					</div> -->
+					</div>
 				  </div>
 				</div>
 			</div>
@@ -442,8 +296,8 @@
 			
 
     	</div>
-    </section>
-		
+    </section> -->
+
 
     <!-- ================================== FOOTER ================================== -->
     <tiles:insertAttribute name="footer"/>
@@ -464,28 +318,34 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/bootstrap-datepicker.js"></script>
-  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  
   <script src="js/scrollax.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
   <script src="js/google-map.js"></script>
-  <script src="js/main.js"></script>
+ -->  <script src="js/main.js"></script>
   <script type="text/babel">
-	class App extends React.Component{
+  class App extends React.Component{
 		constructor(props){
 			super(props);
 			this.state={
+				coupang:[],
+				emart:[],
 				homeplus:[],
-				keyword:''
+				lottemart:[],	
+				keyword:'',
+				search_options:''
 			}
 			this.onUserInput2=this.onUserInput2.bind(this);
 		}						
 
 		onUserInput2(keyword){
-			axios.get("http://localhost:8081/web/hp/search.do",{
+			axios.get("http://localhost:8080/web/hp/search.do",{
 				params: {
 					keyword:keyword
 				}.then(function(result){
-					console.log(result.data);
 					this.setState({homeplus:result.data});
 				})
 				
@@ -495,42 +355,266 @@
 			this.setState({keyword:keyword});
 		}
 
-		
+		componentDidMount()
+		{
+				var keyset = '${keyword}';
+				axios.get('http://localhost:8081/web/searchrest.do',{
+				params :{ keyword:keyset }}).then((result)=>{
+				
+				console.log(result.data.hp);
+				this.setState({coupang:result.data.cp})
+				this.setState({emart:result.data.em})
+				this.setState({homeplus:result.data.hp})
+				this.setState({lottemart:result.data.lm})
+				this.setState({keyword:keyset})
+			})
+		}
 		render(){
 			return(
-				document.write(<div className="row">
-					<SearchBar keyword={this.state.keyword} onUserInput={this.onUserInput2} />
-				</div>);	
+				<div className="row">
+					<SearchOptions />
+					<martTable homeplus={this.state.homeplus} emart={this.state.emart} coupang={this.state.coupang} lottemart={this.state.lottemart} keyword={this.state.keyword}/>
+				</div>
 			);
 		}
 	}
+
+
+	class martTable extends React.Component{
+
+		render() {
+			let crows=[];
+			let erows=[];
+			let hrows=[];
+			let lrows=[];
+			
+			this.props.coupang.forEach((column,key)=> {
+				crows.push(<coupangRow coupang={column} key={key} />)
+			})	
+			this.props.emart.forEach((column,key)=> {
+				erows.push(<emartRow emart={column} key={key} />)
+			})
+			this.props.homeplus.forEach((column,key)=> {
+				hrows.push(<homeplusRow homeplus={column} key={key} />)
+			})
+	
+			this.props.lottemart.forEach((column,key)=> {
+				lrows.push(<lottemartRow lottemart={column} key={key} />)
+			})
+			
+
+			return (
+			<section className="list-section mb-3 bg-light">
+		    	<div className="container">
+					결과
+					<div className="row">
+						<table className="result">
+							<tr className="mall_list">
+								<td className="default">쇼핑몰 이름</td>
+								<td className="td1">이마트</td>
+								<td className="td2">롯데마트</td>
+								<td className="td3">홈플러스</td>
+								<td className="td4">쿠팡</td>
+							</tr>
+							<tr className="mall_result" id="product1">
+								<td rowspan="2" className="product_name">{this.props.keyword}</td>
+									{crows}
+									{erows}
+									{hrows}
+									{lrows}
+							</tr>
+						</table>
+					</div>
+
+			)
+		}
+	}
+
+	
 	class SearchBar extends React.Component{
-			constructor(props)
-			{
+			constructor(props){
 				super(props);
 				// / /이벤트 등록
-				this.onChange=this.onChange.bind(this)
+				
 				this.onClick=this.onClick.bind(this)
 				// / /this.onUserInput = this.onUserInput.bind(this)
 			}
 			onClick(e)
 			{
-				elem = documnet.getElementById("keyword");
+				elem = document.getElementById("keyword").value;
+				var temp = elem;
+				console.log(temp);
 				this.props.onUserInput(elem.value);
 			}
 			render(){
 				return(	
 					<div className="slider_search_area">
-						<input className="img_slider_search" type="search" placeholder="검색어를 입력하세요."
-						value={this.props.keyword} id="keyword"/>
-						<button className="sliderBtn" onClick={this.onClick}>검색</button>
+						<input className="img_slider_search" type="search" placeholder="리액트 검색어를 입력하세요."
+						 id="keyword"/>
+						<button className="sliderBtn" onclick="onClick">검색</button>
 					</div>
 				)
 			}
 		}
+
+	class SearchOptions extends React.Component {
+		constructor(props){
+			super(props);
+			
+			this.onSelect=this.onSelect.bind(this)
+		}
+		onSelect(e){
+			var selectOption = document.getElementById('searchlist');
+			selectOption = selectOption.options[selectOption.selectedIndex].value;
+			console.log(options);
+			this.props.onUserSelectOptions(e.target.value);
+		}
+		render(){
+			return (
+				<section className="ftco-search bg-light">
+					<div className="container">
+						<div className="row">
+							<div className="col-md-12 search-wrap">
+								<h2 className="heading h5 d-flex align-items-center pr-4"><span className="ion-ios-search mr-3"></span>상세검색</h2>
+								 <form action="#" class="search-property">
+									<div className="row">
+										<div className="col-md-2 pl-0">
+											<div className="form-group">
+												<div className="form-field">
+													<div className="select-wrap">
+														<div className="icon"><span className="ion-ios-arrow-down"></span></div>
+														<select name="seachlist" id="searchlist" className="form-control">
+			                                                <option value="pop">인기랭킹순</option>
+															<option value="asc">가격낮은순</option>
+															<option value="desc">가격높은순</option>
+														</select>
+													</div>
+												</div>
+			 								</div> 	
+										</div>
+											<input className="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요."/>
+											<button className="sliderBtn">검색</button>
+										<div className="col-md-2 align-self-end">
+											<div className="form-group">
+												<div className="form-field">
+													<input type="submit" value="저장" className="form-control btn btn-primary"/>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</section>
+			)
+		}
+	
+	}
+
+	class coupangRow extends React.Component {
+		render() {
+			return (
+				<td className="coupang">
+					<div className="list_item">
+						<div className="img">
+							<a href="#">
+								<img className="product_img" src={this.props.coupang.img}>
+							</a>
+						</div>
+						<div className="info">
+							<a href="#">
+								<p className="product">{this.props.coupang.name}</p>
+								<p className="price">{this.props.coupang.price}</p>
+							</a>
+						</div>
+					</div>
+					더보기 버튼: 컨텐츠가 3개 초과일 경우
+					<button type="button" className="btn btn-block" id="">+ 더 보기</button>
+					<button type="button" className="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
+				</td>					
+			);
+		}
+	}
+	class emartRow extends React.Component {
+		render() 
+			{
+			return (
+				<td className="emart">
+					<div className="list_item">
+						<div className="img">
+							<a href="#">
+								<img className="product_img" src={this.props.emart.img}>
+							</a>
+						</div>
+						<div className="info">
+							<a href="#">
+								<p className="product">{this.props.emart.name}</p>
+								<p className="price">{this.props.emart.price}</p>
+							</a>
+						</div>
+					</div>
+					더보기 버튼: 컨텐츠가 3개 초과일 경우
+					<button type="button" className="btn btn-block" id="">+ 더 보기</button>
+					<button type="button" className="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
+				</td>					
+			)
+		}
+	}
+	class homeplusRow extends React.Component {
+		render()
+			{
+			return (
+				<td className="homeplus">
+					<div className="list_item">
+						<div className="img">
+							<a href="#">
+								<img className="product_img" src={this.props.homeplus.img}>
+							</a>
+						</div>
+						<div className="info">
+							<a href="#">
+								<p className="product">{this.props.homeplus.name}</p>
+								<p className="price">{this.props.homeplus.price}</p>
+							</a>
+						</div>
+					</div>
+					더보기 버튼: 컨텐츠가 3개 초과일 경우
+					<button type="button" className="btn btn-block" id="">+ 더 보기</button>
+					<button type="button" className="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
+				</td>					
+			)
+		}
+	}
+	class lottemartRow extends React.Component {
+		render()
+			{
+			return (
+				<td className="lottemart">
+					<div className="list_item">
+						<div className="img">
+							<a href="#">
+								<img className="product_img" src={this.props.lottemart.img}>
+							</a>
+						</div>
+						<div className="info">
+							<a href="#">
+								<p className="product">{this.props.lottemart.name}</p>
+								<p className="price">{this.props.lottemart.price}</p>
+							</a>
+						</div>
+					</div>
+					더보기 버튼: 컨텐츠가 3개 초과일 경우
+					<button type="button" className="btn btn-block" id="">+ 더 보기</button>
+					<button type="button" className="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
+				</td>					
+			)
+		}
+	}
+
 		ReactDOM.render(<App />, document.getElementById('root'));
 </script>
   
 </body>
-	<script type="text/babel" src="js/search_list_react.js"></script>
+	<!-- <script type="text/babel" src="js/search_list_react.js"></script> -->
 </html>

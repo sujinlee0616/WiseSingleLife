@@ -55,6 +55,26 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.wsl.recipe.RecipeMapper"
 	/>
+	
+	<bean id="boardMapper2" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.board2.BoardMapper2"
+	/>
+	
+	<bean id="recipeDetailMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.recipe2.RecipeDetailMapper"
+	/>
+	
+	<bean id="MartAllDataMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.product_detail.MartAllDataMapper"
+	/>
+	
+	<bean id="mainMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.web.MainMapper"
+	/>
 
 </beans>
 

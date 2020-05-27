@@ -17,7 +17,7 @@ public interface HomePlusMapper {
 	
 	@Select("SELECT a.*, Rank() OVER(ORDER BY score DESC, a.price ASC) as rank "
 			+"FROM (SELECT homeplus.*, rate*log(10,reviewcount+1) as score "
-			+"FROM homeplus WHERE name LIKE '%'||#{keyword}||'%') as  a")
+			+"FROM homeplus WHERE name LIKE '%'||#{keyword}||'%') a")
 	public List<HomePlusVO> getHomePlusDataFromMapperByKeyword(String keyword);
 	
 	
