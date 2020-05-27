@@ -170,16 +170,16 @@
          <artifactId>mybatis-spring</artifactId>
          <version>1.2.2</version>
       </dependency>
-      <!-- <dependency>
+      <dependency>
          <groupId>org.mongodb</groupId>
          <artifactId>mongo-java-driver</artifactId>
          <version>2.13.0-rc1</version>
-      </dependency> -->
-      <dependency>
+      </dependency>
+      <!-- <dependency>
 	    <groupId>org.mongodb</groupId>
 	    <artifactId>mongo-java-driver</artifactId>
 	    <version>2.10.1</version>
-	</dependency>
+	</dependency> -->
       
       <dependency>
          <groupId>org.nuiton.thirdparty</groupId>
