@@ -23,4 +23,9 @@ public interface SearchKeywordMapper {
 	@Update("UPDATE search_keyword SET count=count+1 WHERE codeno=#{codeno}")
 	public void searchKeywordCountIncrement(int codeno);
 
+	
+	@SelectKey(keyProperty="no", resultType=int.class, before=true,
+			statement="SELECT NVL(MAX(no)+1,1) AS no FROM search_count")
+	@Insert("INSERT INTO search_count VALUES(#{no},#{keyword},SYSDATE)")
+	public void searchCountInsert(SearchCountVO vo);
 }
