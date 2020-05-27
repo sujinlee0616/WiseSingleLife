@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/recipe_detail.css">
+	<meta property="og:url"           content="http://localhost/web/" />
+	<meta property="og:type"          content="슬기로운 자취생활" />
+	<meta property="og:title"         content="슬기로운 자취생활" />
+	<meta property="og:description"   content="슬기로운 자취생활을 위한 음식 레시피" />
 </head>
 
 <body>
@@ -36,12 +40,12 @@
                             <li><i class="fas fa-star"></i>${vo.info3 }</li>
                         </ul>
 						<p>${vo.content }</p>
-						<div class="add-to-btn">
+						<!-- <div class="add-to-btn">
 							<div class="share-bar">
 								<a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
 								<a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
 							</div>
-						</div>
+						</div> -->
                     </div>
                 </div>
             </div>
@@ -61,7 +65,7 @@
 					</div>
                   </div>
                   
-                  <a href="recipe.do" class="btn listBtn">목록으로</a>
+                  <a href="#" class="btn listBtn" onclick="history.back();">목록으로</a>
             </div>            
            
 
@@ -72,24 +76,8 @@
 
     <!-- ================================== FOOTER ================================== -->
     <tiles:insertAttribute name="footer"/>
-    <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
-    <!-- ALL JS FILES -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="js/jquery.superslides.min.js"></script>
-    <script src="js/bootstrap-select.js"></script>
-    <script src="js/inewsticker.js"></script>
-    <script src="js/bootsnav.js."></script>
-    <script src="js/images-loded.min.js"></script>
-    <script src="js/isotope.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/baguetteBox.min.js"></script>
-    <script src="js/form-validator.min.js"></script>
-    <script src="js/contact-form-script.js"></script>
-    <script src="js/custom.js"></script>
+  
 </body>
 
 </html>
