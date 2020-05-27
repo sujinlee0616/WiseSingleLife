@@ -130,11 +130,9 @@ public class HJETestController {
 			cpobj.put("productcode", cpvo.getProductCode());
 			cpobj.put("codeno", cpvo.getCodeNo());
 			cpobj.put("name", cpvo.getName());
-			cpobj.put("discount", cpvo.getDiscount());
-			cpobj.put("baseprice", cpvo.getBaseprice());
+			cpobj.put("discount", cpvo.getDiscountrate());
+			cpobj.put("baseprice", cpvo.getPrice());
 			cpobj.put("unitprice", cpvo.getUnitprice());
-			cpobj.put("saleprice", cpvo.getSaleprice());
-			cpobj.put("weight", cpvo.getWeight());
 			cpobj.put("quantity", cpvo.getQuantity());
 			cpobj.put("rate", cpvo.getRate());
 			cpobj.put("reviewcount", cpvo.getReviewcount());

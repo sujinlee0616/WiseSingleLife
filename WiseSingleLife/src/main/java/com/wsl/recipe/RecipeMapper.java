@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 public interface RecipeMapper {
 	
 	@Select("SELECT no, title, poster, chef FROM ("
-			+ "SELECT rownum AS num, no, title, poster, chef FROM recipe "
+			+ "SELECT rownum AS num, no, title, poster, chef FROM recipe_view "
 			+ "WHERE title like '%'||#{keyword}||'%') "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<RecipeVO> getRecipeListByTitleSearch(Map map);
@@ -23,7 +23,7 @@ public interface RecipeMapper {
 	public List<RecipeVO> getRecipeListByIngredient(Map map);
 	
 	@Select("SELECT no, title, poster, chef FROM ("
-			+ "SELECT rownum AS num, no, title, poster, chef FROM recipe "
+			+ "SELECT rownum AS num, no, title, poster, chef FROM recipe_view "
 			+ "WHERE chef like '%'||#{keyword}||'%') "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<RecipeVO> getRecipeListByChef(Map map);
@@ -31,7 +31,7 @@ public interface RecipeMapper {
 	@Select("SELECT COUNT(*) FROM recipe_ingredient_amount WHERE mname LIKE '%'||#{keyword}||'%'")
 	public int isRegisteredIngredient(String keyword);
 	
-	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe "
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe_view "
 			+ "WHERE title like '%'||#{keyword}||'%'")
 	public int recipeTitleSearchTotalPage(Map map);
 	
@@ -39,7 +39,7 @@ public interface RecipeMapper {
 			+ "WHERE mname like '%'||#{keyword}||'%'")
 	public int recipeIngredientSearchTotalPage(Map map);
 	
-	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe "
+	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe_view "
 			+ "WHERE chef like '%'||#{keyword}||'%'")
 	public int recipeChefSearchTotalPage(Map map);
 
