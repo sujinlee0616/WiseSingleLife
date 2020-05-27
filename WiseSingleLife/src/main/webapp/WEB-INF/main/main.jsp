@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Royal Estate - Free Bootstrap 4 Template by Colorlib</title>
+    <title>슬기로운 자취생활</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -25,8 +25,6 @@
     <link rel="stylesheet" href="css/swiper.min.css">
     <!-- MainCSS -->
 	<link rel="stylesheet" href="css/main.css">
-	<!-- Board CSS -->
-    <link rel="stylesheet" href="css/board.css">
   </head>
   <body>
     <!-- ================================ NAVBAR ================================ -->

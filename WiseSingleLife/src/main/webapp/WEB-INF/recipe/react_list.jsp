@@ -16,23 +16,21 @@
 	class ButtonGroup extends React.Component {
 		constructor(props) {
 			super(props);
-			this.rowStyle = {
-				marginBottom : '50px'
-			}
-			this.backgroundColor = {
-					backgroundColor : '#F4D047'
-			}
 		}
 		
 		render() {
 			return (
 				<div className="container">
-					<div className="row" style={this.rowStyle}>
+					<div className="row" style={{"marginBottom":"50px"}}>
 						<div className="col-md-6">
-							<button style={this.backgroundColor} type="button" className="btn btn-block moreBtn">▽ 더 보기 ( {this.props.curpage} / {this.props.totalpage} )</button>
+							<button disabled={this.props.curpage>=this.props.totalpage} style={{"backgroundColor":"#F4D047"}} type="button" className="btn btn-block moreBtn"
+								onClick={this.props.moreSearchResults}
+							>
+								{this.props.curpage>=this.props.totalpage ? (<span>마지막 페이지</span>) : (<span>▽ 더 보기 ( {this.props.curpage} / {this.props.totalpage} )</span>) }
+							</button>
 						</div>
 						<div className="col-md-6">
-							<button style={this.backgroundColor} onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" className="btn btn-block moreBtn">맨 위로 △</button>
+							<button style={{"backgroundColor":"#F4D047"}} onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" className="btn btn-block moreBtn">맨 위로 △</button>
 						</div>
 					</div>
 				</div>
@@ -47,7 +45,7 @@
 
 		render() {
 			return (
-				<div></div>
+				<div>{this.props.item.title}</div>
 			);
 		}
 	}
@@ -58,8 +56,14 @@
 		}
 
 		render() {
-			return (
-				<SearchResultDetail searchResults={this.props.searchResults}/>
+			let items=[];
+			this.props.searchResults.map((item)=>{
+				items.push(<SearchResultDetail item={item}/>);
+			});
+
+			return (<div>
+				{items}
+				</div>
 			);
 		}
 	}
@@ -107,24 +111,52 @@
 			this.state = {
 				optionValue:'레시피',
 				keyword:'',
-				curpage:1,
+				curpage:0,
 				totalpage:0,
 				searchResults:[]
 			}
 			this.setOptionValue = this.setOptionValue.bind(this);
 			this.setKeyword = this.setKeyword.bind(this);
 			this.setSearchResults = this.setSearchResults.bind(this);
+			this.moreSearchResults = this.moreSearchResults.bind(this);
 		}
 
-		setSearchResults() {
+		moreSearchResults() {
+			alert('more call...');
 			axios.get("http://localhost:8081/web/recipe/search.do",{
 				params: {
 					category:this.state.optionValue,
-					page:this.state.curpage,
+					page:this.state.curpage+1,
 					keyword:this.state.keyword
 				}
-				}).then(function(result){
-					});
+			}).then((result)=>{
+				this.setState({
+					totalpage:result.data.totalpage,
+					searchResults:this.state.searchResults.concat(result.data.list),
+					curpage:this.state.curpage+1
+				});
+			});
+		}
+
+		setSearchResults() {
+			this.setState({
+				curpage:0,
+				totalpage:0
+			});			
+
+			axios.get("http://localhost:8081/web/recipe/search.do",{
+				params: {
+					category:this.state.optionValue,
+					page:this.state.curpage+1,
+					keyword:this.state.keyword
+				}
+			}).then((result)=>{
+				this.setState({
+					totalpage:result.data.totalpage,
+					searchResults:result.data.list,
+					curpage:this.state.curpage+1
+				});
+			});
 		}
 		
 		setKeyword(e) {
@@ -140,7 +172,7 @@
 				<div>
 					<SearchBar optionValue={this.state.optionValue} setOptionValue={this.setOptionValue} value={this.state.keyword} setKeyword={this.setKeyword} setSearchResults={this.setSearchResults}/>
 					<SearchResultContainer searchResults={this.state.searchResults}/>
-					<ButtonGroup curpage={this.state.curpage} totalpage={this.state.totalpage}/>
+					{ this.state.totalpage===0 ? <br/> : <ButtonGroup curpage={this.state.curpage} totalpage={this.state.totalpage} moreSearchResults={this.moreSearchResults}/> }
 				</div>
 			);
 		}

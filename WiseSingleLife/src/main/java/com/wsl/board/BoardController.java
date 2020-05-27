@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BoardController {
 	@Autowired
 	BoardDAO dao;
-	
+	// 게시판 리스트
 	@RequestMapping("board.do")
 	public String board_list(Model model,String page)
 	{
@@ -50,4 +50,67 @@ public class BoardController {
 		
 		return "board/list";
 	}
+	// 글 작성창 띄우기
+	@RequestMapping("board_insert.do")
+	public String board_insert()
+	{
+		return "board/insert";
+	}
+	// 글 작성완료
+	@RequestMapping("board_insert_ok.do")
+	public String board_insert_ok(BoardVO vo)
+	{
+		// 이름,제목,내용,비밀번호
+		dao.boardInsert(vo);
+		
+		return "redirect:../web/board.do";
+	}
+	// 상세보기
+	@RequestMapping("board_detail.do")
+	public String board_detail(Model model,int no)
+	{
+		BoardVO vo=dao.boardDetailData(no);
+		
+		model.addAttribute("vo",vo);
+		
+		return "board/detail";
+	}
+	// 수정하기 창 띄우기
+	@RequestMapping("board_update.do")
+	public String board_update(int no, Model model)
+	{
+		BoardVO vo=dao.boardUpdateData(no);
+		
+		model.addAttribute("vo",vo);
+		
+		return "board/update";
+	}
+	// 수정완료;
+	@RequestMapping("board_update_ok.do")
+	public String board_update_ok(BoardVO vo)
+	{
+		dao.boardUpdate(vo);
+		
+		return "redirect:../web/board_detail.do?no="+vo.getNo();
+	}
+	
+	// 삭제하기 창 띄우기
+	@RequestMapping("board_delete.do")
+	public String board_delete(int no,Model model)
+	{	
+		BoardVO vo=dao.boardDetailData(no);
+		
+		model.addAttribute("vo",vo);
+		
+		return "board/delete";
+	}
+	// 삭제완료
+	@RequestMapping("board_delete_ok.do")
+	public String board_delete_ok(int no)
+	{
+		dao.boardDelete(no);
+		
+		return "redirect:../web/board.do";
+	}
+	
 }
