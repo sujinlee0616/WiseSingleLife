@@ -126,15 +126,17 @@ Modified Date: 2020.04.16 (Thu)
 
 .cmt_line{margin: 7px 0;}
 .cmt_input{
-	width: 92%; height: 80px;
+	width: 70%; height: 120px;
 	vertical-align: top;
-	margin-top: 10px; padding: 10px;
+	padding: 10px;
 	resize: none;
+	/* margin-top: 10px; */
 }
 .cmt_input.disabled{background-color: #eeeeee;}
 .cmtBtn{
-	height: 80px; width:7%; 
-	display: inline-block; margin-top: 10px;
+	height: 120px; width:7%; 
+	display: inline-block;
+	/* margin-top: 10px; */
 }
 
 /* 화면 작을 때 댓글 textarea와 btn 사이즈 조절 */

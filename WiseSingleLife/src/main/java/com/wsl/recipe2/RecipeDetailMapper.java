@@ -3,7 +3,6 @@ package com.wsl.recipe2;
 import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Component;
 
-@Component
 public interface RecipeDetailMapper {
 
 	// 레시피 상세정보 

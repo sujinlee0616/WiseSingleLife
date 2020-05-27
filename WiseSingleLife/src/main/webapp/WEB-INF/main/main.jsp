@@ -25,8 +25,6 @@
     <link rel="stylesheet" href="css/swiper.min.css">
     <!-- MainCSS -->
 	<link rel="stylesheet" href="css/main.css">
-	<!-- Board CSS -->
-    <link rel="stylesheet" href="css/board.css">
   </head>
   <body>
     <!-- ================================ NAVBAR ================================ -->
