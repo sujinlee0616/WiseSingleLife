@@ -11,10 +11,6 @@
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/recipe_detail.css">
-	<meta property="og:url"           content="http://localhost/web/" />
-	<meta property="og:type"          content="슬기로운 자취생활" />
-	<meta property="og:title"         content="슬기로운 자취생활" />
-	<meta property="og:description"   content="슬기로운 자취생활을 위한 음식 레시피" />
 </head>
 
 <body>
