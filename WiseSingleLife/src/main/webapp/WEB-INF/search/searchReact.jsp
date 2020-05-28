@@ -436,7 +436,7 @@ class MartTable extends React.Component {
 			          type="button"
 			          className="btn btn-block moreBtn"
 			          data-toggle="modal"
-			          data-target="#moreBtn"
+			          data-target="#moreBtn" 
 			        >
 			          + 더 보기
 			        </button>
