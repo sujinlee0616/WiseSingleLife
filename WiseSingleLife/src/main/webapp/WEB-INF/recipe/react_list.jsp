@@ -12,6 +12,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</body>
 <script type="text/babel">
 	class ButtonGroup extends React.Component {
 		constructor(props) {
@@ -42,28 +43,58 @@
 		constructor(props) {
 			super(props);
 		}
+		
+		componentDidMount() {
+			
+		}
 
 		render() {
 			return (
-				<div>{this.props.item.title}</div>
+				<div className="col-md-3 d-flex">
+					<div className="blog-entry align-self-stretch">
+					  <a href={"recipe_detail.do?no="+this.props.item.no} className="block-20" style={{"backgroundImage": "url('"+this.props.item.poster+"')"}}>
+					  </a>
+					  <div className="text mt-3 d-block">
+							<a href={"recipe_detail.do?no="+this.props.item.no}>
+								<h3 className="heading mt-3 event">{ this.props.item.title }</h3>
+							</a>
+							{ this.props.item.imgsrc!=null ? 
+								<h5>
+									<img alt="" src={ this.props.item.imgsrc } style={{"width": "30px","height": "30px","borderRadius": "5px"}}/>
+									&nbsp;{ this.props.item.mname }
+									 : { this.props.item.amount }
+								</h5>
+								: null
+							}
+							<h6 className="text-right">{ this.props.item.chef }</h6>
+					  </div>
+					</div>
+				</div>
 			);
 		}
 	}
 
 	class SearchResultContainer extends React.Component {
-		constructor(props) {
-			super(props);
-		}
-
 		render() {
 			let items=[];
 			this.props.searchResults.map((item)=>{
 				items.push(<SearchResultDetail item={item}/>);
 			});
 
-			return (<div>
-				{items}
-				</div>
+			return (
+				<section className="ftco-section">
+					<div className="container">
+						<div className="row justify-content-center mb-5 pb-3">
+							<div className="col-md-7 heading-section text-center">
+								<span className="subheading">{this.props.optionValue}로 검색한 결과</span>
+							  <h2 className="mb-4">{this.props.keyword}</h2>
+							</div>
+						</div>
+						<div className="row d-flex">
+							{items}
+						</div>
+					</div>
+				</section>
 			);
 		}
 	}
@@ -122,7 +153,6 @@
 		}
 
 		moreSearchResults() {
-			alert('more call...');
 			axios.get("http://localhost:8081/web/recipe/search.do",{
 				params: {
 					category:this.state.optionValue,
@@ -171,7 +201,7 @@
 			return (
 				<div>
 					<SearchBar optionValue={this.state.optionValue} setOptionValue={this.setOptionValue} value={this.state.keyword} setKeyword={this.setKeyword} setSearchResults={this.setSearchResults}/>
-					<SearchResultContainer searchResults={this.state.searchResults}/>
+					<SearchResultContainer optionValue={this.state.optionValue} keyword={this.state.keyword} searchResults={this.state.searchResults}/>
 					{ this.state.totalpage===0 ? <br/> : <ButtonGroup curpage={this.state.curpage} totalpage={this.state.totalpage} moreSearchResults={this.moreSearchResults}/> }
 				</div>
 			);
@@ -180,5 +210,4 @@
 	
 	ReactDOM.render(<App />, document.getElementById('app'));
 </script>
-</body>
 </html>
