@@ -31,7 +31,7 @@
 							</button>
 						</div>
 						<div className="col-md-6">
-							<button style={{"backgroundColor":"#F4D047"}} onclick="javascript:window.scrollTo({top:0,behavior:'smooth'})" type="button" className="btn btn-block moreBtn">맨 위로 △</button>
+							<button style={{"backgroundColor":"#F4D047"}} onClick={()=>{window.scrollTo({top:0,behavior:'smooth'})}} type="button" className="btn btn-block moreBtn">맨 위로 △</button>
 						</div>
 					</div>
 				</div>
@@ -42,10 +42,6 @@
 	class SearchResultDetail extends React.Component {
 		constructor(props) {
 			super(props);
-		}
-		
-		componentDidMount() {
-			
 		}
 
 		render() {
