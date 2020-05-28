@@ -45,11 +45,6 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.wsl.emart.EmartMapper"
 	/>
-	
-	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="ssf"
-		p:mapperInterface="com.wsl.board.BoardMapper"
-	/>
 
 	<bean id="recipeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
@@ -69,6 +64,16 @@
 	<bean id="mainMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.wsl.web.MainMapper"
+	/>
+	
+	<bean id="boardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.board.BoardMapper"
+	/>
+	
+	<bean id="boardReplyMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.wsl.board.BoardReplyMapper"
 	/>
 
 </beans>
