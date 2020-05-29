@@ -29,4 +29,11 @@ public class MartAllDataVO {
 	private Date lookuptime;
 	private String img;
 	
+	private String brand;
+	private int productsCount;
+	private String keyword;
+	private int searchCount;
+	
+	//Recipe
+	private int recipeCount;
 }

@@ -15,4 +15,5 @@ public class MainDAO {
 	public List<SearchKeywordVO> getPopularTop10() {
 		return mapper.getPopularTop10();
 	}
+	
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,32 +20,35 @@
 					<div class="col-md-7 wrap-about pb-md-5 ftco-animate">
 	          <div class="heading-section heading-section-wo-line mb-5 pl-md-5">
 	          	<div class="pl-md-5 ml-md-5">
-		          	<span class="subheading">매일유업</span>
+		          	<span class="subheading">${MaData_vo.brand }</span>
 		            <h2 class="mb-4">${MaData_vo.name }</h2>
 	            </div>
 	          </div>
 	          <table class="table px-md-5 ml-md-5">
 							<tr class="text-left">
 								<td class="td1 price">
-									<h1>${MaData_vo.price }</h1>
+									<h1>${MaData_vo.price }원</h1>
 									<span style="color:red;">
 										${MaData_vo.unitprice }
 									</span>
 								</td>
 							</tr>
 							<tr>
-								<td class="block-23-detail" >
+								<td class="block-23-detail">
 									<ul>
-										<li>상품번호: ${MaData_vo.productcode }</li>
-										<li>총 수량: 24개</li>
-										<li></li>
+										<li><b>${MaData_vo.productcode }</b></li>
+										<li >등록일 : <fmt:formatDate pattern="yyyy-MM-dd" value="${MaData_vo.lookuptime}"></fmt:formatDate></li>
 									</ul>
 								</td>
 							</tr>
 							<tr class="tags">
 								<td>
-									<a href="#">#바나나</a>
-									<a href="#">#우유</a>
+									<a href="#"><h4 style="color: orange;">#${MaData_vo.keyword }</h4></a>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<a href="#" class="btn bnt-sm btn-info" style="text-align: right;" onclick="history.back();">목록으로</a>
 								</td>
 							</tr>
 						</table>
@@ -58,9 +63,9 @@
 		    		<div class="col-md-3 d-flex justify-content-center counter-wrap ftco-animate">
 		            <div class="block-18 text-center">
 		              <div class="text">
-		              	<!-- 추천 점수별 rank ex) 추천 점수 /상품코드가 같은 상품 -->
-		                <span>Rank</span>
-		                <strong class="number">1</strong>
+		              	<!-- Codeno 와 관련된 레시피 카운트 -->
+		                <span>RecipeCount</span>
+		                <strong class="number">${MaData_vo.searchCount }</strong>
 		              </div>
 		            </div>
 		          </div>
@@ -69,7 +74,7 @@
 		              <div class="text">
 		              <!-- 평점 -->
 		                <span>RATE</span>
-		                <strong class="number" id="rate">3.5</strong>
+		                <strong class="number" id="rate">${MaData_vo.rate}</strong>
 		              </div>
 		            </div>
 		          </div>
@@ -78,7 +83,7 @@
 		              <div class="text">
 		              <!-- 전체 리뷰 수 -->
 		                <span>ReviewCount</span>
-		                <strong class="number" data-number="15">15</strong>
+		                <strong class="number">${MaData_vo.reviewcount}</strong>
 		              </div>
 		            </div>
 		          </div>
@@ -87,7 +92,7 @@
 		              <div class="text">
 		              <!-- (codeno가 같은) 전체 상품 수 -->
 		                <span>Products</span>
-		                <strong class="number" data-number="170">170</strong>
+		                <strong class="number" >${MaData_vo.productsCount }</strong>
 		              </div>
 		            </div>
 		          </div>

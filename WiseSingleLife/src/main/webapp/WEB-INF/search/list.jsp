@@ -117,7 +117,7 @@
 									</a>
 								</div>
 								<div class="info">
-									<a href="detail.do?productcode=em0000000003306">
+									<a href="detail.do?productcode=em0000008113307">
 										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
 										<p class="price">10,910원</p>
 									</a>
@@ -130,7 +130,7 @@
 									</a>
 								</div>
 								<div class="info">
-									<a href="#">
+									<a href="detail.do?productcode=LM-LI1381344183">
 										<p class="product">매일 소화가 잘되는우유 바나나 190ml*6입</p>
 										<p class="price">5,380 원</p>
 									</a>

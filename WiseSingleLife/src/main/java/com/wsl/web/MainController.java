@@ -50,8 +50,37 @@ public class MainController {
 
 	@RequestMapping("detail.do")
 	public String detail_page(Model model,String productcode){
-		MartAllDataVO vo = dao.SearchDetail(productcode);
-		
+		MartAllDataVO vo = dao.SearchDetail(productcode);	
+		Detail_SearchKeyVO svo = new Detail_SearchKeyVO();
+		String temp=" ";
+		// 브랜드 출력
+		try{
+			if(vo.getName().indexOf(" ") != -1){
+				temp = vo.getName().substring(0,vo.getName().indexOf(" "));
+			}else if(vo.getName().indexOf("_")!= -1){
+				temp =vo.getName().substring(0,vo.getName().indexOf("_"));
+			}
+			svo = dao.productKeyowrd(productcode);
+		}catch(Exception ex){
+			temp ="#";
+		}
+		System.out.println(temp);
+		// 상품 코드와 관련된 전체 상품 수
+		try{
+			vo.setProductsCount(dao.ProductAllCount(productcode));
+			vo.setKeyword(svo.getKeyword());
+			vo.setSearchCount(svo.getCount());
+			vo.setBrand(temp);
+		}catch(Exception ex){
+			ex.printStackTrace();
+			vo.setProductsCount(1);
+			vo.setKeyword("없음");
+			vo.setRecipeCount(0);
+		}
+		List<Integer> list = dao.rno();
+		for(int i : list){
+			System.out.println(i);
+		}
 		model.addAttribute("MaData_vo", vo);
 		return "search/detail";
 	}
