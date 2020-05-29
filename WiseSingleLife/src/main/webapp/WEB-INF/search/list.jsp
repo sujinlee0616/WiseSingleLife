@@ -38,23 +38,6 @@
 					<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span>상세검색</h2>
 					<form action="#" class="search-property">
 						<div class="row">
-							<!-- <div class="col-md-2 align-items-end pl-0">
-								<div class="form-group">
-									<label for="#">마트</label>
-									<div class="form-field">
-										<div class="select-wrap">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
-												<option value="">전체</option>
-												<option value="emart">이마트</option>
-												<option value="homeplus">홈플러스</option>
-												<option value="lotte">롯데마트</option>
-												<option value="coupang">쿠팡</option>
-											</select>
-										</div>
-									</div>
-								</div>
-							</div> -->
 							<div class="col-md-2 pl-0">
 								<div class="form-group">
 									<!--  <label for="#">정렬</label>-->
@@ -70,7 +53,6 @@
 									</div>
  								</div> 	
 							</div>
-						
 								<!-- <div class="slider_search_area">-->
 									<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요.">
 									<button class="sliderBtn">검색</button>
@@ -115,6 +97,7 @@
 									<a href="#">
 										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="detail.do?productcode=em0000000003306">
@@ -128,6 +111,7 @@
 									<a href="#">
 										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_2285035/22850351426.20200513172849.jpg?type=f300">
 									</a>
+									<button type="button" class="saveBtn on"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -141,6 +125,7 @@
 									<a href="#">
 										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_5761002/5761002283.20150128173135.jpg?type=f300">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -162,6 +147,7 @@
 									<a href="#">
 										<img class="product_img" src="https://contents.lotteon.com/itemimage/LM/88/01/10/42/20/45/3_/00/1/LM8801104220453_001_1.jpg">
 									</a>
+									<button type="button" class="saveBtn on"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -175,6 +161,7 @@
 									<a href="#">
 										<img class="product_img" src="https://contents.lotteon.com/itemimage/LM/88/01/12/17/59/96/7_/00/1/LM8801121759967_001_1.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -188,6 +175,7 @@
 									<a href="#">
 										<img class="product_img" src="https://contents.lotteon.com/itemimage/LM/88/01/11/51/40/78/8_/00/1/LM8801115140788_001_1.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -205,6 +193,7 @@
 									<a href="#">
 										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -218,6 +207,7 @@
 									<a href="#">
 										<img class="product_img" src="http://image.homeplus.co.kr/UserFiles/Pressimages/31/320/000018031_0.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -231,6 +221,7 @@
 									<a href="#">
 										<img class="product_img" src="http://image.homeplus.co.kr/UserFiles/Pressimages/11/320/100788211_0.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -248,6 +239,7 @@
 									<a href="#">
 										<img class="product_img" src="http://image.homeplus.co.kr/UserFiles/Goods/320/145628287_0.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -261,6 +253,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/492x492ex/image/retail/images/2018/12/17/18/9/b7642b5b-7121-48a2-945a-9df0ca92c177.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -274,6 +267,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/5434551847385-1315dc61-4986-4210-96a9-38fa5eda0a6b.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -299,6 +293,7 @@
 									<a href="#">
 										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_1304626/13046260762.20171221101956.jpg?type=f300">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -312,6 +307,7 @@
 									<a href="#">
 										<img class="product_img" src="http://image.homeplus.co.kr/UserFiles/Pressimages/32/176/128465032_0.jpg">
 									</a>
+									<button type="button" class="saveBtn on"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -325,6 +321,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail6.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/images/2018/07/05/13/7/96a76bb6-bfc4-4c3c-9516-94a87463958c.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -341,6 +338,7 @@
 									<a href="#">
 										<img class="product_img" src="https://shop-phinf.pstatic.net/20180912_218/syfood_153671034462456YVN_JPEG/19429203347270209_1392560495.jpg?type=m510">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -354,6 +352,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/product/image/vendoritem/2018/10/22/3466796747/8bfdb981-49f0-4c9e-b1e6-9e71f8d2df2f.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -367,6 +366,7 @@
 									<a href="#">
 										<img class="product_img" src="http://image.homeplus.co.kr/UserFiles/Goods/176/130826421_0.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -383,6 +383,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail8.coupangcdn.com/thumbnails/remote/230x230ex/image/retail/images/2019/08/26/10/3/6128b4cb-c207-40ea-b9f6-b659e7092298.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -396,6 +397,7 @@
 									<a href="#">
 										<img class="product_img" src="http://image.homeplus.co.kr/UserFiles/Pressimages/77/176/127927277_0.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -409,6 +411,7 @@
 									<a href="#">
 										<img class="product_img" src="http://image.homeplus.co.kr/Goods/GMO/main/176/11/44/02/984114402.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -425,6 +428,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail10.coupangcdn.com/thumbnails/remote/230x230ex/image/product/image/vendoritem/2018/10/22/3466796747/8bfdb981-49f0-4c9e-b1e6-9e71f8d2df2f.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -438,6 +442,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/product/image/vendoritem/2019/02/14/3474800655/b4cb2eb6-b8cc-4080-a61c-d1db421bfdb9.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
@@ -451,6 +456,7 @@
 									<a href="#">
 										<img class="product_img" src="https://thumbnail7.coupangcdn.com/thumbnails/remote/230x230ex/image/vendor_inventory/images/2019/03/27/13/9/613cd140-7c61-45ad-bdfc-98d59dd20e1c.jpg">
 									</a>
+									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
 									<a href="#">
