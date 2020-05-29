@@ -179,3 +179,53 @@ a:hover{color:#222222;}
 .saveBtn.on:before{
     background-image: url('/images/saveBtn_on.png');
 }
+
+.searchInputLikeUl{
+    border: 1px solid #999999;
+    background-color: #FFFFFF;
+    display: inline-block;
+    list-style-type: none;
+    height: 52px;
+    width: 400px;
+    padding: 9px;
+}
+
+.xBtn{
+    color:#555555;
+    padding: 0 3px;
+}
+.xBtn:hover{
+    cursor: pointer;
+}
+.selected{
+    border: 1px solid #BDBDBD;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 3px;
+    margin-right: 3px;
+
+}
+.current{
+    display: inline-block;
+}
+
+.hidden_input{
+    border: none;
+    width: 2.5em;
+}
+.hidden_input:focus{
+    outline: none;
+}
+
+/* .form-field{position: relative;} */
+.form-field .saveAllBtn{
+    position: absolute !important;
+    right: 0;
+    /* margin-left: auto; */
+}
+.submit{width: 100px !important;}
+
+
+
+
+

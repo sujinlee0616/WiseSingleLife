@@ -38,9 +38,9 @@
 					<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span>상세검색</h2>
 					<form action="#" class="search-property">
 						<div class="row">
+							<!-- FILTER -->
 							<div class="col-md-2 pl-0">
 								<div class="form-group">
-									<!--  <label for="#">정렬</label>-->
 									<div class="form-field">
 										<div class="select-wrap">
 											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
@@ -53,19 +53,22 @@
 									</div>
  								</div> 	
 							</div>
-								<!-- <div class="slider_search_area">-->
-									<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요.">
-									<button class="sliderBtn">검색</button>
-								<!--</div>-->
+							<!-- SEARCH -->
+							<div class="col-md-8 pl-0">
+								<ul class="searchInputLikeUl mb-0">
+									<li class="selected" id="selected_li_1">바나나 우유<span class="xBtn">X</span></li>
+									<li class="selected" id="selected_li_2">삼양 까르보 불닭볶음면<span class="xBtn">X</span></li>
+									<li class="current"><input class="hidden_input" tabindex="1" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" role="textbox" aria-autocomplete="list" placeholder=""/></li>
+								</ul><button class="sliderBtn pl-0">검색</button>
+							</div>
 						    <!-- BUTTON -->
-							<div class="col-md-2 align-self-end">
+							<div class="col-md-2 pr-0">
 								<div class="form-group">
 									<div class="form-field">
-										<input type="submit" value="저장" class="form-control btn btn-primary">
+										<input type="submit" value="저장" class="form-control saveAllBtn btn btn-primary">
 									</div>
 								</div>
 							</div>
-							
 						</div>
 					</form>
 				</div>
