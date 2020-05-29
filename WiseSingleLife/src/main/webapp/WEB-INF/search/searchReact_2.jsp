@@ -13,13 +13,13 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<script type="text/babel">
+<script type="text/javascript">
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             martdata:[],
-            keyword:[],
+            keyword:'',
             //pop, asc, desc
             optionValue: "",
             //검색어 리스트 
@@ -35,33 +35,34 @@ class App extends React.Component {
         this.setKeywordList = this.setKeywordList.bind(this);
         this.setSaveItems = this.setSaveItems.bind(this);
         this.setRecipeRecommendList  = this.setRecipeRecommendList.bind(this);
+		
+		// 검색 버튼 클릭 시 호출. state의 keywordList를 읽어서 axios 날아감. 가져온 데이터를 martdata에 setState.
+		this.setMartData  = this.setMartData.bind(this);
+
+        // 검색 input창 onKeyPress일 때 enter인지 체크해서 맞으면 e.target.value를 keywordList에 추가.
+		this.setKeyword = this.setKeyword.bind(this);
+
+		// 키워드의 X 버튼 클릭 시 e.target.value로 값을 읽어서 searchKeywordList에서 그 값을 삭제.(setState)
+		함수 작성 필요.
     }
 
-    //정렬 옵션 선택
-    setOptionValue (){
+    // 정렬 옵션 선택. select 태그 변화 시 호출. 전체 데이터가 정렬됨.
+	// pop : 인기순(랭크순), desc : 가격 높은 순, asc : 가격 낮은 순
+    setOptionValue (e){
         this.setState({optionValue:e.target.value});
-    }
-
-    setKeywordList() {
-        this.setState({keyword:e.target.value});
     }
 
     setSaveItems (){
         this.setState({saveItems:})
     }
+
     setRecipeRecommendList () {
 
     }
 
-    setKeywordList() {
-        axios.get("http://localhost:8080/web/hp/search.do", {
-            params: {
-                keyword: keyword
-            }.then(function(result) {
-                const temp = { keyword:keyset, data:result.data};
-                this.setstate({martdata:temp});
-            })
-        });
+	// 검색 버튼 클릭 시 호출. state.keyword 읽고 axios 날려서 가져온 값을 martdata에 채움. 그리고 keywordList에 추가.
+    setMardData() {
+        
     }
 
 
@@ -84,6 +85,7 @@ class App extends React.Component {
                 this.setstate({martdata:temp});
             });
     }
+
     render() {
         return (
             <section className="ftco-search bg-light">
@@ -93,9 +95,9 @@ class App extends React.Component {
                         <MartTable
                             rows = {this.state.martdata}
                         />
-                        <Modal setKeywordList={this.state.keyword} mart={this.state.martdata.data.}/>
-                        <SaveItems />
-                        <RecipeRecommend />
+                        <SaveItems saveItems={this.state.saveItems}/>
+                        <RecipeRecommend recipeRecommendList={this.state.recipeRecommendList}/>
+                        <Modal />
                     </div>
                 </div>
             </section>
@@ -196,27 +198,35 @@ class RecipeRecommend extends React.Component {
 }
 
 class MartTable extends React.Component {
+    constructor() {
+        super();
+
+        this.state = {
+            martRows : this.props.martdata.map((m)=>
+                    <MartRow kw_data={m}
+                />)
+        }
+    }
+
     render() {
-        let crows = [];
-        let erows = [];
-        let hrows = [];
-        let lrows = [];
-
-        crows = this.props.coupang.map(column => <CoupangRow coupang={column}  />);
-        erows = this.props.emart.map(column => <EmartRow emart={column}  />);
-        hrows = this.props.homeplus.map(column => <HomeplusRow homeplus={column} />);
-        lrows = this.props.lottemart.map(column => <LottemartRow lottemart={column} />);
-
         return (
             <section className="list-section mb-3 bg-light">
                 <div className="container">
-                    결과
                     <div className="row">
-                        <MartRow />
+                        <table className="result">
+                            <tr className="mall_list">
+                                <td className="default">쇼핑몰 이름</td>
+                                <td className="td1">롯데마트</td>
+                                <td className="td2">이마트</td>
+                                <td className="td3">홈플러스</td>
+                                <td className="td4">쿠팡</td>
+                            </tr>
+                            {this.state.martRows}
+                        </table>
                     </div>
                 </div>
             </section>
-        );
+        )
     }
 }
 
@@ -415,7 +425,7 @@ class SearchBar extends React.Component {
     }
 }
 
-class Items extends React.Component {
+class Item extends React.Component {
 
     //오른쪽 상단 버튼 이벤트
     onCheckItems(e){
@@ -444,7 +454,7 @@ class Items extends React.Component {
     }
 }
 
-class CoupangRow extends React.Component {
+/* class CoupangRow extends React.Component {
     render() {
         return (
             <div className="list_item">
@@ -483,7 +493,7 @@ class LottemartRow extends React.Component {
 
         );
     }
-}
+} */
 
 
 class SaveItems extends React.Component{
