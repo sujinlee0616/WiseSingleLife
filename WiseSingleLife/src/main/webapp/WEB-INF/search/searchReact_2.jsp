@@ -24,8 +24,9 @@ class App extends React.Component {
             optionValue: "",
             //검색어 리스트 
             searchKeywordList : [],
-            //저장된 상품 
+            //저장된 상품  [ { }, { },]
             saveItems:[],
+            tempItems:[],
             //추천레시피
             recipeRecommendList:[]
         };
@@ -35,35 +36,35 @@ class App extends React.Component {
         this.setSaveItems = this.setSaveItems.bind(this);
         this.setRecipeRecommendList  = this.setRecipeRecommendList.bind(this);
     }
+
+    //정렬 옵션 선택
     setOptionValue (){
-        
+        this.setState({optionValue:e.target.value});
     }
-    
+
     setKeywordList() {
-        
+        this.setState({keyword:e.target.value});
     }
-    
+
     setSaveItems (){
-        
+        this.setState({saveItems:})
     }
     setRecipeRecommendList () {
-        
+
     }
-    
-    
-    onUserInput2(keyword) {
+
+    setKeywordList() {
         axios.get("http://localhost:8080/web/hp/search.do", {
             params: {
                 keyword: keyword
             }.then(function(result) {
-                this.setState({ homeplus: result.data });
+                const temp = { keyword:keyset, data:result.data};
+                this.setstate({martdata:temp});
             })
         });
-
-        this.setState({ keyword: keyword });
     }
-    
-    
+
+
 
     //처음 첫 검색어에 대한 state 생성
     componentDidMount() {
@@ -88,10 +89,11 @@ class App extends React.Component {
             <section className="ftco-search bg-light">
                 <div className="container">
                     <div className="row">
-                        <SearchBar />
+                        <SearchBar setKeywordList={this.state.keyword} optionValue={this.state.optionValue} save={}/>
                         <MartTable
                             rows = {this.state.martdata}
                         />
+                        <Modal setKeywordList={this.state.keyword} mart={this.state.martdata.data.}/>
                         <SaveItems />
                         <RecipeRecommend />
                     </div>
@@ -102,38 +104,40 @@ class App extends React.Component {
 }
 
 class SaveItems extends React.Component {
+
+    //아이템 삭제 이벤트
     rener() {
         return (
-        <div className="row">
-            <div className="saved">
-                <div className="title">
-                    <h5 className="saved_title">저장한 상품</h5>
-                </div>
-                <div className="savedItemArea">
-                    <!-- SAVED ITEM 1 -->
-                    <div className="item">
-                        <a href="#">
-                            <p className="product">매일 소화가 잘되는 우유 바나나 190ml</p>
-                            <p className="price mb-0">19,900원</p>
-                        </a>
+            <div className="row">
+                <div className="saved">
+                    <div className="title">
+                        <h5 className="saved_title">저장한 상품</h5>
                     </div>
-                    <!-- SAVED ITEM 2 -->
-                    <div className="item">
-                        <a href="#">
-                            <p className="product">바나나맛 우유(240ml4개) 960ml</p>
-                            <p className="price mb-0">4,580 원</p>
-                        </a>
-                    </div>
-                    <!-- SAVED ITEM 3 -->
-                    <div className="item">
-                        <a href="#">
-                            <p className="product">삼양 큰컵 까르보 불닭볶음면 105g</p>
-                            <p className="price mb-0">15,680원</p>
-                        </a>
+                    <div className="savedItemArea">
+
+                        <div className="item">
+                            <a href="#">
+                                <p className="product">매일 소화가 잘되는 우유 바나나 190ml</p>
+                                <p className="price mb-0">19,900원</p>
+                            </a>
+                        </div>
+
+                        <div className="item">
+                            <a href="#">
+                                <p className="product">바나나맛 우유(240ml4개) 960ml</p>
+                                <p className="price mb-0">4,580 원</p>
+                            </a>
+                        </div>
+
+                        <div className="item">
+                            <a href="#">
+                                <p className="product">삼양 큰컵 까르보 불닭볶음면 105g</p>
+                                <p className="price mb-0">15,680원</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         )
     }
 }
@@ -147,10 +151,6 @@ class RecipeRecommend extends React.Component {
                         <h5 className="saved_title">추천 레시피</h5>
                     </div>
                     <div className="savedItemArea">
-                        <!-- <button type="button" id="recom_btn_prev" class="btn_prev" style="display: block;">
-                            <span class="blind">이전</span>
-                        </button> -->
-                        <!-- SAVED ITEM 1 -->
                         <div className="item">
                             <div className="img">
                                 <a href="#">
@@ -163,8 +163,7 @@ class RecipeRecommend extends React.Component {
                                 <p className="price mb-0">떡볶이,까르보나라</p>
                             </a>
                         </div>
-                        <!-- SAVED ITEM 2 -->
-                        <div className="item">
+                         <div className="item">
                             <div className="img">
                                 <a href="#">
                                     <img className="product_img"
@@ -299,7 +298,54 @@ class MartRow extends React.Component {
         )
     }
 }
+class Modal extends React.Component {
+    render(){
+        return (
+            <div className="modal fade" id="moreBtn" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                 aria-hidden="true">
+                <div className="modal-dialog modal-lg" role="document">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="mb-0">[이마트] 바나나우유 전체보기</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            <section className="ftco-section py-2">
+                                <div className="container">
+                                    <div className="row d-flex">
+                                        <div className="col-md-3 d-flex ftco-animate">
+                                            <div className="blog-entry align-self-stretch">
+                                                <div className="img">
+                                                    <a href="#">
+                                                        <img className="product_img"
+                                                             src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510"/>
+                                                    </a>
+                                                </div>
+                                                <div className="text mt-3 d-block">
+                                                    <a href="#">
+                                                        <p className="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
+                                                        <p className="price">19,900원</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                    </div>
+                                </div>
+                            </section>
+
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}
 
 class SearchBar extends React.Component {
     constructor(props) {
@@ -319,10 +365,6 @@ class SearchBar extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 search-wrap">
-                            <h2 className="heading h5 d-flex align-items-center pr-4">
-                                <span className="ion-ios-search mr-3" />
-                                상세검색
-                            </h2>
                             <form action="#" className="search-property">
                                 <div className="row">
                                     <div className="col-md-2 pl-0">
@@ -351,7 +393,7 @@ class SearchBar extends React.Component {
                                         type="search"
                                         placeholder="검색어를 입력하세요."
                                     />
-                                    <button className="sliderBtn">검색</button>
+                                    <button className="sliderBtn" onClick={this.state}>검색</button>
                                     <div className="col-md-2 align-self-end">
                                         <div className="form-group">
                                             <div className="form-field">
@@ -373,25 +415,40 @@ class SearchBar extends React.Component {
     }
 }
 
+class Items extends React.Component {
+
+    //오른쪽 상단 버튼 이벤트
+    onCheckItems(e){
+        this.setState({tempItems:})
+    }
+    render(){
+        return (
+            <React.Fragment>
+            <div className="img" onClick={this.onCheckItems}>
+                <a href="main/detail.do">
+                    <img
+                        className="product_img"
+                        alt="coupang"
+                        src={this.props.coupang.img}
+                    />
+                </a>
+            </div>
+            <div className="info">
+                <a href="main/detail.do">
+                    <p className="product">{this.props.coupang.name}</p>
+                    <p className="price">{this.props.coupang.baseprice}</p>
+                </a>
+            </div>
+            </React.Fragment>
+        )
+    }
+}
+
 class CoupangRow extends React.Component {
     render() {
         return (
             <div className="list_item">
-                <div className="img">
-                    <a href="main/detail.do">
-                        <img
-                            className="product_img"
-                            alt="coupang"
-                            src={this.props.coupang.img}
-                        />
-                    </a>
-                </div>
-                <div className="info">
-                    <a href="main/detail.do">
-                        <p className="product">{this.props.coupang.name}</p>
-                        <p className="price">{this.props.coupang.baseprice}</p>
-                    </a>
-                </div>
+                <Item image={} name={} price{}/>
             </div>
         );
     }
@@ -401,21 +458,7 @@ class EmartRow extends React.Component {
     render() {
         return (
             <div className="list_item">
-                <div className="img">
-                    <a href="main/detail.do">
-                        <img
-                            className="product_img"
-                            alt="emart"
-                            src={this.props.emart.img}
-                        />
-                    </a>
-                </div>
-                <div className="info">
-                    <a href="main/detail.do">
-                        <p className="product">{this.props.emart.name}</p>
-                        <p className="price">{this.props.emart.price}</p>
-                    </a>
-                </div>
+                <Item image={} name={} price={}/>
             </div>
         );
     }
@@ -425,21 +468,7 @@ class HomeplusRow extends React.Component {
     render() {
         return (
             <div className="list_item">
-                <div className="img">
-                    <a href="main/detail.do">
-                        <img
-                            className="product_img"
-                            alt="homeplus"
-                            src={this.props.homeplus.img}
-                        />
-                    </a>
-                </div>
-                <div className="info">
-                    <a href="main/detail.do">
-                        <p className="product">{this.props.homeplus.name}</p>
-                        <p className="price">{this.props.homeplus.price}</p>
-                    </a>
-                </div>
+                <Item image={} name={} price={}/>
             </div>
         );
     }
@@ -449,27 +478,40 @@ class LottemartRow extends React.Component {
     render() {
         return (
             <div className="list_item">
-                <div className="img">
-                    <a href="main/detail.do">
-                        <img
-                            className="product_img"
-                            alt="lottemart"
-                            src={this.props.lottemart.img}
-                        />
-                    </a>
-                </div>
-                <div className="info">
-                    <a href="main/detail.do">
-                        <p className="product">{this.props.lottemart.name}</p>
-                        <p className="price">{this.props.lottemart.price}</p>
-                    </a>
-                </div>
+                <Item image={} name={} price={}/>
             </div>
 
         );
     }
 }
 
+
+class SaveItems extends React.Component{
+    render(){
+        const savedItems = this.state.saveItems.map((m)=>{
+            <div className="item">
+                <a href="#">
+                    <p className="product">{m.name}</p>
+                    <p className="price mb-0">{m.price}</p>
+                </a>
+            </div>
+
+        })
+
+        return (
+        <div className="row">
+            <div className="saved">
+                <div className="title">
+                    <h5 className="saved_title">저장한 상품</h5>
+                </div>
+                <div className="savedItemArea">
+                    {savedItems}
+                </div>
+            </div>
+        </div>
+        )
+    }
+}
 /*class SearchBar extends React.Component {
     constructor(props) {
         super(props);
