@@ -16,7 +16,8 @@ public class RecipeController {
 	private RecipeDAO dao;
 	
 	@RequestMapping("jhs_search_result.do")
-	public String jhs_search_result() {
+	public String jhs_search_result(Model model) {
+		model.addAttribute("keyword","시금치");
 		return "search/jhsSearchReact";
 	}
 	
