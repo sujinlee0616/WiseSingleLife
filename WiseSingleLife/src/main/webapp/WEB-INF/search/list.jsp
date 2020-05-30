@@ -100,7 +100,7 @@
 									<a href="#">
 										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
 									</a>
-									<button type="button" class="saveBtn"></button>
+									<button type="button" class="saveBtn on"></button>
 								</div>
 								<div class="info">
 									<a href="detail.do?productcode=em0000008113307">

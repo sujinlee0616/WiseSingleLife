@@ -13,7 +13,8 @@
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-<script type="text/javascript">
+<script type="text/babel">
+
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -26,7 +27,11 @@ class App extends React.Component {
             searchKeywordList : [],
             //저장된 상품  [ { }, { },]
             saveItems:[],
-            tempItems:[],
+            tempItems:[{
+                no: "",
+                name:"",
+                price:"",
+            }],
             //추천레시피
             recipeRecommendList:[]
         };
@@ -43,7 +48,10 @@ class App extends React.Component {
 		this.setKeyword = this.setKeyword.bind(this);
 
 		// 키워드의 X 버튼 클릭 시 e.target.value로 값을 읽어서 searchKeywordList에서 그 값을 삭제.(setState)
-		함수 작성 필요.
+        //함수 작성 필요.
+        
+        //아이템 체크한 아이템 리스트 반환하는 함수
+        this.onCheckItems = this.onCheckItems.bind(this);
     }
 
     // 정렬 옵션 선택. select 태그 변화 시 호출. 전체 데이터가 정렬됨.
@@ -52,8 +60,8 @@ class App extends React.Component {
         this.setState({optionValue:e.target.value});
     }
 
-    setSaveItems (){
-        this.setState({saveItems:})
+    setSaveItems (e){
+        this.setState({saveItems:e.target.value})
     }
 
     setRecipeRecommendList () {
@@ -65,6 +73,26 @@ class App extends React.Component {
         
     }
 
+    onCheckItems(e){
+        var clsname = e.target.className;
+        //props로 
+        var itemname = document.getElementsByClassName("product");
+        var itemprice = document.getElementsByClassName("price ");
+        if(clsname="saveBtn on"){
+            e.taget.className = "saveBtn"
+            const {tempItems} = this.state;
+            this.setstate({
+                tempItems: tempItems.filter(tempItems=> tempItems.name !== itemname)
+            })
+        }else{
+            const {tempItems} = this.state;
+            e.target.className = "saveBtn on"
+            this.setState({
+                tempItems: tempItems.concat({no:this.no++, name:itemname, price:itemprice})
+            })
+
+        }
+    }
 
 
     //처음 첫 검색어에 대한 state 생성
@@ -104,7 +132,118 @@ class App extends React.Component {
         );
     }
 }
+class MartTable extends React.Component {
+    constructor() {
+        super();
 
+        this.state = {
+            martRows : this.props.martdata.map((m)=>
+                    <MartRow kw_data={m}
+                />)
+        }
+    }
+
+    render() {
+        return (
+            <section className="list-section mb-3 bg-light">
+                <div className="container">
+                    <div className="row">
+                        <table className="result">
+                            <tr className="mall_list">
+                                <td className="default">쇼핑몰 이름</td>
+                                <td className="td1">롯데마트</td>
+                                <td className="td2">이마트</td>
+                                <td className="td3">홈플러스</td>
+                                <td className="td4">쿠팡</td>
+                            </tr>
+                            {this.state.martRows}
+                        </table>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+}
+
+class MartRow extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            kw_data : this.props.kw_data.map((m,key)=>
+                <ItemList martname={m}/>
+            )
+        }
+   }
+    render() {
+
+        return (
+                <tr className="mall_result" id="product1">
+                    <td rowSpan="2" className="product_name">
+                        {this.props.kw_data.keyword}
+                    </td>
+                    {this.state.kw_data}
+                 </tr>
+        )
+    }
+}
+
+class ItemList extends React.Component{
+    //마트별 아이템들의 리스트를 받아야 한다.
+    constructor() {
+        super();
+
+        this.state = {
+            martname : this.props.martname.map((m)=>
+                    <Item item={m}
+                />)
+        }
+    }
+    
+    render(){
+        return (
+            <td className={this.props.martname}>
+                {this.state.martname}
+            <button
+            type="button"
+            className="btn btn-block moreBtn"
+            data-toggle="modal"
+            data-target="#moreBtn"
+             >
+            + 더 보기
+            </button>
+            </td>
+        )
+    }
+}
+class Item extends React.Component {
+
+    //오른쪽 상단 버튼 이벤트
+    render(){
+        return (
+            <div className="list_item">
+                <div className="img" onClick={(e)=>{onCheckItems(e)}} data-code={this.props.item.productcode}
+                data-name={this.props.item.name} data-price={this.props.item.price}
+                >
+                    <a href="main/detail.do">
+                        <img
+                            className="product_img"
+                            alt="{this.props."
+                            src={this.props.item.img}
+                        />
+                    </a>
+                    <button type="button" className="saveBtn on" onClick={onCheckItems}></button>
+                </div>
+                <div className="info">
+                    <a href="main/detail.do">
+                        <p className="product">{this.props.item.name}</p>
+                        <p className="price">{this.props.item.price}</p>
+                    </a>
+                </div>
+            </div>
+        )
+    }
+}
 class SaveItems extends React.Component {
 
     //아이템 삭제 이벤트
@@ -165,31 +304,6 @@ class RecipeRecommend extends React.Component {
                                 <p className="price mb-0">떡볶이,까르보나라</p>
                             </a>
                         </div>
-                         <div className="item">
-                            <div className="img">
-                                <a href="#">
-                                    <img className="product_img"
-                                         src="https://img1.daumcdn.net/thumb/R800x0/?scode=mtistory2&fname=https%3A%2F%2Ft1.daumcdn.net%2Fcfile%2Ftistory%2F2038593F502C347533"/>
-                                </a>
-                            </div>
-                            <a href="#">
-                                <p className="product">든든한 영양 음료!! 바나나 미숫가루</p>
-                                <p className="price mb-0">바나나,</p>
-                            </a>
-                        </div>
-                        <!-- SAVED ITEM 3 -->
-                        <div className="item">
-                            <div className="img">
-                                <a href="#">
-                                    <img className="product_img"
-                                         src="https://recipe1.ezmember.co.kr/cache/recipe/2018/01/31/755216f43214f5ef82bfdcb05d934d311.png"/>
-                                </a>
-                            </div>
-                            <a href="#">
-                                <p className="product">불닭 까르보나라의 떡볶이 Ver. 매까떡!</p>
-                                <p className="price mb-0">까르보나라 불닭볶음면</p>
-                            </a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -197,117 +311,9 @@ class RecipeRecommend extends React.Component {
     }
 }
 
-class MartTable extends React.Component {
-    constructor() {
-        super();
 
-        this.state = {
-            martRows : this.props.martdata.map((m)=>
-                    <MartRow kw_data={m}
-                />)
-        }
-    }
 
-    render() {
-        return (
-            <section className="list-section mb-3 bg-light">
-                <div className="container">
-                    <div className="row">
-                        <table className="result">
-                            <tr className="mall_list">
-                                <td className="default">쇼핑몰 이름</td>
-                                <td className="td1">롯데마트</td>
-                                <td className="td2">이마트</td>
-                                <td className="td3">홈플러스</td>
-                                <td className="td4">쿠팡</td>
-                            </tr>
-                            {this.state.martRows}
-                        </table>
-                    </div>
-                </div>
-            </section>
-        )
-    }
-}
 
-class MartRow extends React.Component {
-    constructor(props) {
-        super(props);
-    }
-
-    render() {
-        let crows = [];
-        let erows = [];
-        let hrows = [];
-        let lrows = [];
-
-        crows = this.props.coupang.map(column => <CoupangRow coupang={column}  />);
-        erows = this.props.emart.map(column => <EmartRow emart={column}  />);
-        hrows = this.props.homeplus.map(column => <HomeplusRow homeplus={column} />);
-        lrows = this.props.lottemart.map(column => <LottemartRow lottemart={column} />);
-
-        return (
-            <table className="result">
-                <tr className="mall_list">
-                    <td className="default">쇼핑몰 이름</td>
-                    <td className="td1">이마트</td>
-                    <td className="td2">롯데마트</td>
-                    <td className="td3">홈플러스</td>
-                    <td className="td4">쿠팡</td>
-                </tr>
-                <tr className="mall_result" id="product1">
-                    <td rowSpan="2" className="product_name">
-                        {this.props.keyword}
-                    </td>
-                    <td className="coupang">
-                        {crows.slice(0, 3)}
-                        <button
-                            type="button"
-                            className="btn btn-block moreBtn"
-                            data-toggle="modal"
-                            data-target="#moreBtn"
-                        >
-                            + 더 보기
-                        </button>
-                    </td>
-                    <td className="emart">
-                        {erows.slice(0, 3)}
-                        <button
-                            type="button"
-                            className="btn btn-block moreBtn"
-                            data-toggle="modal"
-                            data-target="#moreBtn"
-                        >
-                            + 더 보기
-                        </button>
-                    </td>
-                    <td className="homeplus">
-                        {hrows.slice(0, 3)}
-                        <button
-                            type="button"
-                            className="btn btn-block moreBtn"
-                            data-toggle="modal"
-                            data-target="#moreBtn"
-                        >
-                            + 더 보기
-                        </button>
-                    </td>
-                    <td className="lottemart">
-                        {lrows.slice(0, 3)}
-                        <button
-                            type="button"
-                            className="btn btn-block moreBtn"
-                            data-toggle="modal"
-                            data-target="#moreBtn"
-                        >
-                            + 더 보기
-                        </button>
-                    </td>
-                </tr>
-            </table>
-        )
-    }
-}
 class Modal extends React.Component {
     render(){
         return (
@@ -425,34 +431,6 @@ class SearchBar extends React.Component {
     }
 }
 
-class Item extends React.Component {
-
-    //오른쪽 상단 버튼 이벤트
-    onCheckItems(e){
-        this.setState({tempItems:})
-    }
-    render(){
-        return (
-            <React.Fragment>
-            <div className="img" onClick={this.onCheckItems}>
-                <a href="main/detail.do">
-                    <img
-                        className="product_img"
-                        alt="coupang"
-                        src={this.props.coupang.img}
-                    />
-                </a>
-            </div>
-            <div className="info">
-                <a href="main/detail.do">
-                    <p className="product">{this.props.coupang.name}</p>
-                    <p className="price">{this.props.coupang.baseprice}</p>
-                </a>
-            </div>
-            </React.Fragment>
-        )
-    }
-}
 
 /* class CoupangRow extends React.Component {
     render() {
