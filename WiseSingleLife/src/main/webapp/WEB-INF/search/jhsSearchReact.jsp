@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,6 +16,60 @@
 <div id="root"></div>
 <script type="text/babel">
 const URL = 'http://localhost:8080/web/'
+
+class MartRow extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            kw_data : this.props.kw_data.map((m)=>
+                <td><ItemList martname={m}/></td>
+            )
+        }
+   }
+    render() {
+
+        return (
+                <tr className="mall_result" id="product1">
+                    <td rowSpan="2" className="product_name">
+                        {this.props.kw_data.keyword}
+                    </td>
+                    {this.props.kw_data}
+                 </tr>
+        )
+    }
+}
+
+class MartTable extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            martRows: this.props.martdata.map((m) => <tr><MartRow kw_data={m}/></tr> )
+        }
+    }
+
+    render() {
+        return (
+            <section className="list-section mb-3 bg-light">
+                <div className="container">
+                    <div className="row">
+                        <table className="result">
+                            <tr className="mall_list">
+                                <td className="default">쇼핑몰 이름</td>
+                                <td className="td1">롯데마트</td>
+                                <td className="td2">이마트</td>
+                                <td className="td3">홈플러스</td>
+                                <td className="td4">쿠팡</td>
+                            </tr>
+                            {this.state.martRows}
+                        </table>
+                    </div>
+                </div>
+            </section>
+        )
+    }
+}
 
 class SearchBar extends React.Component {
 	constructor(props) {
@@ -38,7 +92,6 @@ class SearchBar extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 search-wrap">
-                            <form action="javascript:void(0)" className="search-property">
                                 <div className="row">
                                     <div className="col-md-2 pl-0">
                                         <div className="form-group">
@@ -65,14 +118,14 @@ class SearchBar extends React.Component {
 											{keywordListHtml}
 											<li className="current">
 												<input
-													onKeyDown={(e)=>{if(e.keyCode==13){this.props.addToSearchKeywordList(this.state.keyword);this.setState({keyword:''})}}}
+													onKeyDown={(e)=>{e.stopPropagation();if(e.keyCode==13){this.props.addToSearchKeywordList(this.state.keyword);this.setState({keyword:''})}}}
 													onChange={(e)=>{this.setState({keyword:e.target.value})}}
 													value={this.state.keyword}
 													className="hidden_input" tabIndex="1" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" role="textbox" ariaAutocomplete="list" placeholder=""
 												/>
 											</li>
 										</ul>
-										<button onClick={this.props.setMartData} className="sliderBtn pl-0">검색</button>
+										<button onClick={()=>{this.props.setMartData()}} className="sliderBtn pl-0">검색</button>
 									</div>
                                     <div className="col-md-2 align-self-end">
                                         <div className="form-group">
@@ -87,7 +140,6 @@ class SearchBar extends React.Component {
                                         </div>
                                     </div>
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -102,7 +154,7 @@ class App extends React.Component {
         this.state = {
             martdata: [],
             optionValue: 'pop',
-            searchKeywordList: ['시금치'],
+            searchKeywordList: [],
             saveItems: [],
             tempItems: [],
             recipeRecommendList: []
@@ -113,6 +165,14 @@ class App extends React.Component {
         this.setRecipeRecommendList = this.setRecipeRecommendList.bind(this);
         this.setMartData = this.setMartData.bind(this);
 		this.removeFromSearchKeywordList = this.removeFromSearchKeywordList.bind(this);
+	}
+
+	componentDidMount() {
+		var keyset = '${keyword}'
+		var temp = []
+		temp.push(keyset)
+		this.setState({searchKeywordList:temp})
+		this.setMartData()
 	}
 	
 	removeFromSearchKeywordList(e) {
@@ -143,7 +203,19 @@ class App extends React.Component {
     }
 
     setMartData() {
-		alert('axios call...')
+		let temp = []
+		this.state.searchKeywordList.map((keyword)=>{
+			axios.get(URL+'searchrest.do',{
+				params : { keyword:keyword }
+			}).then((res)=>{
+				var keyword_data = {
+					keyword:keyword,
+					data:res.data
+				}
+				temp.push(keyword_data)
+			})
+		})
+		this.setState({martdata:temp})
     }
 
     render() {
@@ -158,6 +230,7 @@ class App extends React.Component {
 							removeFromSearchKeywordList={this.removeFromSearchKeywordList}
                             setSaveItems={this.setSaveItems} setMartData={this.setMartData}
                         />
+						<MartTable martdata={this.state.martdata}/>
                     </div>
                 </div>
             </section>
