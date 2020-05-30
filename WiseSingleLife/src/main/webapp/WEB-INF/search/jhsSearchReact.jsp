@@ -19,7 +19,65 @@
 <script type="text/babel">
 const URL = 'http://localhost:8080/web/'
 
+class Modal extends React.Component {
+  
+  constructor(props){
+    super(props);
+  }
+	render() {
+		let key = this.props.modalItems.martname
+		let martname = ''
+		switch({key}) {
+			case 'lm' : martname = '롯데마트';
+			case 'hp' : martname = '홈플러스';
+			case 'em' : martname = '이마트';
+			case 'cp' : martname = '쿠팡';
+		}
 
+		let html = this.props.modalItems.data.map((m)=>
+			<div className="col-md-3 d-flex">
+						<div className="blog-entry align-self-stretch">
+							<div className="img">
+								<a href="#">
+									<img className="product_img" src={m.img}/>
+								</a>
+							</div>
+						<div className="text mt-3 d-block">
+						<a href="#">
+							<p className="product">{m.name}</p>
+							<p className="price">{m.price}</p>
+						</a>
+					</div>
+				</div>
+			 </div>
+		)
+	
+		return (
+			<div className="modal fade" id="moreBtn" tabIndex="-1" role="dialog" ariaLabelledby="exampleModalLabel" ariaHidden="false">
+				<div className="modal-dialog modal-lg" role="document">
+				  <div className="modal-content">
+					<div className="modal-header">
+					  <h5 className="mb-0">{this.props.modalItems.martname} {this.props.modalItems.keyword} 전체보기</h5>
+					  <button type="button" className="close" data-dismiss="modal" ariaLabel="Close">
+						<span ariaHidden="false">&times;</span>
+					  </button>
+					</div>
+					<div className="modal-body">
+						<section className="ftco-section py-2">
+							<div className="container">
+								<div className="row d-flex">
+							 		{html}
+								</div>
+							</div>
+						</section>
+
+					</div>
+				  </div>
+				</div>
+			</div>
+		)
+	}
+}
 
 class RecipeRecommend extends React.Component {
   render() {
@@ -146,7 +204,7 @@ class ItemList extends React.Component {
     super(props);
 
     this.state = {
-      items: this.props.martitems.slice(0, 4).map((m) => <Item item={m} />),
+      items: this.props.martitems.slice(0,3).map((m) => <Item item={m} />),
     };
   }
 
@@ -159,9 +217,9 @@ class ItemList extends React.Component {
           className="btn btn-block moreBtn"
           data-toggle="modal"
           data-target="#moreBtn"
-          data-martname={this.props.key}
+          data-martname={this.props.key1}
           data-keyword={this.props.keyword}
-          onClick={(e)=>{showModalBtn(e);}}
+          onClick={(e)=>{this.props.showModalBtn(e)}}
         >
           + 더 보기
         </button>
@@ -177,14 +235,14 @@ class MartRow extends React.Component {
   render() {
     return (
       <tr className="mall_result" id="product1">
-        <td rowSpan="2" className="product_name">
+        <td className="product_name">
           {this.props.kw_data.keyword}
         </td>
         
-          <ItemList martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.kw_data.showModalBtn}/>
-          <ItemList martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.kw_data.showModalBtn}/>
-          <ItemList martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.kw_data.showModalBtn}/>
-          <ItemList martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.kw_data.showModalBtn}/>
+          <ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
+          <ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
+          <ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
+          <ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
       </tr>
     );
   }
@@ -196,7 +254,7 @@ class MartTable extends React.Component {
     }
 
     render() {
-		let html = this.props.martdata.map((m) => <MartRow kw_data={m}/> )
+		let html = this.props.martdata.map((m) => <MartRow kw_data={m} showModalBtn={this.props.showModalBtn}/> )
 
         return (
             <section className="list-section mb-3 bg-light">
@@ -306,6 +364,8 @@ class App extends React.Component {
             saveItems: [],
             tempItems: [],
             recipeRecommendList: [],
+			modalItems : {},
+			visible : false
         };
         this.setOptionValue = this.setOptionValue.bind(this);
         this.addToSearchKeywordList = this.addToSearchKeywordList.bind(this);
@@ -314,18 +374,10 @@ class App extends React.Component {
         this.setMartData = this.setMartData.bind(this);
 		this.getJSON = this.getJSON.bind(this);
 		this.removeFromSearchKeywordList = this.removeFromSearchKeywordList.bind(this);
+		this.showModalBtn = this.showModalBtn.bind(this);
 	}
 
-	componentWillMount() {
-		var keyset = '${keyword}'
-		var temp = []
-		temp.push(keyset)
-		this.setState({searchKeywordList:temp})
-	}
-
-	componentDidMount() {
-		this.setMartData()
-	}
+	
 	
 	removeFromSearchKeywordList(e) {
 		var keyword = e.target.dataset.keyword
@@ -354,6 +406,22 @@ class App extends React.Component {
 
     }
 
+	showModalBtn(e) {
+		let keyword = e.target.dataset.keyword
+		let martname = e.target.dataset.martname
+		let temp = {}
+		this.state.martdata.map((m)=>{
+			if(m.keyword===keyword) temp = m
+		})
+		temp = temp.data[martname]
+		this.state.modalItems = {
+			keyword:keyword,
+			martname:martname,
+			data:temp
+		}
+		this.setState({visible:true})
+	}
+
 	getJSON(keyword) {
 		axios.get(URL+'searchrest.do',{
 				params : { keyword:keyword }
@@ -363,11 +431,11 @@ class App extends React.Component {
 				temp = this.state.martdata
 				temp.push(obj)
 				this.setState({martdata:temp})
-console.log(this.state.martdata)
 			})
 	}
 
     setMartData() {
+		this.setState({martdata:[]})
 		this.state.searchKeywordList.map(async(keyword)=>{
 			await this.getJSON(keyword)
 		})
@@ -385,9 +453,10 @@ console.log(this.state.martdata)
 							removeFromSearchKeywordList={this.removeFromSearchKeywordList}
                             setSaveItems={this.setSaveItems} setMartData={this.setMartData}
                         />
-						<MartTable martdata={this.state.martdata}/>
+						<MartTable martdata={this.state.martdata} showModalBtn={this.showModalBtn}/>
 						{this.state.saveItems.length!=0 ? <SaveItems /> : null }
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
+						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
                     </div>
                 </div>
             </section>
