@@ -33,6 +33,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 </head>
 <body>
     <tiles:insertAttribute name="nav"/>
@@ -102,7 +103,7 @@ class Modal extends React.Component {
 				<div className="modal-dialog modal-lg" role="document">
 				  <div className="modal-content">
 					<div className="modal-header">
-					  <h5 className="mb-0">{this.props.modalItems.martname}[{martname}] {this.props.modalItems.keyword} 전체보기</h5>
+					  <h5 className="mb-0">[{martname}] {this.props.modalItems.keyword} 전체보기</h5>
 					  <button type="button" className="close" data-dismiss="modal" ariaLabel="Close">
 						<span ariaHidden="false">&times;</span>
 					  </button>
@@ -155,8 +156,12 @@ class RecipeRecommend extends React.Component {
 }
 
 class SaveItems extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	
   render() {
-     const savedItems = this.state.saveItems.map((m) => (
+     const savedItems = this.props.saveItems.map((m) => (
        <div className="item">
         <a href="#">
            <p className="product">{m.name}</p>
@@ -183,7 +188,16 @@ class SaveItems extends React.Component {
 class Item extends React.Component {
   	constructor(props) {
     	super(props);
+		this.state = {
+			clsname : 'saveBtn'
+		}
+		this.toggleClsname = this.toggleClsname.bind(this)
   	}
+
+	toggleClsname() {
+		if(this.state.clsname!='saveBtn') this.setState({clsname:'saveBtn'})
+		else this.setState({clsname:'saveBtn on'})
+	}
 
   render() {
     return (
@@ -198,8 +212,8 @@ class Item extends React.Component {
           </a>
           <button
             type="button"
-            className="saveBtn on"
-            onClick={(e)=>{this.props.setCheckItems(e)}}
+            className={this.state.clsname}
+            onClick={(e)=>{this.toggleClsname();this.props.setCheckItems(e);}}
             data-code={this.props.item.productcode}
             data-name={this.props.item.name}
             data-price={this.props.item.price}
@@ -354,7 +368,7 @@ class SearchBar extends React.Component {
                                         <div className="form-group">
                                             <div className="form-field">
                                                 <input
-                                                    onClick={()=>{}}
+                                                    onClick={this.props.setSaveItems}
                                                     type="text"
                                                     value="저장"
                                                     className="form-control btn btn-primary"
@@ -417,8 +431,9 @@ class App extends React.Component {
         this.setState({optionValue: e.target.value});
     }
 
-    setSaveItems(e) {
-        this.setState({saveItems: e})
+    setSaveItems() {
+		let temp = this.state.tempItems.map(m=>m)
+        this.setState({saveItems:temp})
     }
 
     setRecipeRecommendList() {
@@ -442,26 +457,21 @@ class App extends React.Component {
 	}
 
  	setCheckItems(e) {
-    	console.log("check Item")
-		var clsname = e.target.className
-		var temp = clsname.trim();
-		console.log(temp);
     	var itemname = e.target.dataset.name;
     	var itemprice = e.target.dataset.price;
+		var productcode = e.target.dataset.code;
 	    	
-		if (clsname ==="saveBtn on") {
-    	  	e.taget.className = "saveBtn";
+		if (e.target.className=='saveBtn on') {
      		const { tempItems } = this.state;
-      		this.setstate({
+      		this.setState({
         		tempItems: tempItems.filter((tempItems) => tempItems.name !== itemname)
      		 });
 		
-    	} else if(clsname ==="saveBtn") {
-      		e.target.className = "saveBtn on";
+    	} else {
 			const { tempItems } = this.state;
      		this.setState({
         		tempItems: tempItems.concat({
-          		no: this.no++,
+          		productcode: productcode,
           		name: itemname,
           		price: itemprice,
         	})
@@ -488,8 +498,6 @@ class App extends React.Component {
 		})
     }
 
-
-
     render() {
         return (
             <section className="ftco-search bg-light">
@@ -503,7 +511,7 @@ class App extends React.Component {
                             setSaveItems={this.setSaveItems} setMartData={this.setMartData}
                         />
 						<MartTable martdata={this.state.martdata} showModalBtn={this.showModalBtn} setCheckItems={this.setCheckItems}/>
-						{this.state.saveItems.length!=0 ? <SaveItems /> : null }
+						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
                     </div>
