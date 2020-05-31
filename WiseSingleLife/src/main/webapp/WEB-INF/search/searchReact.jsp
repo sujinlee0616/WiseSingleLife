@@ -30,282 +30,15 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-  <!-- ================================ NAVBAR ================================ -->
     <tiles:insertAttribute name="nav"/>
-    <!-- END nav -->
 	<div class="container" id="root"></div>
-<!--      ================================== FILTERS AND SAVE BTN==================================	
- -->	<!-- <section class="ftco-search bg-light">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12 search-wrap">
-					<h2 class="heading h5 d-flex align-items-center pr-4"><span class="ion-ios-search mr-3"></span>상세검색</h2>
-					<form action="#" class="search-property">
-						<div class="row">
-							<div class="col-md-2 pl-0">
-								<div class="form-group">
-									 <label for="#">정렬</label>
-									<div class="form-field">
-										<div class="select-wrap">
-											<div class="icon"><span class="ion-ios-arrow-down"></span></div>
-											<select name="" id="" class="form-control">
-                                                <option value="pop">인기랭킹순</option>
-												<option value="asc">가격낮은순</option>
-												<option value="desc">가격높은순</option>
-											</select>
-										</div>
-									</div>
- 								</div> 	
-							</div>
-								<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요.">
-								<button class="sliderBtn">검색</button>
-							<div class="col-md-2 align-self-end">
-								<div class="form-group">
-									<div class="form-field">
-										<input type="submit" value="저장" class="form-control btn btn-primary">
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</section>
-    
-    ================================== CONTENTS==================================	    
-    <section class="list-section mb-3 bg-light">
-    	<div class="container">
-			결과
-			<div class="row">
-				<table class="result">
-					<tr class="mall_list">
-						<td class="default">쇼핑몰 이름</td>
-						<td class="td1">이마트</td>
-						<td class="td2">롯데마트</td>
-						<td class="td3">홈플러스</td>
-						<td class="td4">쿠팡</td>
-					</tr>
-					============================== ITEM1 ==============================
-					############################## Emart ROW ##########################
-					<tr class="mall_result" id="product1">
-						<td rowspan="2" class="product_name">바나나 우유</td>
-						=============== 1.이마트 ===============
-						<td class="emart">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_2285035/22850351426.20200513172849.jpg?type=f300">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
-							더보기 버튼: 컨텐츠가 3개 초과일 경우
-							<button type="button" class="btn btn-block" id="">+ 더 보기</button>
-							<button type="button" class="btn btn-block moreBtn" data-toggle="modal" data-target="#moreBtn">+ 더 보기</button>
-						</td>
-						=============== 2.롯데마트 ===============
-						############################## Lotte ROW ##########################
-						<td class="lotte">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-						=============== 3.홈플러스 ===============
-						############################## HomePlust ROW ##########################
-						<td class="homeplus">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-						=============== 4.쿠팡===============
-						############################## Coupang ROW ##########################
-						<td class="coupang">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-					</tr>
-					============================== ITEM1 GRAPH ==============================
-					<tr class="mall_result" id="graph1">
-						<td class="graph_left"></td>
-						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
-					</tr>
-					============================== ITEM2 ==============================
-					<tr class="mall_result" id="product1">
-						<td rowspan="2" class="product_name">삼양 까르보 불닭볶음면</td>
-						<td class="emart">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shopping-phinf.pstatic.net/main_1304626/13046260762.20171221101956.jpg?type=f300">
-									</a>
-								</div>
-								<div class="info">		
-									<a href="#">
-										<p class="product">삼양 까르보 불닭볶음면 130g</p>
-										<p class="price">950원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-						<td class="lotte">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20180912_218/syfood_153671034462456YVN_JPEG/19429203347270209_1392560495.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">삼양 까르보불닭볶음면 큰컵 105gx16입</p>
-										<p class="price">16,800원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-						<td class="homeplus">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-						<td class="coupang">
-							<div class="list_item">
-								<div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								</div>
-								<div class="info">
-									<a href="#">
-										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
-										<p class="price">10,910원</p>
-									</a>
-								</div>
-							</div>
-						</td>
-					</tr>
-					============================== ITEM2 GRAPH ==============================
-					<tr class="mall_result" id="graph1">
-						<td class="graph_left"></td>
-						<td colspan="4" class="graph_area"><img src="images/graph.png" style="width: 85%;"></td>
-					</tr>
-				</table>
-			</div>
-			저장한 상품
-			<div class="row">
-				<div class="saved">
-					<h5 class="saved_title">저장한 상품</h5>
-				</div>
-			</div>
-
-			============================== 더보기 MODAL ==============================
-			<div class="modal fade" id="moreBtn" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-lg" role="document">
-				  <div class="modal-content">
-					<div class="modal-header">
-					  <h5 class="mb-0">[이마트] 바나나우유 전체보기</h5>
-					  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					  </button>
-					</div>
-					<div class="modal-body">
-						<section class="ftco-section py-2">
-							<div class="container">
-							<div class="row d-flex">
-							  ========== Start of Modal Item ==========
-							  MODAL ITEM 1
-							  <div class="col-md-3 d-flex ftco-animate">
-								<div class="blog-entry align-self-stretch">
-								  <div class="img">
-									<a href="#">
-										<img class="product_img" src="https://shop-phinf.pstatic.net/20200210_1/1581298075142K9f83_JPEG/18658813766617391_17493234.jpg?type=m510">
-									</a>
-								  </div>
-								  <div class="text mt-3 d-block">
-									<a href="#">
-										<p class="product">매일유업 매일 소화가 잘되는 우유 바나나 190ml</p>
-										<p class="price">19,900원</p>
-									</a>
-								  </div>
-								</div>
-							  </div>
-							  ========== End of Modal Item ==========
-							</div>
-							</div>
-						</section>
-
-					</div>
-					<div class="modal-footer">
-					  <button type="button" class="btn btn-secondary" data-dismiss="modal">닫기</button>
-					</div>
-				  </div>
-				</div>
-			</div>
-
-			
-
-    	</div>
-    </section> -->
-
-
-    <!-- ================================== FOOTER ================================== -->
     <tiles:insertAttribute name="footer"/>
-
-  <!-- loader -->
   <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-
-
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
   <script src="js/popper.min.js"></script>
@@ -323,354 +56,601 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
   
   <script src="js/scrollax.min.js"></script>
-<!--   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>
- -->  <script src="js/main.js"></script>
-  <script type="text/babel">
- 
-class App extends React.Component {
+  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>-->
+<script src="js/main.js"></script>
+<script type="text/babel">
+const URL = 'http://localhost:8080/web/'
+
+class Modal extends React.Component {
+  
+  constructor(props){
+    super(props);
+  }
+	render() {
+		let key = this.props.modalItems.martname
+		let martname = ''
+		if(this.props.modalItems.martname==='lm')
+			martname ='롯데마트'
+		else if(this.props.modalItems.martname==='hp')
+			martname = '홈플러스'
+		else if (this.props.modalItems.martname==='em')
+			martname = '이마트'
+		else if (key==='cp')
+			martname = '쿠팡'
+
+		let html = this.props.modalItems.data.map((m)=>
+			<div className="col-md-3 d-flex">
+						<div className="blog-entry align-self-stretch">
+							<div className="img">
+								<a href="#">
+									<img className="product_img" src={m.img}/>
+								</a>
+							</div>
+						<div className="text mt-3 d-block">
+						<a href="#">
+							<p className="product">{m.name}</p>
+							<p className="price">{m.price}</p>
+						</a>
+					</div>
+				</div>
+			 </div>
+		)
+	
+		return (
+			<div className="modal fade" id="moreBtn" tabIndex="-1" role="dialog" ariaLabelledby="exampleModalLabel" ariaHidden="false">
+				<div className="modal-dialog modal-lg" role="document">
+				  <div className="modal-content">
+					<div className="modal-header">
+					  <h5 className="mb-0">[{martname}] {this.props.modalItems.keyword} 전체보기</h5>
+					  <button type="button" className="close" data-dismiss="modal" ariaLabel="Close">
+						<span ariaHidden="false">&times;</span>
+					  </button>
+					</div>
+					<div className="modal-body">
+						<section className="ftco-section py-2">
+							<div className="container">
+								<div className="row d-flex">
+							 		{html}
+								</div>
+							</div>
+						</section>
+
+					</div>
+				  </div>
+				</div>
+			</div>
+		)
+	}
+}
+
+class RecipeRecommend extends React.Component {
+  render() {
+    return (
+      <div className="row">
+        <div className="saved">
+          <div className="title">
+            <h5 className="saved_title">추천 레시피</h5>
+          </div>
+          <div className="savedItemArea">
+            <div className="item">
+              <div className="img">
+                <a href="#">
+                  <img
+                    className="product_img"
+                    src="https://recipe1.ezmember.co.kr/cache/recipe/2015/09/21/8120c5f993593892442603f5e246eb671.jpg"
+                  />
+                </a>
+              </div>
+              <a href="#">
+                <p className="product">까르보나라 떡볶이</p>
+                <p className="price mb-0">떡볶이,까르보나라</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+class SaveItems extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	
+  render() {
+     const savedItems = this.props.saveItems.map((m) => (
+       <div className="item">
+        <a href="#">
+           <p className="product">{m.name}</p>
+           <p className="price mb-0">{m.price}</p>
+         </a>
+       </div>
+     ));
+
+    return (
+      <div className="row">
+        <div className="saved">
+          <div className="title">
+            <h5 className="saved_title">저장한 상품</h5>
+          </div>
+          <div className="savedItemArea">
+			{savedItems}
+			</div>
+        </div>
+      </div>
+    );
+  }
+}
+
+class Item extends React.Component {
+  	constructor(props) {
+    	super(props);
+		this.state = {
+			clsname : 'saveBtn'
+		}
+		this.toggleClsname = this.toggleClsname.bind(this)
+  	}
+
+	toggleClsname() {
+		if(this.state.clsname!='saveBtn') this.setState({clsname:'saveBtn'})
+		else this.setState({clsname:'saveBtn on'})
+	}
+
+  render() {
+    return (
+      <div className="list_item">
+        <div className="img">
+          <a href="main/detail.do">
+            <img
+              className="product_img"
+              alt="{this.props.name"
+              src={this.props.item.img}
+            />
+          </a>
+          <button
+            type="button"
+            className={this.state.clsname}
+            onClick={(e)=>{this.toggleClsname();this.props.setCheckItems(e);}}
+            data-code={this.props.item.productcode}
+            data-name={this.props.item.name}
+            data-price={this.props.item.price}
+          ></button>
+        </div>
+        <div className="info">
+          <a href="main/detail.do">
+            <p className="product">{this.props.item.name}</p>
+            <p className="price">{this.props.item.price}</p>
+          </a>
+        </div>
+      </div>
+    );
+  }
+}
+
+class ItemList extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      coupang: [],
-      emart: [],
-      homeplus: [],
-      lottemart: [],
-      keyword: "",
-      search_options: ""
+      items: this.props.martitems.slice(0,3).map((m) => <Item item={m} setCheckItems={this.props.setCheckItems}/>),
     };
-    this.onUserInput2 = this.onUserInput2.bind(this);
   }
 
-  onUserInput2(keyword) {
-    axios.get("http://localhost:8080/web/hp/search.do", {
-      params: {
-        keyword: keyword
-      }.then(function(result) {
-        this.setState({ homeplus: result.data });
-      })
-    });
-
-    this.setState({ keyword: keyword });
+  render() {
+    return (
+      <td className={this.props.martname}>
+        {this.state.items}
+        <button
+          type="button"
+          className="btn btn-block moreBtn"
+          data-toggle="modal"
+          data-target="#moreBtn"
+          data-martname={this.props.key1}
+          data-keyword={this.props.keyword}
+          onClick={(e)=>{this.props.showModalBtn(e)}}
+        >
+          + 더 보기
+        </button>
+      </td>
+    );
   }
+}
 
-  componentDidMount() {
-    var keyset = "${keyword}";
-    axios
-      .get("http://localhost:8081/web/searchrest.do", {
-        params: { keyword: keyset }
-      })
-      .then(result => {
-        console.log(result.data.hp);
-        this.setState({ coupang: result.data.cp });
-        this.setState({ emart: result.data.em });
-        this.setState({ homeplus: result.data.hp });
-        this.setState({ lottemart: result.data.lm });
-        this.setState({ keyword: keyset });
-      });
+class MartRow extends React.Component {
+  constructor(props) {
+    super(props);
   }
   render() {
     return (
-	<section className="ftco-search bg-light">
-		<div className="container">
-	      <div className="row">
-	        <SearchOptions />
-	        <MartTable
-	          homeplus={this.state.homeplus}
-	          emart={this.state.emart}
-	          coupang={this.state.coupang}
-	          lottemart={this.state.lottemart}
-	          keyword={this.state.keyword} 
-	        /> 
-	
-	      </div>
-		</div>
-		</section>
+      <tr className="mall_result" id="product1">
+        <td className="product_name">
+          {this.props.kw_data.keyword}
+        </td>
+        
+          <ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+          <ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+          <ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+          <ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+      </tr>
     );
   }
 }
 
 class MartTable extends React.Component {
-  render() {
-    let crows = [];
-    let erows = [];
-    let hrows = [];
-    let lrows = [];
+    constructor(props) {
+        super(props);
+    }
 
-	crows = this.props.coupang.map(column => <CoupangRow coupang={column}  />);
- 	erows = this.props.emart.map(column => <EmartRow emart={column}  />);
-   	hrows = this.props.homeplus.map(column => <HomeplusRow homeplus={column} />);
-   	lrows = this.props.lottemart.map(column => <LottemartRow lottemart={column} />);
+    render() {
+		let html = this.props.martdata.map((m) => <MartRow kw_data={m} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/> )
 
-    return (
-	 <section className="list-section mb-3 bg-light">
-        <div className="container">
-          결과
-          <div className="row">
-            <table className="result">
-              <tr className="mall_list">
-                <td className="default">쇼핑몰 이름</td>
-                <td className="td1">이마트</td>
-                <td className="td2">롯데마트</td>
-                <td className="td3">홈플러스</td>
-                <td className="td4">쿠팡</td>
-              </tr>
-              <tr className="mall_result" id="product1">
-                <td rowspan="2" className="product_name">
-                  {this.props.keyword}
-                </td>
-                <td className="coupang">
-					{crows.slice(0,3)}
-			        <button
-			          type="button"
-			          className="btn btn-block moreBtn"
-			          data-toggle="modal"
-			          data-target="#moreBtn"
-			        >
-			          + 더 보기
-			        </button>
-                </td>
-				 <td className="emart">
-					{erows.slice(0,3)}
-					<button
-			          type="button"
-			          className="btn btn-block moreBtn"
-			          data-toggle="modal"
-			          data-target="#moreBtn" 
-			        >
-			          + 더 보기
-			        </button>
-				 </td>
-  				<td className="homeplus">
-                	{hrows.slice(0,3)}
-                	<button
-			          type="button"
-			          className="btn btn-block moreBtn"
-			          data-toggle="modal"
-			          data-target="#moreBtn"
-			        >
-			          + 더 보기
-			        </button>
-                </td>
- 				<td className="lottemart">
-					{lrows.slice(0,3)}
-					<button
-			          type="button"
-			          className="btn btn-block moreBtn"
-			          data-toggle="modal"
-			          data-target="#moreBtn"
-			        >
-			          + 더 보기
-			        </button>
-				</td>
-              </tr>
-            </table>
-          </div>
-        </div>
-      </section>
-	);
-  }
-}
-class SearchBar extends React.Component {
-  constructor(props) {
-    super(props);
-    // / /이벤트 등록
-
-    this.onClick = this.onClick.bind(this);
-    // / /this.onUserInput = this.onUserInput.bind(this)
-  }
-  onClick(e) {
-    var elem = document.getElementById("keyword").value;
-    var temp = elem;
-    console.log(temp);
-    this.props.onUserInput(elem.value);
-  }
-  render() {
-    return (
-      <div className="slider_search_area">
-        <input
-          className="img_slider_search"
-          type="search"
-          placeholder="리액트 검색어를 입력하세요."
-          id="keyword"
-        />
-        <button className="sliderBtn" onclick="onClick">
-          검색
-        </button>
-      </div>
-    );
-  }
-}
-class SearchOptions extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.onSelect = this.onSelect.bind(this);
-  }
-  onSelect(e) {
-    var selectOption = document.getElementById("searchlist");
-    selectOption = selectOption.options[selectOption.selectedIndex].value;
-    console.log(selectOption);
-    this.props.onUserSelectOptions(e.target.value);
-  }
-  render() {
-    return (
-      <section className="ftco-search bg-light">
-        <div className="container">
-          <div className="row">
-            <div className="col-md-12 search-wrap">
-              <h2 className="heading h5 d-flex align-items-center pr-4">
-                <span className="ion-ios-search mr-3" />
-                상세검색
-              </h2>
-              <form action="#" className="search-property">
-                <div className="row">
-                  <div className="col-md-2 pl-0">
-                    <div className="form-group">
-                      <div className="form-field">
-                        <div className="select-wrap">
-                          <div className="icon">
-                            <span className="ion-ios-arrow-down" />
-                          </div>
-                          <select
-                            name="seachlist"
-                            id="searchlist"
-                            className="form-control"
-                          >
-                            <option value="pop">인기랭킹순</option>
-                            <option value="asc">가격낮은순</option>
-                            <option value="desc">가격높은순</option>
-                          </select>
-                        </div>
-                      </div>
+        return (
+            <section className="list-section mb-3 bg-light">
+                <div className="container">
+                    <div className="row">
+                        <table className="result">
+                            <tr className="mall_list">
+                                <td className="default">쇼핑몰 이름</td>
+                                <td className="td1">롯데마트</td>
+                                <td className="td2">이마트</td>
+                                <td className="td3">홈플러스</td>
+                                <td className="td4">쿠팡</td>
+                            </tr>
+                            {html}
+                        </table>
                     </div>
-                  </div>
-                  <input
-                    className="img_slider_search"
-                    name="keyword"
-                    type="search"
-                    placeholder="검색어를 입력하세요."
-                  />
-                  <button className="sliderBtn">검색</button>
-                  <div className="col-md-2 align-self-end">
-                    <div className="form-group">
-                      <div className="form-field">
-                        <input
-                          type="submit"
-                          value="저장"
-                          className="form-control btn btn-primary"
-                        />
-                      </div>
-                    </div>
-                  </div>
                 </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+            </section>
+        )
+    }
 }
 
-class CoupangRow extends React.Component {
-  render() {
-    return (
-       <div className="list_item">
-          <div className="img">
-            <a href="main/detail.do">
-              <img
-                className="product_img"
-                alt="coupang"
-                src={this.props.coupang.img}
-              />
-            </a>
-          </div>
-          <div className="info">
-            <a href="main/detail.do">
-              <p className="product">{this.props.coupang.name}</p>
-              <p className="price">{this.props.coupang.baseprice}</p>
-            </a>
-          </div>
-        </div>
-    );
-  }
+class SearchBar extends React.Component {
+	constructor(props) {
+        super(props);
+        this.state = {
+            keyword:''
+        }
+    }
+
+    render() {
+		let keywordListHtml = this.props.searchKeywordList.map( m =>
+									<li className="selected">
+										{m}
+										<span className="xBtn" data-keyword={m} onClick={(e)=>{this.props.removeFromSearchKeywordList(e)}}>X</span>
+									</li>
+								)
+
+        return (
+            <section className="ftco-search bg-light">
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-12 search-wrap">
+                                <div className="row">
+                                    <div className="col-md-2 pl-0">
+                                        <div className="form-group">
+                                            <div className="form-field">
+                                                <div className="select-wrap">
+                                                    <div className="icon">
+                                                        <span className="ion-ios-arrow-down"/>
+                                                    </div>
+                                                    <select
+                                                        value={this.props.optionValue}
+                                                        onChange={(e)=>{this.props.setOptionValue(e)}}
+                                                        className="form-control"
+                                                    >
+                                                        <option value="pop">인기랭킹순</option>
+                                                        <option value="asc">가격낮은순</option>
+                                                        <option value="desc">가격높은순</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-8 pl-0">
+										<ul className="searchInputLikeUl mb-0">
+											{keywordListHtml}
+											<li className="current">
+												<input
+													onKeyDown={(e)=>{e.stopPropagation();if(e.keyCode==13){this.props.addToSearchKeywordList(this.state.keyword);this.setState({keyword:''})}}}
+													onChange={(e)=>{this.setState({keyword:e.target.value})}}
+													value={this.state.keyword}
+													className="hidden_input" tabIndex="1" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" role="textbox" ariaAutocomplete="list" placeholder=""
+												/>
+											</li>
+										</ul>
+										<button onClick={()=>{this.props.setMartData()}} className="sliderBtn pl-0">검색</button>
+									</div>
+                                    <div className="col-md-2 align-self-end">
+                                        <div className="form-group">
+                                            <div className="form-field">
+                                                <input
+                                                    onClick={this.props.setSaveItems}
+                                                    type="text"
+                                                    value="저장"
+                                                    className="form-control btn btn-primary"
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        );
+    }
 }
 
-class EmartRow extends React.Component {
-  render() {
-    return (
-       <div className="list_item">
-          <div className="img">
-            <a href="main/detail.do">
-              <img
-                className="product_img"
-                alt="emart"
-                src={this.props.emart.img}
-              />
-            </a>
-          </div>
-          <div className="info">
-            <a href="main/detail.do">
-              <p className="product">{this.props.emart.name}</p>
-              <p className="price">{this.props.emart.price}</p>
-            </a>
-          </div>
-        </div>
-    );
-  }
-}
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            martdata: [],
+            optionValue: 'pop',
+            searchKeywordList: [],
+            saveItems: [],
+            tempItems: [],
+            recipeRecommendList: [],
+			modalItems : {},
+			visible : false,
+			saveVisible: false
+        };
+        this.setOptionValue = this.setOptionValue.bind(this);
+        this.addToSearchKeywordList = this.addToSearchKeywordList.bind(this);
+        this.setSaveItems = this.setSaveItems.bind(this);
+        this.setRecipeRecommendList = this.setRecipeRecommendList.bind(this);
+        this.setMartData = this.setMartData.bind(this);
+		this.getJSON = this.getJSON.bind(this);
+		this.removeFromSearchKeywordList = this.removeFromSearchKeywordList.bind(this);
+		this.showModalBtn = this.showModalBtn.bind(this);
+		this.setCheckItems = this.setCheckItems.bind(this);
+	}
 
-class HomeplusRow extends React.Component {
-  render() {
-    return (
-        <div className="list_item">
-          <div className="img">
-            <a href="main/detail.do">
-              <img
-                className="product_img"
-                alt="homeplus"
-                src={this.props.homeplus.img}
-              />
-            </a>
-          </div>
-          <div className="info">
-            <a href="main/detail.do">
-              <p className="product">{this.props.homeplus.name}</p>
-              <p className="price">{this.props.homeplus.price}</p>
-            </a>
-          </div>
-        </div>
-    );
-  }
-}
 	
-class LottemartRow extends React.Component {
-  render() {
-    return (
-        <div className="list_item">
-          <div className="img">
-            <a href="main/detail.do">
-              <img
-                className="product_img"
-                alt="lottemart"
-                src={this.props.lottemart.img}
-              />
-            </a>
-          </div>
-          <div className="info">
-            <a href="main/detail.do">
-              <p className="product">{this.props.lottemart.name}</p>
-              <p className="price">{this.props.lottemart.price}</p>
-            </a>
-          </div>
-        </div>
+	
+	removeFromSearchKeywordList(e) {
+		var keyword = e.target.dataset.keyword
+		var temp = []
+		this.state.searchKeywordList.map((m)=>{
+			if(m!=keyword) temp.push(m)
+		})
+		this.setState({searchKeywordList:temp})
+	}
 
-      );
-  }
+    addToSearchKeywordList(keyword) {
+		var temp = this.state.searchKeywordList
+		temp.push(keyword)
+        this.setState({searchKeywordList:temp})
+    }
+
+	setOrder(tempOV, temp) {
+		temp = JSON.parse(temp)
+		
+		if(tempOV=='pop') {
+			temp.map( kw_data => {
+				kw_data.data['lm'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['em'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['hp'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['cp'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+			})
+		} else if(tempOV=='asc') {
+			temp.map( kw_data => {
+				kw_data.data['lm'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['em'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['hp'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['cp'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+			})
+		} else {
+			temp.map( kw_data => {
+				kw_data.data['lm'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['em'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['hp'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['cp'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+			})
+		}
+		return JSON.stringify(temp)
+	}
+
+    setOptionValue(e) {
+		var tempOV = e.target.value
+		var temp1 = JSON.stringify(this.state.martdata)
+		var temp = this.setOrder(tempOV, temp1)
+		
+		this.setState({martdata:''})
+		this.setState({martdata:JSON.parse(temp)})
+		this.setState({optionValue:tempOV})
+    }
+
+    setSaveItems() {
+		let temp = this.state.tempItems.map(m=>m)
+        this.setState({saveItems:temp})
+    }
+
+    setRecipeRecommendList() {
+
+    }
+
+	showModalBtn(e) {
+		let keyword = e.target.dataset.keyword
+		let martname = e.target.dataset.martname
+		let temp = {}
+		this.state.martdata.map((m)=>{
+			if(m.keyword===keyword) temp = m
+		})
+		temp = temp.data[martname]
+		this.state.modalItems = {
+			keyword:keyword,
+			martname:martname,
+			data:temp
+		}
+		this.setState({visible:true})
+	}
+
+ 	setCheckItems(e) {
+    	var itemname = e.target.dataset.name;
+    	var itemprice = e.target.dataset.price;
+		var productcode = e.target.dataset.code;
+	    	
+		if (e.target.className=='saveBtn on') {
+     		const { tempItems } = this.state;
+      		this.setState({
+        		tempItems: tempItems.filter((tempItems) => tempItems.name !== itemname)
+     		 });
+		
+    	} else {
+			const { tempItems } = this.state;
+     		this.setState({
+        		tempItems: tempItems.concat({
+          			productcode: productcode,
+          			name: itemname,
+          			price: itemprice,
+        		})
+      		});
+    	}
+ 	 }
+
+	getJSON(keyword) {
+		axios.get(URL+'searchrest.do',{
+				params : { keyword:keyword }
+			}).then((res)=>{
+				let obj = { keyword:keyword, data:res.data }
+				let temp = []
+				temp = this.state.martdata
+				temp.push(obj)
+				this.setState({martdata:temp})
+			})
+	}
+
+    setMartData() {
+		this.setState({martdata:[]})
+		this.state.searchKeywordList.map(async(keyword)=>{
+			await this.getJSON(keyword)
+		})
+    }
+
+    render() {
+        return (
+            <section className="ftco-search bg-light">
+                <div className="container">
+                    <div className="row">
+						<SearchBar
+                            optionValue={this.state.optionValue} setOptionValue={this.setOptionValue}
+                            searchKeywordList={this.state.searchKeywordList}
+							addToSearchKeywordList={this.addToSearchKeywordList}
+							removeFromSearchKeywordList={this.removeFromSearchKeywordList}
+                            setSaveItems={this.setSaveItems} setMartData={this.setMartData}
+                        />
+						<MartTable martdata={this.state.martdata} showModalBtn={this.showModalBtn} setCheckItems={this.setCheckItems}/>
+						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
+						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
+						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
+                    </div>
+                </div>
+            </section>
+        );
+    }
 }
-ReactDOM.render(<App />, document.getElementById("root"));
 
+ReactDOM.render(<App />, document.getElementById("root"));
 </script>
   
 </body>

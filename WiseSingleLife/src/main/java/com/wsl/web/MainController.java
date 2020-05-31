@@ -43,10 +43,10 @@ public class MainController {
 	}*/
 	
 	@RequestMapping("aaa.do")
-	public String search_react(Model model, String keyword){
+	public String search_react(){
 		
-		model.addAttribute("keyword", keyword);
-		return "searchReact";
+		//model.addAttribute("keyword", keyword);
+		return "SearchReact";
 	}
 
 	@RequestMapping("detail.do")
