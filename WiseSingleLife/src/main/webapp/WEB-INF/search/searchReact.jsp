@@ -33,7 +33,6 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.11/lodash.min.js"></script>
 </head>
 <body>
     <tiles:insertAttribute name="nav"/>
@@ -339,7 +338,7 @@ class SearchBar extends React.Component {
                                                     </div>
                                                     <select
                                                         value={this.props.optionValue}
-                                                        onChange={this.props.setOptionValue}
+                                                        onChange={(e)=>{this.props.setOptionValue(e)}}
                                                         className="form-control"
                                                     >
                                                         <option value="pop">인기랭킹순</option>
@@ -427,8 +426,138 @@ class App extends React.Component {
         this.setState({searchKeywordList:temp})
     }
 
+	setOrder(tempOV, temp) {
+		temp = JSON.parse(temp)
+		
+		if(tempOV=='pop') {
+			temp.map( kw_data => {
+				kw_data.data['lm'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['em'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['hp'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['cp'].sort((a,b)=>{
+					if(a.rank > b.rank) {
+						return 1;
+					}
+					if(a.rank < b.rank) {
+						return -1;
+					}
+					return 0;
+				})
+			})
+		} else if(tempOV=='asc') {
+			temp.map( kw_data => {
+				kw_data.data['lm'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['em'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['hp'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['cp'].sort((a,b)=>{
+					if(a.price > b.price) {
+						return 1;
+					}
+					if(a.price < b.price) {
+						return -1;
+					}
+					return 0;
+				})
+			})
+		} else {
+			temp.map( kw_data => {
+				kw_data.data['lm'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['em'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['hp'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+				kw_data.data['cp'].sort((a,b)=>{
+					if(a.price < b.price) {
+						return 1;
+					}
+					if(a.price > b.price) {
+						return -1;
+					}
+					return 0;
+				})
+			})
+		}
+		return JSON.stringify(temp)
+	}
+
     setOptionValue(e) {
-        this.setState({optionValue: e.target.value});
+		var tempOV = e.target.value
+		var temp1 = JSON.stringify(this.state.martdata)
+		var temp = this.setOrder(tempOV, temp1)
+		
+		this.setState({martdata:''})
+		this.setState({martdata:JSON.parse(temp)})
+		this.setState({optionValue:tempOV})
     }
 
     setSaveItems() {
@@ -471,10 +600,10 @@ class App extends React.Component {
 			const { tempItems } = this.state;
      		this.setState({
         		tempItems: tempItems.concat({
-          		productcode: productcode,
-          		name: itemname,
-          		price: itemprice,
-        	})
+          			productcode: productcode,
+          			name: itemname,
+          			price: itemprice,
+        		})
       		});
     	}
  	 }
