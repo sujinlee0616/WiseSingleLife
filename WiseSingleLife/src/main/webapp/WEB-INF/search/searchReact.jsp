@@ -27,8 +27,9 @@
     
     <!-- react vis graph 그릴 CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.0/vis.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
@@ -340,6 +341,7 @@ class SearchBar extends React.Component {
                                                         value={this.props.optionValue}
                                                         onChange={(e)=>{this.props.setOptionValue(e)}}
                                                         className="form-control"
+														id="selectbar"
                                                     >
                                                         <option value="pop">인기랭킹순</option>
                                                         <option value="asc">가격낮은순</option>
@@ -384,10 +386,13 @@ class SearchBar extends React.Component {
     }
 }
 
+	
+
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
+			test : "0",
             martdata: [],
             optionValue: 'pop',
             searchKeywordList: [],
@@ -407,6 +412,8 @@ class App extends React.Component {
 		this.removeFromSearchKeywordList = this.removeFromSearchKeywordList.bind(this);
 		this.showModalBtn = this.showModalBtn.bind(this);
 		this.setCheckItems = this.setCheckItems.bind(this);
+		this.setIncrement = this.setIncrement.bind(this);
+		this.setOrder = this.setOrder.bind(this);
 	}
 
 	
@@ -418,6 +425,7 @@ class App extends React.Component {
 			if(m!=keyword) temp.push(m)
 		})
 		this.setState({searchKeywordList:temp})
+
 	}
 
     addToSearchKeywordList(keyword) {
@@ -550,12 +558,17 @@ class App extends React.Component {
 		return JSON.stringify(temp)
 	}
 
+	setSort(tempOV, temp){
+		if(tempOV==='asc'){
+			temp.map((m)=> 
+				m.data[lm]_.sortBy
+		}
+	}
+
     setOptionValue(e) {
 		var tempOV = e.target.value
 		var temp1 = JSON.stringify(this.state.martdata)
 		var temp = this.setOrder(tempOV, temp1)
-		
-		this.setState({martdata:''})
 		this.setState({martdata:JSON.parse(temp)})
 		this.setState({optionValue:tempOV})
     }
@@ -626,18 +639,28 @@ class App extends React.Component {
 			await this.getJSON(keyword)
 		})
     }
+	
+	setIncrement(e) {
+		this.setState({test : this.state.test+"1" });
+	}
+	
 
     render() {
+		console.log(this.state.martdata)
+		console.log(this.state.optionValue)
+		
         return (
             <section className="ftco-search bg-light">
                 <div className="container">
                     <div className="row">
 						<SearchBar
-                            optionValue={this.state.optionValue} setOptionValue={this.setOptionValue}
+                            optionValue={this.state.optionValue} 
                             searchKeywordList={this.state.searchKeywordList}
 							addToSearchKeywordList={this.addToSearchKeywordList}
 							removeFromSearchKeywordList={this.removeFromSearchKeywordList}
                             setSaveItems={this.setSaveItems} setMartData={this.setMartData}
+							setOptionValue={this.setOptionValue}
+							test={this.setIncrement}
                         />
 						<MartTable martdata={this.state.martdata} showModalBtn={this.showModalBtn} setCheckItems={this.setCheckItems}/>
 						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
