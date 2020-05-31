@@ -49,6 +49,11 @@ public interface MartAllDataMapper {
 	
 	//
 	@Select("SELECT rno from recipe_keyword_mapper "
-		  + "WHERE codeno=1 and rownum <5")
-	public List<Integer> RnoList();
+		  + "WHERE codeno= (SELECT codeno FROM keyword_mart_mapper " 
+		  +"WHERE productcode like '%'||#{productcode}) and rownum <4")
+	public List<Integer> RnoList(String productcode);
+	
+	@Select("SELECT * FROM recipe "
+		   +"WHERE no =#{no}")
+	public Detail_RecipeVO RecipeList_detail(int no);
 }

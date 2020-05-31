@@ -103,7 +103,7 @@
 									<button type="button" class="saveBtn on"></button>
 								</div>
 								<div class="info">
-									<a href="detail.do?productcode=em0000008113307">
+									<a href="detail.do?productcode=LM-LO1044652969">
 										<p class="product">매일유업 매일 바나나는 원래 하얗다 190ml</p>
 										<p class="price">10,910원</p>
 									</a>
@@ -131,7 +131,7 @@
 									<button type="button" class="saveBtn"></button>
 								</div>
 								<div class="info">
-									<a href="#">
+									<a href="detail.do?productcode=em1000044280653">
 										<p class="product">[빙그레] 바나나맛 우유(240ml4개) 960ml</p>
 										<p class="price">4,580 원</p>
 									</a>

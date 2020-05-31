@@ -33,11 +33,14 @@ public class MartAllDataDAO {
 	public Detail_SearchKeyVO productKeyowrd(String productcode){
 		return MAData_mapper.ProductKeyword(productcode);
 	}
-	public List<Integer> rno(){
-		return MAData_mapper.RnoList();
+	public List<Integer> rno(String productcode){
+		return MAData_mapper.RnoList(productcode);
 	}
 	public int RecipeCount(String productcode){
 		return MAData_mapper.RecipeCount(productcode);
+	}
+	public Detail_RecipeVO RecipeList_detail(int no){
+		return MAData_mapper.RecipeList_detail(no);
 	}
 	// 마트 별 출력
 }
