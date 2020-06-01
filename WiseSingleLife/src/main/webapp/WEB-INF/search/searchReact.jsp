@@ -64,7 +64,7 @@
 <script src="js/main.js"></script>
 <script type="text/babel">
 // 본인 서버 port 번호로 변경해야
-const URL = 'http://localhost:8081/web/'
+const URL = 'http://localhost:8080/web/'
 
 class Modal extends React.Component {
   
@@ -638,7 +638,9 @@ class App extends React.Component {
 			await this.getJSON(keyword)
 		})
 		const wordlist = encodeURIComponent(JSON.stringify(this.state.searchKeywordList));
-		 
+		const wordlist2 = this.state.searchKeywordList
+		let wordlist3 = JSON.stringify(this.state.searchKeywordList);
+		
 		axios.get(URL+'searchtest_insert.do',{
 		params : {keyword: wordlist}});
 		
