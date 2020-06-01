@@ -34,12 +34,11 @@
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .1em; }
-
-
+    
 
 .block-23-detail ul {
   padding: 0;
-  list-style-type: none; 
+  list-style: none; 
   }
   .block-23-detail ul li, .block-23-detail ul li > a {
     display: table;
@@ -47,7 +46,7 @@
     margin-bottom: 15px;
     font-family: 'Roboto', sans-serif;
     font-size:18px;
-    list-style-type: none; 
+    list-style: none; 
     
      }
   .block-23-detail ul li span {

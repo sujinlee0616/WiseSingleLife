@@ -15,7 +15,6 @@
 			<div class="container">
 				<div class="row no-gutters">
 					<div class="col-md-5 p-md-5 img img-2 d-flex justify-content-center align-items-center" style="background-image: url(${MaData_vo.img});">
-							<span class="icon-play"></span>
 					</div>
 					<div class="col-md-7 wrap-about pb-md-5 ftco-animate">
 	          <div class="heading-section heading-section-wo-line mb-5 pl-md-5">
@@ -33,18 +32,18 @@
 									</span>
 								</td>
 							</tr>
-							<tr>
-								<td class="block-23-detail">
-									<ul>
-										<li><b>${MaData_vo.productcode }</b></li>
-										<li >등록일 : <fmt:formatDate pattern="yyyy-MM-dd" value="${MaData_vo.lookuptime}"></fmt:formatDate></li>
-									</ul>
-								</td>
-							</tr>
 							<tr class="tags">
 								<td>
 									<a href="#"><h4 style="color: orange;">#${MaData_vo.keyword }</h4></a>
 								</td>
+							</tr>
+							<tr>
+								<td class="block-23-detail">
+									상품코드 : <b>${MaData_vo.productcode }</b>
+								</td>
+							</tr>
+							<tr>
+								<td>등록일 : <fmt:formatDate pattern="yyyy-MM-dd" value="${MaData_vo.lookuptime}"></fmt:formatDate></td>
 							</tr>
 							<tr>
 								<td>
@@ -53,6 +52,19 @@
 							</tr>
 						</table>
 					</div>
+				</div>
+				<div class="row">
+					<c:forEach var="rvo" items="list">
+						<div class="col-md-3">
+							<img src="https://shopping-phinf.pstatic.net/main_5761002/5761002283.20150128173135.jpg?type=f200">
+							<div>
+								<h4>제목</h4>
+							</div>
+							<div>
+								<sub>등록한 사람</sub>
+							</div>
+						</div>
+					</c:forEach>
 				</div>
 			</div>
 		</section>
@@ -64,7 +76,7 @@
 		            <div class="block-18 text-center">
 		              <div class="text">
 		              	<!-- Codeno 와 관련된 레시피 카운트 -->
-		                <span>RecipeCount</span>
+		                <span>SearchCount</span>
 		                <strong class="number">${MaData_vo.searchCount }</strong>
 		              </div>
 		            </div>
