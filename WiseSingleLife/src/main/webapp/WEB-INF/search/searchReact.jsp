@@ -340,7 +340,7 @@ class SearchBar extends React.Component {
                                                     </div>
                                                     <select
                                                         value={this.props.optionValue}
-                                                        onChange={(e)=>{this.props.setOptionValue(e)}, }
+                                                        onChange={(e)=>{this.props.setOptionValue(e)}}
                                                         className="form-control"
 														id="selectbar"
                                                     >
