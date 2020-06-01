@@ -61,6 +61,7 @@
   <script src="js/google-map.js"></script>-->
 <script src="js/main.js"></script>
 <script type="text/babel">
+// 본인 서버 port 번호로 변경해야
 const URL = 'http://localhost:8081/web/'
 
 class Modal extends React.Component {
@@ -336,9 +337,6 @@ class SearchBar extends React.Component {
                                         <div className="form-group">
                                             <div className="form-field">
                                                 <div className="select-wrap">
-                                                    <div className="icon">
-                                                        <span className="ion-ios-arrow-down"/>
-                                                    </div>
                                                     <select
                                                         value={this.props.optionValue}
                                                         onChange={(e)=>{this.props.setOptionValue(e)}}
