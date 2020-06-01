@@ -1,65 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
- <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
- <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <title>리액트</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/open-iconic-bootstrap.min.css">
-    <link rel="stylesheet" href="css/animate.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/aos.css">
-    <link rel="stylesheet" href="css/ionicons.min.css">
-    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-    <link rel="stylesheet" href="css/jquery.timepicker.css">
-    <link rel="stylesheet" href="css/flaticon.css">
-    <link rel="stylesheet" href="css/icomoon.css">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- SEARCH CSS -->
-    <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/main.css">
-    
-    <!-- react vis graph 그릴 CDN -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" href="css/search.css">
+<title>Insert title here</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.0/vis.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.13.1/umd/react-dom.production.min.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </head>
 <body>
-    <tiles:insertAttribute name="nav"/>
-	<div class="container" id="root"></div>
-    <tiles:insertAttribute name="footer"/>
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
-  <script src="js/jquery.min.js"></script>
-  <script src="js/jquery-migrate-3.0.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/jquery.easing.1.3.js"></script>
-  <script src="js/jquery.waypoints.min.js"></script>
-  <script src="js/jquery.stellar.min.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/aos.js"></script>
-  <script src="js/jquery.animateNumber.min.js"></script>
-  <script src="js/bootstrap-datepicker.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-  
-  <script src="js/scrollax.min.js"></script>
-  <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-  <script src="js/google-map.js"></script>-->
-<script src="js/main.js"></script>
+<div id="root"></div>
 <script type="text/babel">
 const URL = 'http://localhost:8080/web/'
 
@@ -71,14 +27,12 @@ class Modal extends React.Component {
 	render() {
 		let key = this.props.modalItems.martname
 		let martname = ''
-		if(this.props.modalItems.martname==='lm')
-			martname ='롯데마트'
-		else if(this.props.modalItems.martname==='hp')
-			martname = '홈플러스'
-		else if (this.props.modalItems.martname==='em')
-			martname = '이마트'
-		else if (key==='cp')
-			martname = '쿠팡'
+		switch({key}) {
+			case 'lm' : martname = '롯데마트';
+			case 'hp' : martname = '홈플러스';
+			case 'em' : martname = '이마트';
+			case 'cp' : martname = '쿠팡';
+		}
 
 		let html = this.props.modalItems.data.map((m)=>
 			<div className="col-md-3 d-flex">
@@ -103,7 +57,7 @@ class Modal extends React.Component {
 				<div className="modal-dialog modal-lg" role="document">
 				  <div className="modal-content">
 					<div className="modal-header">
-					  <h5 className="mb-0">[{martname}] {this.props.modalItems.keyword} 전체보기</h5>
+					  <h5 className="mb-0">{this.props.modalItems.martname} {this.props.modalItems.keyword} 전체보기</h5>
 					  <button type="button" className="close" data-dismiss="modal" ariaLabel="Close">
 						<span ariaHidden="false">&times;</span>
 					  </button>
@@ -156,12 +110,8 @@ class RecipeRecommend extends React.Component {
 }
 
 class SaveItems extends React.Component {
-	constructor(props) {
-		super(props);
-	}
-	
   render() {
-     const savedItems = this.props.saveItems.map((m) => (
+     const savedItems = this.state.saveItems.map((m) => (
        <div className="item">
         <a href="#">
            <p className="product">{m.name}</p>
@@ -186,18 +136,35 @@ class SaveItems extends React.Component {
 }
 
 class Item extends React.Component {
-  	constructor(props) {
-    	super(props);
-		this.state = {
-			clsname : 'saveBtn'
-		}
-		this.toggleClsname = this.toggleClsname.bind(this)
-  	}
+  constructor(props) {
+    super(props);
+    this.onCheckItems = this.onCheckItems.bind(this);
+  }
 
-	toggleClsname() {
-		if(this.state.clsname!='saveBtn') this.setState({clsname:'saveBtn'})
-		else this.setState({clsname:'saveBtn on'})
-	}
+  onCheckItems(e) {
+    var clsname = e.target.className;
+    //props로
+    var itemname = e.target.dataset.name;
+    var itemprice = e.target.dataset.price;
+
+    if ((clsname = "saveBtn on")) {
+      e.taget.className = "saveBtn";
+      const { tempItems } = this.state;
+      this.setstate({
+        tempItems: tempItems.filter((tempItems) => tempItems.name !== itemname),
+      });
+    } else {
+      const { tempItems } = this.state;
+      e.target.className = "saveBtn on";
+      this.setState({
+        tempItems: tempItems.concat({
+          no: this.no++,
+          name: itemname,
+          price: itemprice,
+        }),
+      });
+    }
+  }
 
   render() {
     return (
@@ -206,14 +173,16 @@ class Item extends React.Component {
           <a href="main/detail.do">
             <img
               className="product_img"
-              alt="{this.props.name"
+              alt="{this.props."
               src={this.props.item.img}
             />
           </a>
           <button
             type="button"
-            className={this.state.clsname}
-            onClick={(e)=>{this.toggleClsname();this.props.setCheckItems(e);}}
+            className="saveBtn on"
+            onClick={(e) => {
+              this.onCheckItems(e);
+            }}
             data-code={this.props.item.productcode}
             data-name={this.props.item.name}
             data-price={this.props.item.price}
@@ -235,7 +204,7 @@ class ItemList extends React.Component {
     super(props);
 
     this.state = {
-      items: this.props.martitems.slice(0,3).map((m) => <Item item={m} setCheckItems={this.props.setCheckItems}/>),
+      items: this.props.martitems.slice(0,3).map((m) => <Item item={m} />),
     };
   }
 
@@ -270,10 +239,10 @@ class MartRow extends React.Component {
           {this.props.kw_data.keyword}
         </td>
         
-          <ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+          <ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
+          <ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
+          <ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
+          <ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn}/>
       </tr>
     );
   }
@@ -285,7 +254,7 @@ class MartTable extends React.Component {
     }
 
     render() {
-		let html = this.props.martdata.map((m) => <MartRow kw_data={m} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/> )
+		let html = this.props.martdata.map((m) => <MartRow kw_data={m} showModalBtn={this.props.showModalBtn}/> )
 
         return (
             <section className="list-section mb-3 bg-light">
@@ -339,9 +308,8 @@ class SearchBar extends React.Component {
                                                     </div>
                                                     <select
                                                         value={this.props.optionValue}
-                                                        onChange={(e)=>{this.props.setOptionValue(e)}}
+                                                        onChange={this.props.setOptionValue}
                                                         className="form-control"
-														id="selectbar"
                                                     >
                                                         <option value="pop">인기랭킹순</option>
                                                         <option value="asc">가격낮은순</option>
@@ -369,7 +337,7 @@ class SearchBar extends React.Component {
                                         <div className="form-group">
                                             <div className="form-field">
                                                 <input
-                                                    onClick={this.props.setSaveItems}
+                                                    onClick={()=>{}}
                                                     type="text"
                                                     value="저장"
                                                     className="form-control btn btn-primary"
@@ -386,13 +354,10 @@ class SearchBar extends React.Component {
     }
 }
 
-	
-
 class App extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-			test : "0",
             martdata: [],
             optionValue: 'pop',
             searchKeywordList: [],
@@ -400,8 +365,7 @@ class App extends React.Component {
             tempItems: [],
             recipeRecommendList: [],
 			modalItems : {},
-			visible : false,
-			saveVisible: false
+			visible : false
         };
         this.setOptionValue = this.setOptionValue.bind(this);
         this.addToSearchKeywordList = this.addToSearchKeywordList.bind(this);
@@ -411,9 +375,6 @@ class App extends React.Component {
 		this.getJSON = this.getJSON.bind(this);
 		this.removeFromSearchKeywordList = this.removeFromSearchKeywordList.bind(this);
 		this.showModalBtn = this.showModalBtn.bind(this);
-		this.setCheckItems = this.setCheckItems.bind(this);
-		this.setIncrement = this.setIncrement.bind(this);
-		this.setOrder = this.setOrder.bind(this);
 	}
 
 	
@@ -425,7 +386,6 @@ class App extends React.Component {
 			if(m!=keyword) temp.push(m)
 		})
 		this.setState({searchKeywordList:temp})
-
 	}
 
     addToSearchKeywordList(keyword) {
@@ -434,148 +394,12 @@ class App extends React.Component {
         this.setState({searchKeywordList:temp})
     }
 
-	setOrder(tempOV, temp) {
-		temp = JSON.parse(temp)
-		
-		if(tempOV=='pop') {
-			temp.map( kw_data => {
-				kw_data.data['lm'].sort((a,b)=>{
-					if(a.rank > b.rank) {
-						return 1;
-					}
-					if(a.rank < b.rank) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['em'].sort((a,b)=>{
-					if(a.rank > b.rank) {
-						return 1;
-					}
-					if(a.rank < b.rank) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['hp'].sort((a,b)=>{
-					if(a.rank > b.rank) {
-						return 1;
-					}
-					if(a.rank < b.rank) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['cp'].sort((a,b)=>{
-					if(a.rank > b.rank) {
-						return 1;
-					}
-					if(a.rank < b.rank) {
-						return -1;
-					}
-					return 0;
-				})
-			})
-		} else if(tempOV=='asc') {
-			temp.map( kw_data => {
-				kw_data.data['lm'].sort((a,b)=>{
-					if(a.price > b.price) {
-						return 1;
-					}
-					if(a.price < b.price) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['em'].sort((a,b)=>{
-					if(a.price > b.price) {
-						return 1;
-					}
-					if(a.price < b.price) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['hp'].sort((a,b)=>{
-					if(a.price > b.price) {
-						return 1;
-					}
-					if(a.price < b.price) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['cp'].sort((a,b)=>{
-					if(a.price > b.price) {
-						return 1;
-					}
-					if(a.price < b.price) {
-						return -1;
-					}
-					return 0;
-				})
-			})
-		} else {
-			temp.map( kw_data => {
-				kw_data.data['lm'].sort((a,b)=>{
-					if(a.price < b.price) {
-						return 1;
-					}
-					if(a.price > b.price) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['em'].sort((a,b)=>{
-					if(a.price < b.price) {
-						return 1;
-					}
-					if(a.price > b.price) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['hp'].sort((a,b)=>{
-					if(a.price < b.price) {
-						return 1;
-					}
-					if(a.price > b.price) {
-						return -1;
-					}
-					return 0;
-				})
-				kw_data.data['cp'].sort((a,b)=>{
-					if(a.price < b.price) {
-						return 1;
-					}
-					if(a.price > b.price) {
-						return -1;
-					}
-					return 0;
-				})
-			})
-		}
-		return JSON.stringify(temp)
-	}
-
-	setSort(tempOV, temp){
-		if(tempOV==='asc'){
-			temp.map((m)=> 
-				m.data[lm]_.sortBy
-		}
-	}
-
     setOptionValue(e) {
-		var tempOV = e.target.value
-		var temp1 = JSON.stringify(this.state.martdata)
-		var temp = this.setOrder(tempOV, temp1)
-		this.setState({martdata:JSON.parse(temp)})
-		this.setState({optionValue:tempOV})
+        this.setState({optionValue: e.target.value});
     }
 
-    setSaveItems() {
-		let temp = this.state.tempItems.map(m=>m)
-        this.setState({saveItems:temp})
+    setSaveItems(e) {
+        this.setState({saveItems: e})
     }
 
     setRecipeRecommendList() {
@@ -598,29 +422,6 @@ class App extends React.Component {
 		this.setState({visible:true})
 	}
 
- 	setCheckItems(e) {
-    	var itemname = e.target.dataset.name;
-    	var itemprice = e.target.dataset.price;
-		var productcode = e.target.dataset.code;
-	    	
-		if (e.target.className=='saveBtn on') {
-     		const { tempItems } = this.state;
-      		this.setState({
-        		tempItems: tempItems.filter((tempItems) => tempItems.name !== itemname)
-     		 });
-		
-    	} else {
-			const { tempItems } = this.state;
-     		this.setState({
-        		tempItems: tempItems.concat({
-          			productcode: productcode,
-          			name: itemname,
-          			price: itemprice,
-        		})
-      		});
-    	}
- 	 }
-
 	getJSON(keyword) {
 		axios.get(URL+'searchrest.do',{
 				params : { keyword:keyword }
@@ -639,31 +440,21 @@ class App extends React.Component {
 			await this.getJSON(keyword)
 		})
     }
-	
-	setIncrement(e) {
-		this.setState({test : this.state.test+"1" });
-	}
-	
 
     render() {
-		console.log(this.state.martdata)
-		console.log(this.state.optionValue)
-		
         return (
             <section className="ftco-search bg-light">
                 <div className="container">
                     <div className="row">
 						<SearchBar
-                            optionValue={this.state.optionValue} 
+                            optionValue={this.state.optionValue} setOptionValue={this.setOptionValue}
                             searchKeywordList={this.state.searchKeywordList}
 							addToSearchKeywordList={this.addToSearchKeywordList}
 							removeFromSearchKeywordList={this.removeFromSearchKeywordList}
                             setSaveItems={this.setSaveItems} setMartData={this.setMartData}
-							setOptionValue={this.setOptionValue}
-							test={this.setIncrement}
                         />
-						<MartTable martdata={this.state.martdata} showModalBtn={this.showModalBtn} setCheckItems={this.setCheckItems}/>
-						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
+						<MartTable martdata={this.state.martdata} showModalBtn={this.showModalBtn}/>
+						{this.state.saveItems.length!=0 ? <SaveItems /> : null }
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
                     </div>
@@ -675,7 +466,5 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById("root"));
 </script>
-  
 </body>
-	<!-- <script type="text/babel" src="js/search_list_react.js"></script> -->
 </html>

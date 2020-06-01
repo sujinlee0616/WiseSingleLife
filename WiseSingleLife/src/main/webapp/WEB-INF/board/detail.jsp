@@ -15,17 +15,91 @@ $(function(){
 	$('.cmtUpdtBtn').click(function(){
 		$('.cmtUpdateArea').hide();
 		$('.cmtReplyArea').hide();
+		$('.cmtDeleteArea').hide();
 		var no=$(this).attr("data-no");
 		$('#m'+no).show();
 	})
 	$('.cmtReplyBtn').click(function(){
 		$('.cmtUpdateArea').hide();
 		$('.cmtReplyArea').hide();
+		$('.cmtDeleteArea').hide();
 		var no=$(this).attr("data-no");
 		$('#u'+no).show();
 	})
+	 $('.cmtDeleteBtn').click(function(){
+		$('.cmtUpdateArea').hide();
+		$('.cmtReplyArea').hide();
+		$('.cmtDeleteArea').hide();
+		var no=$(this).attr("data-no");
+		$('#d'+no).show();
+	})
+	
+	var pwdInput=$('#pwd').val();
+	console.log(pwdInput);
+	
+	$('#pwd').keyup(function(){
+		var user_input_pwd=$(this).val();
+		console.log(user_input_pwd);
+		var no=$('#no').val();
+		var rno=$('#rno').val();
+
+		$.ajax({
+			type:'POST',
+			url:'reply_pwd_check.do',
+			data:{"pwd":user_input_pwd,"no":no,"rno":rno}, 
+			success:function(result)
+			{
+				var pwdCheck=result.trim();
+				if(pwdCheck=="true"){
+					$('#pwd_check_result').html("<span style=\"color: #1976D2;\">비밀번호가 맞습니다. 삭제할 수 있습니다.</font>");
+					$('#deleteBtn').attr('disabled', false);
+				}
+				else{
+					$('#pwd_check_result').html("<span style=\"color:#ff3a6d;\">비밀번호가 틀립니다.</font>");
+					$('#deleteBtn').attr('disabled', true);
+				}
+			},
+			error:function(e){
+				alert(e);
+			}
+		})
+	});
 	
 });
+
+
+/* var u=0;
+var i=0;
+$(function(){
+	$('.cmtUpdtBtn').click(function(){
+		var update_cno=$(this).attr('data-no');
+		$('.cmtUpdateArea').hide();
+		
+		if(u==0){
+			$('#before_update_cno'+update_cno).hide();
+			$('#try_to_update_cno'+update_cno).show();
+			u=1;
+		}
+		else{
+			$('#before_update_cno'+update_cno).show();
+			$('#try_to_update_cno'+update_cno).hide();
+			u=0;
+		}
+	});
+	
+	$('.cmtReplyBtn').click(function(){
+		var reply_cno=$(this).attr('reply_cno');
+		if(i==0){
+			$('#try_to_reply_cno'+reply_cno).show();  
+			i=1;
+		}
+		else{
+			$('#try_to_reply_cno'+reply_cno).hide();
+			i=0;
+		}
+	});
+	
+}) */
 </script>
 </head>
 <body>
@@ -102,7 +176,7 @@ $(function(){
 	                <div style="float: left; width: 22%;">
 	                  <span style="margin-left: 19px;">닉네임</span>
 	                  <input type="text" style="display: block; margin: 0px auto;" name="id">
-	                  <span style="margin-left: 19px;" name="pwd">비밀번호</span>
+	                  <span style="margin-left: 19px;">비밀번호</span>
 	                  <input type="password" style="display: block; margin: 0px auto;" name="pwd">
 	                </div>
 	              	<textarea name="msg" class="cmt_input" placeholder="건전한 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 내용은 입력을 지양해주세요."></textarea>
@@ -119,32 +193,32 @@ $(function(){
 	          <div class="cmt">
 	          	<!-- 1. ID,작성일, 댓글에 대한 액션 버튼 영역 -->
 	            <div class="writer_info">
-	              <%-- <c:if test="${cvo.group_tab==0 }"> --%>
+	              <c:if test="${rvo.group_tab==0 }">
 		              <span class="writer_nm">${rvo.id }</span>
 		              <span class="write_time pl-1">${rvo.regdate }</span>
-	              <%-- </c:if> --%>
-	              <%-- <c:if test="${cvo.group_tab>0 }">
+	              </c:if>
+	              <c:if test="${rvo.group_tab>0 }">
 		              <span class="writer_nm" style="margin-left:30px;">
-		              <img src="../images/icon_reply.gif" class="mr-2">${cvo.userid }</span>
-		              <span class="write_time pl-1">${cvo.regdate }</span>
-	              </c:if> --%>
+		              <img src="images/icon_reply.gif" class="mr-2">${rvo.id }</span>
+		              <span class="write_time pl-1">${rvo.regdate }</span>
+	              </c:if>
 	              <div class="cmtActions">
 		              <span class="cmtActionBtn cmtReplyBtn pl-1" data-no="${rvo.rno }">답글</span>
 			          <span class="cmtActionBtn cmtUpdtBtn pl-1" data-no="${rvo.rno }">수정</span>
-			          <a class="cmtActionBtn" href="../board/comment_delete.do?bno=${rvo.no }&rno=${cvo.rno }">삭제</a>
+			          <span class="cmtActionBtn cmtDeleteBtn pl-1" data-no="${rvo.rno }" >삭제</span>
 	              </div>
 	            </div>
 	            <!-- 2. 댓글 내용 영역 -->
 	            <div class="cmt_content pt-2 pl-1">
 	            	<!-- 댓글내용 -->
-	            	<%-- <c:if test="${cvo.group_tab==0 }"> --%><!-- 아직 rno아님 수정해야함 -->
+	            	<c:if test="${rvo.group_tab==0 }">
 		            	<pre class="mb-0" id="before_update_cno${rvo.rno }"
 			            	 style="font-size: 14px; white-space: pre-wrap; font-family: Nanum Gothic;">${rvo.msg }</pre>
-	            	<%-- </c:if> --%>
-	            	<%-- <c:if test="${cvo.group_tab>0 }">
-		            	<pre class="mb-0" id="before_update_cno${cvo.cno }"
-		            	 style="font-size: 14px; white-space: pre-wrap; font-family: Nanum Gothic; margin-left: 50px; width: calc(92% - 50px);">${cvo.content }</pre>
-	            	 </c:if> --%>
+	            	</c:if>
+	            	<c:if test="${rvo.group_tab>0 }">
+		            	<pre class="mb-0" id="before_update_cno${rvo.rno }"
+		            	 style="font-size: 14px; white-space: pre-wrap; font-family: Nanum Gothic; margin-left: 50px; width: calc(92% - 50px);">${rvo.msg }</pre>
+	            	 </c:if>
 	            	<!-- 수정하기 버튼 클릭 시 -->
 	            	<form method="POST" action="board_reply_update.do">
 	            		<div class="cmtUpdateArea" id="m${rvo.rno }" style="display:none;">
@@ -152,15 +226,45 @@ $(function(){
 	            			<input type="hidden" name="no" value="${rvo.no }">
 	            			<input type="hidden" name="rno" value="${rvo.rno }">
 	            			<div style="float: left; width: 22%;">
-	                  			<span style="margin-left: 19px;" name="pwd">비밀번호</span>
+	                  			<span style="margin-left: 19px;">비밀번호</span>
 	                  			<input type="password" style="display: block; margin: 0px auto;" name="pwd">
 	                		</div>
 		            		<textarea name="msg" class="cmt_input" placeholder="건전한 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 내용은 입력을 지양해주세요.">${rvo.msg }</textarea>
 			            	<button type="submit" class="cmtBtn">수정<br>완료</button>
 		            	</div>
 	            	</form>
+	            	<!-- 대댓글 작성시 -->
+	            	<form method="post" action="board_reReply_insert.do">
+		              	<div class="cmtReplyArea" id="u${rvo.rno }" style="display:none;">
+		              	  <hr class="cmt_line">
+		              	  <input type="hidden" name="no" value="${rvo.no }">
+		              	  <input type="hidden" name="rno" value="${rvo.rno }">
+			              <div style="float: left; width: 22%;">
+	                  		<span style="margin-left: 19px;">닉네임</span>
+	                  		<input type="text" style="display: block; margin: 0px auto;" name="id">
+	                  		<span style="margin-left: 19px;">비밀번호</span>
+	                  		<input type="password" style="display: block; margin: 0px auto;" name="pwd">
+	                	  </div>
+	              		  <textarea name="msg" class="cmt_input" placeholder="건전한 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 내용은 입력을 지양해주세요."></textarea>
+			              <button type="submit" class="cmtBtn">답글<br>등록</button>
+			          	</div>
+		            </form>
+		            <!-- 삭제버튼 클릭시 -->
+		            <form method="POST" action="board_reply_delete.do">
+	            		<div class="cmtDeleteArea" id="d${rvo.rno }" style="display:none;">
+	            			<hr class="cmt_line">
+	            			<input type="hidden" name="no" id="no" value="${rvo.no }">
+	            			<input type="hidden" name="rno" id="rno" value="${rvo.rno }">
+	            			<div style="float: left; width: 22%; margin-top: 20px;">
+	                  			<span style="margin-left: 19px;">비밀번호</span>
+	                  			<input type="password" style="display: block; margin: 0px auto;" name="pwd" id="pwd">
+	                		</div>
+			            	<button type="submit" class="cmtBtn" id="deleteBtn">삭제<br>완료</button>
+			            	<div id="pwd_check_result" class="mt-2"></div>
+		            	</div>
+	            	</form>
 	            </div>
-	            <div class="logged_in">
+	            <%-- <div class="logged_in">
 		              <form method="post" action="board_reReply_insert.do">
 		              	<div class="cmtReplyArea" id="u${rvo.rno }" style="display:none;">
 		              	  <hr class="cmt_line">
@@ -169,14 +273,14 @@ $(function(){
 			              <div style="float: left; width: 22%;">
 	                  		<span style="margin-left: 19px;">닉네임</span>
 	                  		<input type="text" style="display: block; margin: 0px auto;" name="id">
-	                  		<span style="margin-left: 19px;" name="pwd">비밀번호</span>
+	                  		<span style="margin-left: 19px;">비밀번호</span>
 	                  		<input type="password" style="display: block; margin: 0px auto;" name="pwd">
 	                	  </div>
 	              		  <textarea name="msg" class="cmt_input" placeholder="건전한 댓글 문화를 위해, 타인에게 불쾌감을 주는 욕설 또는 특정 계층/민족, 종교 등을 비하하는 내용은 입력을 지양해주세요."></textarea>
 			              <button type="submit" class="cmtBtn">답글<br>등록</button>
 			          	</div>
 		              </form>
-		        </div>
+		        </div> --%>
 	            
 	            <!-- [대댓글 작성 버튼 클릭 시] -->
 	          	<!-- =============== 로그인 한 경우 =============== -->

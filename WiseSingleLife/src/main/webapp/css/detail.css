@@ -34,7 +34,6 @@
     font-size: 12px;
     text-transform: uppercase;
     letter-spacing: .1em; }
-    
 
 .block-23-detail ul {
   padding: 0;
@@ -63,3 +62,45 @@
   	text-decoration: none;
   	font-size: 20px;
   }
+  .img-recipe{
+  	width: 200px;
+  }
+  .info-detail-recipe{
+   	height: 150px;
+    /* background-color: teal; */
+    background-color: #ffffff;
+    position: relative;
+	}
+
+.ftco-section-parallax-detail {
+  position: relative; }
+  .ftco-section-parallax-detail .parallax-img-detail {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    position: relative;
+    padding: 7em 0;
+    background: #26baee; }
+  .ftco-section-parallax .heading-section-white h2 {
+    font-weight: 400 !important; }
+    
+    .testimony-section-detail {
+  position: relative; }
+  .testimony-section-detail .owl-carousel {
+    margin: 0; }
+    
+    
+.img-fluid-detail {
+  max-width: 80%;
+  height: 50%; }
+
+.img-thumbnail {
+  padding: 0.25rem;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  border-radius: 0.25rem;
+  max-width: 100%;
+  height: auto; }
+
+  
+ 

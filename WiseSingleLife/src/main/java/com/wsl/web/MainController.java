@@ -1,5 +1,6 @@
 package com.wsl.web;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,17 +43,19 @@ public class MainController {
 	}*/
 	
 	@RequestMapping("aaa.do")
-	public String search_react(Model model, String keyword){
+	public String search_react(){
 		
-		model.addAttribute("keyword", keyword);
-		return "searchReact";
+		//model.addAttribute("keyword", keyword);
+		return "SearchReact";
 	}
 
 	@RequestMapping("detail.do")
 	public String detail_page(Model model,String productcode){
 		MartAllDataVO vo = dao.SearchDetail(productcode);	
+		List<Detail_RecipeVO> rlist = new ArrayList<Detail_RecipeVO>();
 		Detail_SearchKeyVO svo = new Detail_SearchKeyVO();
 		String temp=" ";
+		boolean RecipeCheck=true;
 		// 브랜드 출력
 		try{
 			if(vo.getName().indexOf(" ") != -1){
@@ -77,10 +80,18 @@ public class MainController {
 			vo.setKeyword("없음");
 			vo.setRecipeCount(0);
 		}
-		List<Integer> list = dao.rno();
+		try {
+		List<Integer> list = dao.rno(productcode);
 		for(int i : list){
-			System.out.println(i);
+			Detail_RecipeVO rvo = dao.RecipeList_detail(i);
+			rlist.add(rvo);
 		}
+		System.out.println(rlist.size());
+		}catch(Exception ex) {
+			RecipeCheck=true;
+		}
+		model.addAttribute("check",RecipeCheck);
+		model.addAttribute("rlist",rlist);
 		model.addAttribute("MaData_vo", vo);
 		return "search/detail";
 	}

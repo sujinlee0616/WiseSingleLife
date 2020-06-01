@@ -128,6 +128,21 @@ public class BoardController {
 		
 		return "redirect:board_detail.do?no="+vo.getNo();
 	}
+	// 대댓글 작성
+	@RequestMapping("board_reReply_insert.do")
+	public String board_reReply_insert(BoardReplyVO vo)
+	{
+		BoardReplyVO rvo=new BoardReplyVO();
+		rvo.setNo(vo.getNo());
+		rvo.setMsg(vo.getMsg());
+		rvo.setId(vo.getId());
+		rvo.setPwd(vo.getPwd());
+		
+		rdao.reReplyInsert(vo.getRno(), rvo);
+		
+		return "redirect:board_detail.do?no="+vo.getNo();
+	}
+	
 	// 댓글 수정하기
 	@RequestMapping("board_reply_update.do")
 	public String board_reply_update(BoardReplyVO vo)
@@ -136,6 +151,13 @@ public class BoardController {
 		
 		return "redirect:board_detail.do?no="+vo.getNo();
 	}
-	
+	// 댓글 삭제하기
+	@RequestMapping("board_reply_delete.do")
+	public String board_reply_delete(int no,int rno)
+	{
+		rdao.replyDelete(rno);
+		
+		return "redirect:board_detail.do?no="+no;
+	}
 	
 }
