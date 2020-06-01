@@ -286,7 +286,7 @@ class MartTable extends React.Component {
 
     render() {
 		let html = this.props.martdata.map((m) => <MartRow kw_data={m} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/> )
-
+		const { martdata } = this.props.martdata
         return (
             <section className="list-section mb-3 bg-light">
                 <div className="container">
@@ -301,6 +301,7 @@ class MartTable extends React.Component {
                             </tr>
                             {html}
                         </table>
+							{JSON.stringify(martdata)}
                     </div>
                 </div>
             </section>
@@ -339,7 +340,7 @@ class SearchBar extends React.Component {
                                                     </div>
                                                     <select
                                                         value={this.props.optionValue}
-                                                        onChange={(e)=>{this.props.setOptionValue(e)}}
+                                                        onChange={(e)=>{this.props.setOptionValue(e)}, }
                                                         className="form-control"
 														id="selectbar"
                                                     >
@@ -360,7 +361,8 @@ class SearchBar extends React.Component {
 													onChange={(e)=>{this.setState({keyword:e.target.value})}}
 													value={this.state.keyword}
 													className="hidden_input" tabIndex="1" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" role="textbox" ariaAutocomplete="list" placeholder=""
-												/>
+													style={{width: "300px"}}
+													/>
 											</li>
 										</ul>
 										<button onClick={()=>{this.props.setMartData()}} className="sliderBtn pl-0">검색</button>
@@ -435,8 +437,7 @@ class App extends React.Component {
     }
 
 	setOrder(tempOV, temp) {
-		temp = JSON.parse(temp)
-		
+
 		if(tempOV=='pop') {
 			temp.map( kw_data => {
 				kw_data.data['lm'].sort((a,b)=>{
@@ -555,15 +556,16 @@ class App extends React.Component {
 				})
 			})
 		}
-		return JSON.stringify(temp)
+		return temp
 	}
 
 
     setOptionValue(e) {
 		var tempOV = e.target.value
-		var temp1 = JSON.stringify(this.state.martdata)
-		var temp = this.setOrder(tempOV, temp1)
-		this.setState({martdata:JSON.parse(temp)})
+		var temp = [].concat([...this.state.martdata])
+		console.log(temp)
+		var temp1 = [].concat(this.setOrder(tempOV, temp))
+		this.setState({martdata:temp1})
 		this.setState({optionValue:tempOV})
     }
 
@@ -640,8 +642,6 @@ class App extends React.Component {
 	
 
     render() {
-		console.log(this.state.martdata)
-		console.log(this.state.optionValue)
 		const { martdata } = this.state;
         return (
             <section className="ftco-search bg-light">
