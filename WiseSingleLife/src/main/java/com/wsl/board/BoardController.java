@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BoardController {
 	@Autowired
 	BoardDAO dao;
+	@Autowired
+	BoardReplyDAO rdao;
 	// 게시판 리스트
 	@RequestMapping("board.do")
 	public String board_list(Model model,String page)
@@ -70,7 +72,10 @@ public class BoardController {
 	public String board_detail(Model model,int no)
 	{
 		BoardVO vo=dao.boardDetailData(no);
+		// 댓글 출력
+		List<BoardReplyVO> rlist=rdao.replyListData(no);
 		
+		model.addAttribute("rlist", rlist);
 		model.addAttribute("vo",vo);
 		
 		return "board/detail";
@@ -111,6 +116,48 @@ public class BoardController {
 		dao.boardDelete(no);
 		
 		return "redirect:../web/board.do";
+	}
+	// 댓글 작성
+	@RequestMapping("board_reply_insert.do")
+	public String board_reply_insert(BoardReplyVO vo)
+	{
+		System.out.println(vo.getRno()+""+vo.getNo());
+		System.out.println(vo.getId()+""+vo.getPwd()+""+vo.getMsg());
+		
+		rdao.replyInsert(vo);
+		
+		return "redirect:board_detail.do?no="+vo.getNo();
+	}
+	// 대댓글 작성
+	@RequestMapping("board_reReply_insert.do")
+	public String board_reReply_insert(BoardReplyVO vo)
+	{
+		BoardReplyVO rvo=new BoardReplyVO();
+		rvo.setNo(vo.getNo());
+		rvo.setMsg(vo.getMsg());
+		rvo.setId(vo.getId());
+		rvo.setPwd(vo.getPwd());
+		
+		rdao.reReplyInsert(vo.getRno(), rvo);
+		
+		return "redirect:board_detail.do?no="+vo.getNo();
+	}
+	
+	// 댓글 수정하기
+	@RequestMapping("board_reply_update.do")
+	public String board_reply_update(BoardReplyVO vo)
+	{
+		rdao.replyUpdate(vo);
+		
+		return "redirect:board_detail.do?no="+vo.getNo();
+	}
+	// 댓글 삭제하기
+	@RequestMapping("board_reply_delete.do")
+	public String board_reply_delete(int no,int rno)
+	{
+		rdao.replyDelete(rno);
+		
+		return "redirect:board_detail.do?no="+no;
 	}
 	
 }

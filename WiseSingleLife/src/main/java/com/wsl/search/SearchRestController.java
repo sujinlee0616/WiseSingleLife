@@ -36,7 +36,7 @@ public class SearchRestController {
 	
 	@RequestMapping("searchrest.do")
 	public String hje_search(String keyword) {
-		keyword="시금치";  /////////임시
+		
 		SearchKeywordVO vo=skdao.getSearchKeywordVO(keyword);
 		
 		List<EmartVO> emlist=new ArrayList<EmartVO>();
@@ -130,11 +130,9 @@ public class SearchRestController {
 			cpobj.put("productcode", cpvo.getProductCode());
 			cpobj.put("codeno", vo.getCodeNo());
 			cpobj.put("name", cpvo.getName());
-			cpobj.put("discount", cpvo.getDiscount());
-			cpobj.put("baseprice", cpvo.getBaseprice());
+			cpobj.put("discount", cpvo.getDiscountrate());
+			cpobj.put("price", cpvo.getPrice());
 			cpobj.put("unitprice", cpvo.getUnitprice());
-			cpobj.put("saleprice", cpvo.getSaleprice());
-			cpobj.put("weight", cpvo.getWeight());
 			cpobj.put("quantity", cpvo.getQuantity());
 			cpobj.put("rate", cpvo.getRate());
 			cpobj.put("reviewcount", cpvo.getReviewcount());

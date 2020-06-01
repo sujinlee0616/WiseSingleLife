@@ -59,8 +59,6 @@ public class RecipeRestController {
 		map.clear();
 		map.put("totalpage", totalpage);
 		map.put("list", list);
-		
-		System.out.println(new Gson().toJson(map));
 
 		return new Gson().toJson(map);
 	}

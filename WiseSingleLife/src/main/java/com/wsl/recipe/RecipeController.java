@@ -15,6 +15,12 @@ public class RecipeController {
 	@Autowired
 	private RecipeDAO dao;
 	
+	@RequestMapping("jhs_search_result.do")
+	public String jhs_search_result(Model model) {
+		model.addAttribute("keyword","시금치");
+		return "search/jhsSearchReact";
+	}
+	
 	@RequestMapping("recipe_react_list.do")
 	public String react_recipe_list() {
 		return "recipe/react_list";

@@ -32,6 +32,10 @@ public class SearchKeywordDAO {
 		SearchKeywordVO vo = new SearchKeywordVO();
 		vo.setCodeNo(0);
 		
+		SearchCountVO scvo=new SearchCountVO();
+		scvo.setKeyword(keyword);
+		mapper.searchCountInsert(scvo); // search_count insert (인기검색어 출력하기위해)
+		
 		// keyword가 있으면 해당 키워드의 레코드 반환하고 count(해당 키워드의 검색 횟수) 증가.
 		if(mapper.isRegisteredSearchKeyword(keyword)==1) {
 			vo = mapper.getSearchKeywordVO(keyword);
@@ -40,7 +44,7 @@ public class SearchKeywordDAO {
 			// keyword가 없는 경우 해당 키워드를 search_keyword 테이블에 추가.
 			SearchKeywordVO skvo = new SearchKeywordVO();
 			skvo.setKeyword(keyword);
-			mapper.searchKeywordInsert(skvo);
+			mapper.searchKeywordInsert(skvo); 
 			
 			// 새로 추가된 키워드에 대한 데이터 수집은 비동기로 처리.(안 그러면 크롤링 다 끝날 때 까지 vo 반환이 안 되기 때문)
 			// 각 클래스에 @EnableAsync 올리고 해당 메소드에 @Async 올리면 스프링이 쓰레드 만들어서 돌려줌.

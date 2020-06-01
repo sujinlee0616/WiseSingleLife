@@ -2,6 +2,9 @@
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800');
 @import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700');
 
+.card{
+	width: 100% !important;
+}
 .shop-detail-box-main {
     padding: 70px 0px;
 }

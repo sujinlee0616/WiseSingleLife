@@ -163,8 +163,8 @@ public class CoupangManger {
 					vo.setQuantity(volume);
 					vo.setImg(img);
 					// (( 가격, 할인율, 단위당 가격 )) 상품 가격 저장
-					vo.setBaseprice(Integer.parseInt(base));
-					vo.setDiscount(discount);
+					vo.setPrice(Integer.parseInt(base));
+					vo.setDiscountrate(discount);
 					vo.setUnitprice(unit);
 					// 판매 가격
 					// (별점 , 리뷰수) 리뷰 저장
