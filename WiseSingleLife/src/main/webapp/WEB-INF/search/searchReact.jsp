@@ -558,12 +558,6 @@ class App extends React.Component {
 		return JSON.stringify(temp)
 	}
 
-	setSort(tempOV, temp){
-		if(tempOV==='asc'){
-			temp.map((m)=> 
-				m.data[lm]_.sortBy
-		}
-	}
 
     setOptionValue(e) {
 		var tempOV = e.target.value
@@ -648,7 +642,7 @@ class App extends React.Component {
     render() {
 		console.log(this.state.martdata)
 		console.log(this.state.optionValue)
-		
+		const { martdata } = this.state;
         return (
             <section className="ftco-search bg-light">
                 <div className="container">
@@ -666,6 +660,7 @@ class App extends React.Component {
 						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
+						{JSON.stringify(martdata)}
                     </div>
                 </div>
             </section>
