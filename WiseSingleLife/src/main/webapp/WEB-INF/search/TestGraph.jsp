@@ -292,8 +292,8 @@
 				</table>
 <script>
 var ChartProp={"data":{"columns":[["홈플","10"]
-,["쿠팡","12"]
-,["롯데마트","11"]
+,["${test}","12"]
+,["${test}","11"]
 ,["이마트","13"]
 ]
 ,"type":"bar"}
@@ -328,7 +328,14 @@ svg.append('text')
 	.text('마트 가격비교');
 }
 </script>
-			<div id="chart"></div>
+			<div id="chart">
+			</div>
+			<div class="text">
+					${result }
+			</div>
+			<div class="text">
+				${result }
+			</div>
 			</div>
 			<!-- 저장한 상품 -->
 			<div class="row">
