@@ -329,7 +329,24 @@ class SearchBar extends React.Component {
 									</li>
 								)
 		let size = (5-this.props.searchKeywordList.length)*60+"px"
-		console.log(size)
+		var acc
+		var result
+		var accum = new Array();
+		var leng
+		this.props.searchKeywordList.map( (m) =>{
+								leng = m.length		
+								accum.push(leng)
+						})
+		console.log(leng)
+	 	console.log("누산기")	
+		result = accum.reduce((acc, cur, i) => {
+  			console.log(acc, cur, i);
+  			return acc + cur;
+		}, 0);
+
+		console.log(result)
+		let size2 = 350-(result*25)+"px"
+
 
         return (
             <section className="ftco-search bg-light">
@@ -364,7 +381,7 @@ class SearchBar extends React.Component {
 													onChange={(e)=>{this.setState({keyword:e.target.value})}}
 													value={this.state.keyword}
 													className="hidden_input" tabIndex="1" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" role="textbox" ariaAutocomplete="list" placeholder=""
-													style={{"width": size}}
+													style={{"width": size2}}
 													/>
 											</li>
 										</ul>
