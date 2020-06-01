@@ -61,7 +61,7 @@
   <script src="js/google-map.js"></script>-->
 <script src="js/main.js"></script>
 <script type="text/babel">
-const URL = 'http://localhost:8080/web/'
+const URL = 'http://localhost:8081/web/'
 
 class Modal extends React.Component {
   
@@ -234,15 +234,14 @@ class ItemList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      items: this.props.martitems.slice(0,3).map((m) => <Item item={m} setCheckItems={this.props.setCheckItems}/>),
-    };
   }
 
   render() {
+	const html = this.props.martitems.slice(0,3).map((m) => <Item item={m} setCheckItems={this.props.setCheckItems}/>)
+
     return (
       <td className={this.props.martname}>
-        {this.state.items}
+        {html}
         <button
           type="button"
           className="btn btn-block moreBtn"
@@ -324,6 +323,8 @@ class SearchBar extends React.Component {
 										<span className="xBtn" data-keyword={m} onClick={(e)=>{this.props.removeFromSearchKeywordList(e)}}>X</span>
 									</li>
 								)
+		let size = (5-this.props.searchKeywordList.length)*100+"px"
+		console.log(size)
 
         return (
             <section className="ftco-search bg-light">
@@ -361,7 +362,7 @@ class SearchBar extends React.Component {
 													onChange={(e)=>{this.setState({keyword:e.target.value})}}
 													value={this.state.keyword}
 													className="hidden_input" tabIndex="1" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" role="textbox" ariaAutocomplete="list" placeholder=""
-													style={{width: "300px"}}
+													style={{"width": {size}}}
 													/>
 											</li>
 										</ul>
