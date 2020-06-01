@@ -63,7 +63,6 @@
 <script type="text/babel">
 // 본인 서버 port 번호로 변경해야
 const URL = 'http://localhost:8081/web/'
-
 class Modal extends React.Component {
   
   constructor(props){
