@@ -42,7 +42,7 @@ public class MainController {
 		return "board/list";	
 	}*/
 	
-	@RequestMapping("aaa.do")
+	@RequestMapping("search_react.do")
 	public String search_react(){
 		
 		//model.addAttribute("keyword", keyword);
