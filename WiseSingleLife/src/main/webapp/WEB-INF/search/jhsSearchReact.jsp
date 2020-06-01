@@ -17,43 +17,77 @@
 <body>
 <div id="root"></div>
 <script type="text/babel">
-const URL = 'http://localhost:8081/web/'
+const URL = 'http://localhost:8080/web/'
 
 const {
-  HorizontalGridLines,
-  VerticalGridLines,
-  XAxis,
   XYPlot,
+  XAxis,
   YAxis,
-  MarkSeries
+  VerticalGridLines,
+  HorizontalGridLines,
+  MarkSeries,
+  MarkSeriesCanvas,
+  Hint
 } = reactVis
 
 class Graph extends React.Component {
 	constructor(props){
 		super(props);
-	}
+
+		this.state = {
+    		data: [{x: Math.random() * 10,
+    				y: Math.random() * 20,
+    				size: Math.random() * 10,
+    				color: Math.random() * 10,
+    				opacity: Math.random() * 0.5 + 0.5
+			}],
+    		value: false
+		}
 
 	render() {
+let temp = []
+		this.props.martdata.map((m)=>{
+console.log('map call...')
+			temp.push({
+				x: Math.random() * 10,
+    			y: Math.random() * 20,
+    			size: Math.random() * 10,
+    			color: Math.random() * 10,
+    			opacity: Math.random() * 0.5 + 0.5
+			})
+		})
+console.log(temp)
+		this.setState({data:temp})
+console.log(this.state.data)
+  	}
+
+	    const markSeriesProps = {
+	      animation: true,
+	      className: 'mark-series-example',
+	      sizeRange: [5, 15],
+	      seriesId: 'my-example-scatterplot',
+	      opacityType: 'literal',
+	      data:temp,
+	      onNearestXY: value => this.setState({value})
+	    };
+		
 		return (
-			<XYPlot width={300} height={300}>
-				<VerticalGridLines />
-				<HorizontalGridLines />
-				<XAxis />
-				<YAxis />
-				<MarkSeries
-					className="mark-series-example"
-					strokeWidth={2}
-					opacity="0.8"
-					sizeRange={[5, 15]}
-					data={[
-					{x: 10, y: 10, size: 30},
-					{x: 1.7, y: 12, size: 10},
-					{x: 2, y: 5, size: 1},
-					{x: 3, y: 15, size: 12},
-					{x: 2.5, y: 7, size: 4}
-					]}
-				/>
-			</XYPlot>
+			<div className="canvas-wrapper">
+		        <div className="canvas-example-controls">
+		        <XYPlot
+		          onMouseLeave={() => this.setState({value: false})}
+		          width={1200}
+		          height={600}
+		        >
+		          <VerticalGridLines />
+		          <HorizontalGridLines />
+		          <XAxis />
+		          <YAxis />
+				  <MarkSeries {...markSeriesProps} />
+		          {this.state.value ? <Hint value={this.state.value} /> : null}
+		        </XYPlot>
+			   </div>
+			</div>
 		)
 	}
 }
@@ -651,6 +685,7 @@ class App extends React.Component {
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
 					</div>
+					<Graph martdata={this.state.martdata}/>
                 </div>
             </section>
         );

@@ -5,6 +5,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.OutputStreamWriter;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -20,11 +23,15 @@ public class SearchController {
 	private SearchDAO dao;
 	
 	@RequestMapping("searchtest_insert.do")
-	public String searchtest_insert(String keyword) {
-		keyword="라면,만두,떡"; ///////// 임시
-		SearchVO vo=new SearchVO();
-		vo.setKeyword(keyword);
-		dao.searchInsert(vo);
+	public String searchtest_insert(String keyword) throws UnsupportedEncodingException {
+		
+		System.out.println(keyword);
+        String decodedString = URLDecoder.decode(keyword, "UTF-8");
+        System.out.println(decodedString);
+		//keyword="라면,만두,떡"; ///////// 임시
+		//SearchVO vo=new SearchVO();
+		//vo.setKeyword(keyword);
+		//dao.searchInsert(vo);
 		return "main";
 	} 
 	
