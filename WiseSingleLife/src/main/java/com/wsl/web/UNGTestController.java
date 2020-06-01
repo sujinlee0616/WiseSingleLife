@@ -9,6 +9,6 @@ public class UNGTestController {
 	@RequestMapping("graph.do")
 	public String temp(){
 		
-		return "graph";
+		return "search/TestGraph";
 	}
 }
