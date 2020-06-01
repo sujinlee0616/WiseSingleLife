@@ -61,7 +61,7 @@
   <script src="js/google-map.js"></script>-->
 <script src="js/main.js"></script>
 <script type="text/babel">
-const URL = 'http://localhost:8080/web/'
+const URL = 'http://localhost:8081/web/'
 
 class Modal extends React.Component {
   
@@ -234,15 +234,14 @@ class ItemList extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      items: this.props.martitems.slice(0,3).map((m) => <Item item={m} setCheckItems={this.props.setCheckItems}/>),
-    };
   }
 
   render() {
+	const html = this.props.martitems.slice(0,3).map((m) => <Item item={m} setCheckItems={this.props.setCheckItems}/>)
+
     return (
       <td className={this.props.martname}>
-        {this.state.items}
+        {html}
         <button
           type="button"
           className="btn btn-block moreBtn"
@@ -286,7 +285,7 @@ class MartTable extends React.Component {
 
     render() {
 		let html = this.props.martdata.map((m) => <MartRow kw_data={m} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/> )
-
+		const { martdata } = this.props.martdata
         return (
             <section className="list-section mb-3 bg-light">
                 <div className="container">
@@ -301,6 +300,7 @@ class MartTable extends React.Component {
                             </tr>
                             {html}
                         </table>
+							{JSON.stringify(martdata)}
                     </div>
                 </div>
             </section>
@@ -323,6 +323,8 @@ class SearchBar extends React.Component {
 										<span className="xBtn" data-keyword={m} onClick={(e)=>{this.props.removeFromSearchKeywordList(e)}}>X</span>
 									</li>
 								)
+		let size = (5-this.props.searchKeywordList.length)*100+"px"
+		console.log(size)
 
         return (
             <section className="ftco-search bg-light">
@@ -360,7 +362,8 @@ class SearchBar extends React.Component {
 													onChange={(e)=>{this.setState({keyword:e.target.value})}}
 													value={this.state.keyword}
 													className="hidden_input" tabIndex="1" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" role="textbox" ariaAutocomplete="list" placeholder=""
-												/>
+													style={{"width": {size}}}
+													/>
 											</li>
 										</ul>
 										<button onClick={()=>{this.props.setMartData()}} className="sliderBtn pl-0">검색</button>
@@ -435,8 +438,7 @@ class App extends React.Component {
     }
 
 	setOrder(tempOV, temp) {
-		temp = JSON.parse(temp)
-		
+
 		if(tempOV=='pop') {
 			temp.map( kw_data => {
 				kw_data.data['lm'].sort((a,b)=>{
@@ -555,21 +557,16 @@ class App extends React.Component {
 				})
 			})
 		}
-		return JSON.stringify(temp)
+		return temp
 	}
 
-	setSort(tempOV, temp){
-		if(tempOV==='asc'){
-			temp.map((m)=> 
-				m.data[lm]_.sortBy
-		}
-	}
 
     setOptionValue(e) {
 		var tempOV = e.target.value
-		var temp1 = JSON.stringify(this.state.martdata)
-		var temp = this.setOrder(tempOV, temp1)
-		this.setState({martdata:JSON.parse(temp)})
+		var temp = [].concat([...this.state.martdata])
+		console.log(temp)
+		var temp1 = [].concat(this.setOrder(tempOV, temp))
+		this.setState({martdata:temp1})
 		this.setState({optionValue:tempOV})
     }
 
@@ -646,9 +643,7 @@ class App extends React.Component {
 	
 
     render() {
-		console.log(this.state.martdata)
-		console.log(this.state.optionValue)
-		
+		const { martdata } = this.state;
         return (
             <section className="ftco-search bg-light">
                 <div className="container">
@@ -666,6 +661,7 @@ class App extends React.Component {
 						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
+						{JSON.stringify(martdata)}
                     </div>
                 </div>
             </section>
