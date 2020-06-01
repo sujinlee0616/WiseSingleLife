@@ -97,10 +97,23 @@
 			</div>
 		</div>
 	</section>
-	<section>
+	<%--<section>
+	  <div class="swiper-container">
+				<c:forEach var="detail_rvo" items="${rlist }">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <img src="${detail_rvo.poster}">
+                    <div>
+                    	<p>${detail_rvo.title }</p>
+                    </div>
+                </div>
+           </div>
+                </c:forEach>
+     </div>
+     </section> --%>
+	<!--<section>
 		<div class="container">
 			<div class="row">
-				
 				<c:forEach var="detail_rvo" items="${rlist }">
 				<div class="col-md-3">
 					<div class="info-detail-recipe">
@@ -114,6 +127,7 @@
 			</div>
 		</div>
 	</section>
+	-->
 	<!--  <section class="ftco-section-detail testimony-section-detail bg-light">
 		<div class="container">
 			<div class="row justify-content-center">
