@@ -1,6 +1,8 @@
 #section-counter-detail {
   position: relative;
-  z-index: 0; }
+  z-index: 0;
+  background-color: #ffd437
+   }
   #section-counter-detail:after {
     position: absolute;
     top: 0;
@@ -11,10 +13,18 @@
     z-index: -1;
     opacity: .9;
     background: #ffd437; }
-#section-counter-detail
+#section-counter-detail{
+	background-color: #ffd437
+}
+
+#section-counter-detail.ftco-section.ftco-counter-detail{
+	background-color: #ffd437
+}
 
 .ftco-counter-detail {
-  padding: 7em 0; }
+  padding: 7em 0;
+  background-color: #ffd437
+  }
   .ftco-counter-detail .text strong.number {
     font-weight: 400;
     font-size: 30px;
@@ -35,14 +45,9 @@
     text-transform: uppercase;
     letter-spacing: .1em; }
 
-table td.block-23-detail ul {
-  padding: 0;
-  list-style-type: none; 
-  }
-
 .block-23-detail ul {
   padding: 0;
-  list-style-type: none; 
+  list-style: none; 
   }
   .block-23-detail ul li, .block-23-detail ul li > a {
     display: table;
@@ -50,7 +55,7 @@ table td.block-23-detail ul {
     margin-bottom: 15px;
     font-family: 'Roboto', sans-serif;
     font-size:18px;
-    list-style-type: none; 
+    list-style: none; 
     
      }
   .block-23-detail ul li span {

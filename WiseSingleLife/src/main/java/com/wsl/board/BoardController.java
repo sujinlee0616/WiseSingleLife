@@ -43,6 +43,11 @@ public class BoardController {
 		if(endpage>allpage)
 			endpage=allpage;
 		
+		for(BoardVO vo:list)
+		{
+			vo.setReplyCnt(Integer.parseInt(rdao.replyCount(vo.getNo())));
+		}
+		
 		model.addAttribute("list", list);
 		model.addAttribute("curpage", curpage);
 		model.addAttribute("startpage", startpage);
@@ -74,9 +79,12 @@ public class BoardController {
 		BoardVO vo=dao.boardDetailData(no);
 		// 댓글 출력
 		List<BoardReplyVO> rlist=rdao.replyListData(no);
+		// 댓글 갯수
+		int replyCount=Integer.parseInt(rdao.replyCount(no));
 		
 		model.addAttribute("rlist", rlist);
 		model.addAttribute("vo",vo);
+		model.addAttribute("replyCount",replyCount);
 		
 		return "board/detail";
 	}

@@ -78,7 +78,7 @@
 			});
 
 			return (
-				<section className="ftco-section">
+				<section className="ftco-section recipe_list">
 					<div className="container">
 						<div className="row justify-content-center mb-5 pb-3">
 							<div className="col-md-7 heading-section text-center">
@@ -149,6 +149,7 @@
 		}
 
 		moreSearchResults() {
+			// 본인 port 번호에 맞게 주소 변경하면 됨 
 			axios.get("http://localhost:8081/web/recipe/search.do",{
 				params: {
 					category:this.state.optionValue,
@@ -169,7 +170,7 @@
 				curpage:0,
 				totalpage:0
 			});			
-
+			// 본인 port 번호에 맞게 주소 변경하면 됨 
 			axios.get("http://localhost:8081/web/recipe/search.do",{
 				params: {
 					category:this.state.optionValue,

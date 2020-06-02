@@ -16,8 +16,8 @@
 		  <!-- ===== MENUS ===== -->
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="search.do" class="nav-link">가격비교</a></li>
-	          <li class="nav-item"><a href="recipe.do" class="nav-link">레시피</a></li>
+	          <li class="nav-item"><a href="search_react.do" class="nav-link">가격비교</a></li>
+	          <li class="nav-item"><a href="recipe_react_list.do" class="nav-link">레시피</a></li>
 	          <li class="nav-item"><a href="board.do" class="nav-link">게시판</a></li>
 	          <!-- <li class="nav-item cta"><a href="contact.html" class="nav-link ml-lg-2"><span class="icon-user"></span> Sign-In</a></li>
 	          <li class="nav-item cta cta-colored"><a href="contact.html" class="nav-link"><span class="icon-pencil"></span> Sign-Up</a></li> -->

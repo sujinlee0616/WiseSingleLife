@@ -34,13 +34,17 @@ $(function(){
 		$('#d'+no).show();
 	})
 	
-	$('#pwd').keyup(function(){
+	var pwdInput=$('#pwd').val();
+	console.log(pwdInput);
+	
+	$('.pwd').keyup(function(){
 		var user_input_pwd=$(this).val();
 		console.log(user_input_pwd);
-		var no=$('#no').val();
-		var rno=$('#rno').val();
-		console.log(no);
-		console.log(rno);
+		/* var no=$('#no').val();
+		var rno=$('#rno').val(); */
+		var no=$(this).attr("data-no");
+		var rno=$(this).attr("data-rno");
+		console.log("no:"+no+",rno:"+rno);
 
 		$.ajax({
 			type:'POST',
@@ -50,12 +54,12 @@ $(function(){
 			{
 				var pwdCheck=result.trim();
 				if(pwdCheck=="true"){
-					$('#pwd_check_result').html("<span style=\"color: #1976D2;\">비밀번호가 맞습니다. 삭제할 수 있습니다.</font>");
-					$('#deleteBtn').attr('disabled', false);
+					$('#pwd_check_result'+rno).html("<span style=\"color: #1976D2;\">비밀번호가 맞습니다. 삭제할 수 있습니다.</font>");
+					$('#deleteBtn'+rno).attr('disabled', false);
 				}
 				else{
-					$('#pwd_check_result').html("<span style=\"color:#ff3a6d;\">비밀번호가 틀립니다.</font>");
-					$('#deleteBtn').attr('disabled', true);
+					$('#pwd_check_result'+rno).html("<span style=\"color:#ff3a6d;\">비밀번호가 틀립니다.</font>");
+					$('#deleteBtn'+rno).attr('disabled', true);
 				}
 			},
 			error:function(e){
@@ -256,10 +260,10 @@ $(function(){
 	            			<input type="hidden" name="rno" id="rno" value="${rvo.rno }">
 	            			<div style="float: left; width: 22%; margin-top: 20px;">
 	                  			<span style="margin-left: 19px;">비밀번호</span>
-	                  			<input type="password" style="display: block; margin: 0px auto;" name="pwd" id="pwd">
+	                  			<input type="password" style="display: block; margin: 0px auto;" name="pwd" class="pwd" data-no=${rvo.no } data-rno=${rvo.rno }>
 	                		</div>
-			            	<button type="submit" class="cmtBtn" id="deleteBtn">삭제<br>완료</button>
-			            	<div id="pwd_check_result" class="mt-2"></div>
+			            	<button type="submit" class="cmtBtn" id="deleteBtn${rvo.rno }" disabled>삭제<br>완료</button>
+			            	<div id="pwd_check_result${rvo.rno }" class="mt-2"></div>
 		            	</div>
 	            	</form>
 	            </div>

@@ -26,6 +26,8 @@
     <link rel="stylesheet" href="css/main.css">
     
     <!-- react vis graph 그릴 CDN -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.20.0/vis.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.13.1/umd/react.production.min.js"></script> 
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.15/lodash.min.js"></script> 
@@ -61,6 +63,7 @@
   <script src="js/google-map.js"></script>-->
 <script src="js/main.js"></script>
 <script type="text/babel">
+// 본인 서버 port 번호로 변경해야
 const URL = 'http://localhost:8081/web/'
 
 class Modal extends React.Component {
@@ -200,10 +203,12 @@ class Item extends React.Component {
 	}
 
   render() {
+	const pcode = this.props.item.productcode
+	console.log(pcode)
     return (
       <div className="list_item">
         <div className="img">
-          <a href="main/detail.do">
+          <a href={"detail.do?productcode="+this.props.item.productcode}>
             <img
               className="product_img"
               alt="{this.props.name"
@@ -323,8 +328,25 @@ class SearchBar extends React.Component {
 										<span className="xBtn" data-keyword={m} onClick={(e)=>{this.props.removeFromSearchKeywordList(e)}}>X</span>
 									</li>
 								)
-		let size = (5-this.props.searchKeywordList.length)*100+"px"
-		console.log(size)
+		let size = (5-this.props.searchKeywordList.length)*60+"px"
+		var acc
+		var result
+		var accum = new Array();
+		var leng
+		this.props.searchKeywordList.map( (m) =>{
+								leng = m.length		
+								accum.push(leng)
+						})
+		console.log(leng)
+	 	console.log("누산기")	
+		result = accum.reduce((acc, cur, i) => {
+  			console.log(acc, cur, i);
+  			return acc + cur;
+		}, 0);
+
+		console.log(result)
+		let size2 = 350-(result*25)+"px"
+
 
         return (
             <section className="ftco-search bg-light">
@@ -336,9 +358,6 @@ class SearchBar extends React.Component {
                                         <div className="form-group">
                                             <div className="form-field">
                                                 <div className="select-wrap">
-                                                    <div className="icon">
-                                                        <span className="ion-ios-arrow-down"/>
-                                                    </div>
                                                     <select
                                                         value={this.props.optionValue}
                                                         onChange={(e)=>{this.props.setOptionValue(e)}}
@@ -362,7 +381,7 @@ class SearchBar extends React.Component {
 													onChange={(e)=>{this.setState({keyword:e.target.value})}}
 													value={this.state.keyword}
 													className="hidden_input" tabIndex="1" autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck="false" role="textbox" ariaAutocomplete="list" placeholder=""
-													style={{"width": {size}}}
+													style={{"width": size2}}
 													/>
 											</li>
 										</ul>
@@ -635,21 +654,39 @@ class App extends React.Component {
 		this.state.searchKeywordList.map(async(keyword)=>{
 			await this.getJSON(keyword)
 		})
+		const wordlist = encodeURIComponent(JSON.stringify(this.state.searchKeywordList));
+		const wordlist2 = this.state.searchKeywordList
+		let wordlist3 = JSON.stringify(this.state.searchKeywordList);
+		
+		axios.get(URL+'searchtest_insert.do',{
+		params : {keyword: wordlist}});
+		
     }
 	
 	setIncrement(e) {
 		this.setState({test : this.state.test+"1" });
 	}
-	
+	componentDidMount() {
+        var keyword = ""
+		console.log('keyword')
+		console.log('${keyword}')	
+    	if( '${keyword}'==='null'){
+			
+			console.log('"empty String')
+		}else {
+			console.log('set keyword')
+			keyword='${keyword}'
+			this.addToSearchKeywordList(keyword);
+		}
+	}
 
     render() {
-		const { martdata } = this.state;
+		const { searchKeywordList } = this.state;
+		console.log(searchKeywordList)
         return (
-            <section className="ftco-search bg-light">
-                <div className="container">
-                    <div className="row">
-						<SearchBar
-                            optionValue={this.state.optionValue} 
+        	  <div>
+				<SearchBar
+             			    optionValue={this.state.optionValue} 
                             searchKeywordList={this.state.searchKeywordList}
 							addToSearchKeywordList={this.addToSearchKeywordList}
 							removeFromSearchKeywordList={this.removeFromSearchKeywordList}
@@ -661,10 +698,8 @@ class App extends React.Component {
 						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
-						{JSON.stringify(martdata)}
-                    </div>
-                </div>
-            </section>
+						{JSON.stringify(searchKeywordList)}
+          	</div>
         );
     }
 }
