@@ -34,14 +34,13 @@ $(function(){
 		$('#d'+no).show();
 	})
 	
-	var pwdInput=$('#pwd').val();
-	console.log(pwdInput);
-	
 	$('#pwd').keyup(function(){
 		var user_input_pwd=$(this).val();
 		console.log(user_input_pwd);
 		var no=$('#no').val();
 		var rno=$('#rno').val();
+		console.log(no);
+		console.log(rno);
 
 		$.ajax({
 			type:'POST',
@@ -161,7 +160,7 @@ $(function(){
         <!-- ====================== Start of 댓글 영역 ======================  -->
         <div class="replyBoard cmt_area">
           <div>
-            <h6 class="cmt_num py-2 px-1">${commentCount }개의 댓글</h6>
+            <h6 class="cmt_num py-2 px-1">${replyCount }개의 댓글</h6>
           </div>
           <hr class="cmt_line">
           <!-- ====================== 댓글 작성 영역 ====================== -->
