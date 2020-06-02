@@ -64,7 +64,7 @@
 <script src="js/main.js"></script>
 <script type="text/babel">
 // 본인 서버 port 번호로 변경해야
-const URL = 'http://localhost:8080/web/'
+const URL = 'http://localhost:8081/web/'
 
 class Modal extends React.Component {
   
@@ -666,7 +666,19 @@ class App extends React.Component {
 	setIncrement(e) {
 		this.setState({test : this.state.test+"1" });
 	}
-	
+	componentDidMount() {
+        var keyword = ""
+		console.log('keyword')
+		console.log('${keyword}')	
+    	if( '${keyword}'==='null'){
+			this.addToSearchKeywordList(' ');
+			console.log('"empty String')
+		}else {
+			console.log('set keyword')
+			keyword='${keyword}'
+			this.addToSearchKeywordList(keyword);
+		}
+	}
 
     render() {
 		const { searchKeywordList } = this.state;

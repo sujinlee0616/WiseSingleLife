@@ -43,9 +43,13 @@ public class MainController {
 	}*/
 	
 	@RequestMapping("search_react.do")
-	public String search_react(){
-		
-		//model.addAttribute("keyword", keyword);
+	public String search_react(Model model, String keyword){
+		System.out.println(keyword);
+		if(keyword != null){
+			model.addAttribute("keyword",keyword);
+		}else {
+			model.addAttribute("keyword","null");
+		}
 		return "SearchReact";
 	}
 
