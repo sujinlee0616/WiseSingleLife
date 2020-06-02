@@ -1,9 +1,12 @@
 package com.wsl.recipe;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.google.gson.Gson;
+import com.wsl.mongo.SearchVO;
 
 @RestController
 public class RecipeRestController {
@@ -61,6 +65,32 @@ public class RecipeRestController {
 		map.put("list", list);
 
 		return new Gson().toJson(map);
+	}
+	
+	@RequestMapping("recipeRecommend.do")
+	public String recipeRecommend(String keyword) throws UnsupportedEncodingException {
+		String result="";
+		
+		List<RecipeVO> recipelist = new ArrayList<RecipeVO>();
+		ArrayList<String> strlist = new ArrayList<String>();
+		
+		String decodedString = URLDecoder.decode(keyword, "UTF-8");
+		//System.out.println(decodedString);
+		
+		decodedString = decodedString.substring(1,decodedString.lastIndexOf("]"));
+		StringTokenizer st = new StringTokenizer(decodedString,",");
+		while(st.hasMoreTokens()) {
+			String temp = st.nextToken();
+			//System.out.println(temp);
+			strlist.add(temp);
+		}
+		for(int i=0; i<=strlist.size();i++){
+			recipelist = dao.getRecipeListOfRecommend(strlist.get(i));
+			recipelist.addAll(recipelist);
+		}
+
+		
+		return result;
 	}
 
 }

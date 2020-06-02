@@ -65,7 +65,7 @@
 <script src="js/main.js"></script>
 <script type="text/babel">
 // 본인 서버 port 번호로 변경해야
-const URL = 'http://localhost:8079/web/'
+const URL = 'http://localhost:8080/web/'
 
 const {
 	XYPlot,
@@ -176,12 +176,12 @@ class Modal extends React.Component {
 			<div className="col-md-3 d-flex">
 						<div className="blog-entry align-self-stretch">
 							<div className="img">
-								<a href="#">
+								<a href={"detail.do?productcode="+this.props.modalItems.productcode+"&codeno="+this.props.modalItems.codeno}>
 									<img className="product_img" src={m.img}/>
 								</a>
 							</div>
 						<div className="text mt-3 d-block">
-						<a href="#">
+						<a href={"detail.do?productcode="+this.props.modalItems.productcode+"&codeno="+this.props.modalItems.codeno}>
 							<p className="product">{m.name}</p>
 							<p className="price">{m.price}</p>
 						</a>
@@ -297,7 +297,7 @@ class Item extends React.Component {
     return (
       <div className="list_item">
         <div className="img">
-          <a href={"detail.do?productcode="+this.props.item.productcode}>
+          <a href={"detail.do?productcode="+this.props.item.productcode+"&codeno="+this.props.item.codeno}>
             <img
               className="product_img"
               alt="{this.props.name"
@@ -314,7 +314,7 @@ class Item extends React.Component {
           ></button>
         </div>
         <div className="info">
-          <a href="main/detail.do">
+          <a href={"detail.do?productcode="+this.props.item.productcode+"&codeno="+this.props.item.codeno}>
             <p className="product">{this.props.item.name}</p>
             <p className="price">{this.props.item.price}</p>
           </a>
@@ -760,7 +760,14 @@ class App extends React.Component {
 		let wordlist3 = JSON.stringify(this.state.searchKeywordList);
 		
 		axios.get(URL+'searchtest_insert.do',{
-		params : {keyword: wordlist}});
+		params : {keyword: wordlist}
+			});
+
+		axios.get(URL+'recipeRecommend.do',{
+			params :  {keyword: wordlist}
+			
+			});
+console.log("recommend")
 		
     }
 	
