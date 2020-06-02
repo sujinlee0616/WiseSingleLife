@@ -66,4 +66,9 @@ public class BoardReplyDAO {
 	{
 		return mapper.replyGetPwd(rno);
 	}
+	// 댓글갯수
+	public String replyCount(int no)
+	{
+		return mapper.replyCount(no);
+	}
 }
