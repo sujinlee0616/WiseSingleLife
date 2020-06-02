@@ -6,6 +6,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+<script type="text/javascript">
+$(function (){
+	$('.pop').mouseover(function(){
+		var no=$(this).attr("data-no");
+		//console.log(no);
+		$('#wcimg').html("<img src=\"/wslimg/"+no+".png\" width=\"530\" height=\"450\"/>");
+	})
+}) 
+</script>
 </head>
 <body>
 <!-- ================================ IMAGE SLIDER ================================ -->
@@ -39,10 +49,10 @@
 					<ol class="popular_keyword mb-0">
 						<c:forEach var="vo" items="${list }" varStatus="status">
 							<c:if test="${status.count==1 }">
-								<li class="pop on" id="pop${status.count}">
+								<li class="pop on" id="pop${status.count}" data-no="${status.count }">
 							</c:if>
 							<c:if test="${status.count!=1 }">
-								<li class="pop" id="pop${status.count}">
+								<li class="pop" id="pop${status.count}" data-no="${status.count }">
 							</c:if>
 								<a href="#">
 									<div class="num">${status.count }</div>
@@ -55,8 +65,8 @@
 				</div>
 				<!-- 연관검색어 (우측) -->
 				<div class="col-md-6 rk_area ftco-animate">
-					<p class="mt-5">
-						<img src="images/wordChart.png" width="530" height="450"/>
+					<p class="mt-5" id="wcimg">
+						<img src="/wslimg/1.png" width="530" height="450"/>
 					</p>
 				</div>
 			</div>

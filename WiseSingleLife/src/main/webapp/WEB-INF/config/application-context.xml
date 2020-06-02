@@ -54,7 +54,7 @@
 	<!-- 몽고디비 등록 -->
 	<mongo:mongo-client
 		id="mc"
-		host="127.0.0.1"
+		host="211.238.142.186"
 		port="27017"
 	/>
 	<bean id="mongoTemplate" class="org.springframework.data.mongodb.core.MongoTemplate">
