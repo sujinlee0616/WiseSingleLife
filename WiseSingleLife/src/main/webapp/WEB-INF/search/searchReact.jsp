@@ -671,7 +671,7 @@ class App extends React.Component {
 		console.log('keyword')
 		console.log('${keyword}')	
     	if( '${keyword}'==='null'){
-			this.addToSearchKeywordList(' ');
+			
 			console.log('"empty String')
 		}else {
 			console.log('set keyword')
