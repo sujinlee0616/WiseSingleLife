@@ -12,6 +12,7 @@ public class RecipeDetailController {
 	@Autowired
 	private RecipeDetailDAO dao;
 	
+	// [일반 JSP 페이지]
 	@RequestMapping("recipe_detail.do")
 	public String recipe_detail(Model model,int no) 
 	{
@@ -22,5 +23,11 @@ public class RecipeDetailController {
 		// ==> list에서 그런 애들 보여주지 않도록 처리해줘야 
 		
 		return "recipe/detail";
+	}
+	
+	// [React 페이지] - 페이지만 보여줌.
+	@RequestMapping("recipe_react_detail.do")
+	public String react_recipe_list() {
+		return "recipe/react_detail";
 	}
 }
