@@ -153,7 +153,7 @@ public class SearchRestController {
 		allobj.put("cp", cparr);
 		
 		String result=allobj.toJSONString();
-		System.out.println(result);
+		//System.out.println(result);
 		
 
 		// {"em":[{},{},{},..],"hp":[{},{},{},..], ...}  <-- 이런 형태로 저장

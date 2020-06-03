@@ -26,9 +26,9 @@ public class SearchController {
 	@RequestMapping("searchtest_insert.do")
 	public String searchtest_insert(String keyword) throws UnsupportedEncodingException {
 		
-		//System.out.println("keyword"+keyword);
+		//System.out.println(keyword);
         String decodedString = URLDecoder.decode(keyword, "UTF-8");
-        //System.out.println("decodedString:"+decodedString);
+        //System.out.println(decodedString);
 		//keyword="라면,만두,떡"; ///////// 임시
 
 		SearchVO vo=new SearchVO();
