@@ -164,7 +164,7 @@ $(function(){
         <!-- ====================== Start of 댓글 영역 ======================  -->
         <div class="replyBoard cmt_area">
           <div>
-            <h6 class="cmt_num py-2 px-1">${commentCount }개의 댓글</h6>
+            <h6 class="cmt_num py-2 px-1">${replyCount }개의 댓글</h6>
           </div>
           <hr class="cmt_line">
           <!-- ====================== 댓글 작성 영역 ====================== -->

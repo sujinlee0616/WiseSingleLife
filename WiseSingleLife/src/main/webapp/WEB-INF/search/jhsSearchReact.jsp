@@ -1,23 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" href="css/search.css">
 <title>Insert title here</title>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
-	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-	<script src="https://unpkg.com/react-vis/dist/dist.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="https://unpkg.com/react-vis/dist/dist.min.js"></script>
 </head>
 <body>
-<div id="root"></div>
-<script type="text/babel">
-const URL = 'http://localhost:8080/web/'
+	<div id="root"></div>
+	<script type="text/babel">
+const URL = 'http://localhost:8079/web/'
 
 const {
   XYPlot,
@@ -26,65 +31,79 @@ const {
   VerticalGridLines,
   HorizontalGridLines,
   MarkSeries,
-  MarkSeriesCanvas,
-  Hint
+  MarkSeriesCanvas
 } = reactVis
 
 class Graph extends React.Component {
 	constructor(props){
 		super(props);
-
 		this.state = {
-    		data: [{x: Math.random() * 10,
-    				y: Math.random() * 20,
-    				size: Math.random() * 10,
-    				color: Math.random() * 10,
-    				opacity: Math.random() * 0.5 + 0.5
-			}],
-    		value: false
+    		data: []
 		}
+	}
 
 	render() {
-let temp = []
-		this.props.martdata.map((m)=>{
-console.log('map call...')
-			temp.push({
-				x: Math.random() * 10,
-    			y: Math.random() * 20,
-    			size: Math.random() * 10,
-    			color: Math.random() * 10,
-    			opacity: Math.random() * 0.5 + 0.5
-			})
+		const lm = this.props.martdata.data['lm'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate,
+    			size: m.reviewcount,
+    			color: '#ff5145',
+    			opacity: 1
+			}
 		})
-console.log(temp)
-		this.setState({data:temp})
-console.log(this.state.data)
-  	}
+		const em = this.props.martdata.data['em'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate,
+    			size: m.reviewcount,
+    			color: '#ffef3b',
+    			opacity: 1
+			}
+		})
+		const hp = this.props.martdata.data['hp'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate/20,
+    			size: m.reviewcount,
+    			color: '#5465ff',
+    			opacity: 1
+			}
+		})
+		const cp = this.props.martdata.data['cp'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate,
+    			size: m.reviewcount,
+    			color: '#54ff8a',
+    			opacity: 1
+			}
+		})
+		
+		const temp = [...lm,...em,...hp,...cp]
 
 	    const markSeriesProps = {
 	      animation: true,
 	      className: 'mark-series-example',
 	      sizeRange: [5, 15],
 	      seriesId: 'my-example-scatterplot',
+		  colorType: 'literal',
 	      opacityType: 'literal',
-	      data:temp,
-	      onNearestXY: value => this.setState({value})
-	    };
+	      data:temp
+	    }
 		
 		return (
 			<div className="canvas-wrapper">
 		        <div className="canvas-example-controls">
 		        <XYPlot
-		          onMouseLeave={() => this.setState({value: false})}
 		          width={1200}
-		          height={600}
+		          height={400}
 		        >
 		          <VerticalGridLines />
 		          <HorizontalGridLines />
 		          <XAxis />
 		          <YAxis />
 				  <MarkSeries {...markSeriesProps} />
-		          {this.state.value ? <Hint value={this.state.value} /> : null}
 		        </XYPlot>
 			   </div>
 			</div>
@@ -293,16 +312,20 @@ class MartRow extends React.Component {
   }
   render() {
     return (
-      <tr className="mall_result" id="product1">
-        <td className="product_name">
-          {this.props.kw_data.keyword}
-        </td>
-        
-          <ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-      </tr>
+		<tbody>
+      	<tr className="mall_result" id="product1">
+        	<td className="product_name" rowSpan="2">
+          		{this.props.kw_data.keyword}
+        	</td>
+          	<ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+          	<ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+          	<ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+          	<ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+		</tr>
+		<tr className="mall_result" id="graph1">
+			<td colSpan="4" className="graph_area"><Graph martdata={this.props.kw_data}/></td>
+		</tr>
+		</tbody>
     )
   }
 }
@@ -685,7 +708,6 @@ class App extends React.Component {
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
 					</div>
-					<Graph martdata={this.state.martdata}/>
                 </div>
             </section>
         );

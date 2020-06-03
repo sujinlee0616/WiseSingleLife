@@ -78,7 +78,7 @@
 	         <tr>
 	      		<td class="text-center" style="color: #212529;">${vo.no }</td>
 	      		<td style="color: #212529;">
-	      		  <a href="board_detail.do?no=${vo.no }">${vo.title }<span class="cmtListCount">&nbsp;</span></a>
+	      		  <a href="board_detail.do?no=${vo.no }">${vo.title }<span class="cmtListCount">&nbsp;(${vo.replyCnt })</span></a>
 	      		</td>
 	      		<td class="text-center" style="color: #212529;">${vo.author }</td>
 	      		<td class="text-center" style="color: #212529;">

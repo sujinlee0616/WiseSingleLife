@@ -131,6 +131,7 @@ a:hover{color:#222222;}
     overflow: hidden;
     display: inline-block;
     /* display: inline; */
+    min-height: 95px;
 }
 
 .blind{display: none;}

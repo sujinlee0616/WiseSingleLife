@@ -39,5 +39,9 @@ public class RecipeDAO {
 	public int recipeChefSearchTotalPage(Map map) {
 		return mapper.recipeChefSearchTotalPage(map);
 	}
+	
+	public List<RecipeVO> getRecipeListOfRecommend(String keyword){
+		return mapper.getRecipeListOfRecommend(keyword);
+	}
 
 }

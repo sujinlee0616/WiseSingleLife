@@ -13,6 +13,7 @@ import java.util.StringTokenizer;
 
 import javax.swing.plaf.synth.SynthSeparatorUI;
 
+import org.rosuda.REngine.Rserve.RConnection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,41 +26,48 @@ public class SearchController {
 	@RequestMapping("searchtest_insert.do")
 	public String searchtest_insert(String keyword) throws UnsupportedEncodingException {
 		
-		System.out.println(keyword);
+		//System.out.println(keyword);
         String decodedString = URLDecoder.decode(keyword, "UTF-8");
-        System.out.println(decodedString);
+        //System.out.println(decodedString);
 		//keyword="라면,만두,떡"; ///////// 임시
-		//SearchVO vo=new SearchVO();
-		//vo.setKeyword(keyword);
-		//dao.searchInsert(vo);
+
+		SearchVO vo=new SearchVO();
+		vo.setKeyword(decodedString);
+		dao.searchInsert(vo);
+
 		return "main";
 	} 
 	
 	@RequestMapping("searchtest_select.do")
 	public String searchtest_select(String keyword) {
-		keyword="라면"; //// 임시
+		keyword="포도"; //// 임시
 		
 		// keyword가 포함된 검색묶음을 가져와서 list에 저장 
-		// 라면,김치,치즈  
+		// ["라면","김치","치즈"]
 		List<SearchVO> list=dao.searchListData(keyword);
 		
-		// "," 잘라서 text에 저장
+		/*for(SearchVO vo:list) {
+			System.out.println(vo.getKeyword());
+		}*/
+		
+		
 		// 라면 김치 치즈 
 		String text="";
 		for(SearchVO vo:list){
-			StringTokenizer st=new StringTokenizer(vo.getKeyword(), ",");
+			String strKeyword=vo.getKeyword();
+			strKeyword=strKeyword.substring(1,strKeyword.lastIndexOf("]"));
+			System.out.println(strKeyword);
+			StringTokenizer st=new StringTokenizer(strKeyword, ",");
 			while(st.hasMoreTokens()) {
-				text+=st.nextToken()+"\n";
+				String temp=st.nextToken();
+				temp=temp.substring(1,temp.lastIndexOf("\""));
+				text+=temp+"\n";
 			}
 		}
 		
 		// txt 파일 생성 => R에서 분석하기 위해
 		String fileName="c:\\data\\search.txt";
 		try {
-			/*FileWriter fw=new FileWriter(fileName);
-			fw.write(text);
-			fw.close();*/
-			
 			// ANSI로 저장
 			OutputStreamWriter out=new OutputStreamWriter(new FileOutputStream(fileName),"MS949");
 			out.write(text);
@@ -68,6 +76,11 @@ public class SearchController {
 			ex.printStackTrace();
 		}
 		
+//		rGraph(1);
+		
 		return "main";
 	}
+	
+	
+	
 }

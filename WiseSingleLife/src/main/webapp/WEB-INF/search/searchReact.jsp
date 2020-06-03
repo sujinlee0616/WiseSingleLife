@@ -36,6 +36,7 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.10.1/polyfill.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/react-vis/dist/dist.min.js"></script>
 </head>
 <body>
     <tiles:insertAttribute name="nav"/>
@@ -66,6 +67,94 @@
 // 본인 서버 port 번호로 변경해야
 const URL = 'http://localhost:8080/web/'
 
+const {
+	XYPlot,
+	XAxis,
+	YAxis,
+	VerticalGridLines,
+	HorizontalGridLines,
+	MarkSeries,
+	MarkSeriesCanvas
+} = reactVis
+
+class Graph extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+    		data: []
+		}
+	}
+
+	render() {
+		const lm = this.props.martdata.data['lm'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate,
+    			size: m.reviewcount,
+    			color: '#ff5145',
+				opacity: 0.6
+			}
+		})
+		const em = this.props.martdata.data['em'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate,
+    			size: m.reviewcount,
+    			color: '#ffef3b',
+				opacity: 0.6
+			}
+		})
+		const hp = this.props.martdata.data['hp'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate/20,
+    			size: m.reviewcount,
+    			color: '#5465ff',
+				opacity: 0.6
+			}
+		})
+		const cp = this.props.martdata.data['cp'].map(m=>{
+			return {
+				x: m.price,
+    			y: m.rate,
+    			size: m.reviewcount,
+    			color: '#54ff8a',
+				opacity: 0.6
+			}
+		})
+		
+		const temp = [...lm,...em,...hp,...cp]
+
+	    const markSeriesProps = {
+	      animation: true,
+	      className: 'mark-series-example',
+	      sizeRange: [5, 15],
+	      seriesId: 'my-example-scatterplot',
+		  colorType: 'literal',
+	      opacityType: 'literal',
+	      data:temp,
+		  onNearestXY: value => this.setState({value})
+	    }
+		
+		return (
+			<div className="canvas-wrapper" style={{"position":"relative","left":"50px"}}>
+		        <div className="canvas-example-controls">
+		        <XYPlot
+		          width={850}
+		          height={350}
+		        >
+		          <VerticalGridLines />
+		          <HorizontalGridLines />
+		          <XAxis tickLabelAngle={-30}/>
+		          <YAxis />
+				  <MarkSeries {...markSeriesProps} />
+		        </XYPlot>
+			   </div>
+			</div>
+		)
+	}
+}
+
 class Modal extends React.Component {
   
   constructor(props){
@@ -87,12 +176,12 @@ class Modal extends React.Component {
 			<div className="col-md-3 d-flex">
 						<div className="blog-entry align-self-stretch">
 							<div className="img">
-								<a href="#">
+								<a href={"detail.do?productcode="+this.props.modalItems.productcode+"&codeno="+this.props.modalItems.codeno}>
 									<img className="product_img" src={m.img}/>
 								</a>
 							</div>
 						<div className="text mt-3 d-block">
-						<a href="#">
+						<a href={"detail.do?productcode="+this.props.modalItems.productcode+"&codeno="+this.props.modalItems.codeno}>
 							<p className="product">{m.name}</p>
 							<p className="price">{m.price}</p>
 						</a>
@@ -208,7 +297,7 @@ class Item extends React.Component {
     return (
       <div className="list_item">
         <div className="img">
-          <a href={"detail.do?productcode="+this.props.item.productcode}>
+          <a href={"detail.do?productcode="+this.props.item.productcode+"&codeno="+this.props.item.codeno}>
             <img
               className="product_img"
               alt="{this.props.name"
@@ -225,7 +314,7 @@ class Item extends React.Component {
           ></button>
         </div>
         <div className="info">
-          <a href="main/detail.do">
+          <a href={"detail.do?productcode="+this.props.item.productcode+"&codeno="+this.props.item.codeno}>
             <p className="product">{this.props.item.name}</p>
             <p className="price">{this.props.item.price}</p>
           </a>
@@ -269,16 +358,28 @@ class MartRow extends React.Component {
   }
   render() {
     return (
-      <tr className="mall_result" id="product1">
-        <td className="product_name">
-          {this.props.kw_data.keyword}
-        </td>
-        
-          <ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-          <ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
-      </tr>
+		<tbody>
+		<tr className="mall_result" id="product1">
+			<td className="product_name" rowSpan="2">
+				{this.props.kw_data.keyword}
+			</td>
+			<ItemList key1="lm" martitems={this.props.kw_data.data['lm']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+			<ItemList key1="hp" martitems={this.props.kw_data.data['hp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+			<ItemList key1="em" martitems={this.props.kw_data.data['em']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+			<ItemList key1="cp" martitems={this.props.kw_data.data['cp']} keyword={this.props.kw_data.keyword} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/>
+		</tr>
+		<tr className="mall_result" id="graph1">
+			<td colSpan="4">
+				<span style={{"position":"relative","top":"20px","left":"20px"}}>평점</span>
+				<span style={{"position":"relative","left":"880px","top":"335px"}}>가격</span>
+				<span style={{"position":"relative","left":"30px","color":"#ff5145"}}>●&nbsp;<font color="black">롯데마트</font></span>
+				<span style={{"position":"relative","left":"220px","color":"#ffef3b"}}>●&nbsp;<font color="black">이마트</font></span>
+				<span style={{"position":"relative","left":"405px","color":"#5465ff"}}>●&nbsp;<font color="black">홈플러스</font></span>
+				<span style={{"position":"relative","left":"595px","color":"#54ff8a"}}>●&nbsp;<font color="black">쿠팡</font></span>
+				<Graph martdata={this.props.kw_data}/>
+			</td>
+		</tr>
+		</tbody>
     );
   }
 }
@@ -659,14 +760,33 @@ class App extends React.Component {
 		let wordlist3 = JSON.stringify(this.state.searchKeywordList);
 		
 		axios.get(URL+'searchtest_insert.do',{
-		params : {keyword: wordlist}});
+		params : {keyword: wordlist}
+			});
+
+		axios.get(URL+'recipeRecommend.do',{
+			params :  {keyword: wordlist}
+			
+			});
+console.log("recommend")
 		
     }
 	
 	setIncrement(e) {
 		this.setState({test : this.state.test+"1" });
 	}
-	
+	componentDidMount() {
+        var keyword = ""
+		console.log('keyword')
+		console.log('${keyword}')	
+    	if( '${keyword}'==='null'){
+			
+			console.log('"empty String')
+		}else {
+			console.log('set keyword')
+			keyword='${keyword}'
+			this.addToSearchKeywordList(keyword);
+		}
+	}
 
     render() {
 		const { searchKeywordList } = this.state;

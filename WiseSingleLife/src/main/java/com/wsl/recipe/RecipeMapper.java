@@ -42,5 +42,9 @@ public interface RecipeMapper {
 	@Select("SELECT CEIL(COUNT(*)/#{rowsize}) FROM recipe_view "
 			+ "WHERE chef like '%'||#{keyword}||'%'")
 	public int recipeChefSearchTotalPage(Map map);
+	
+	@Select("SELECT Distinct(no), title, poster,mname FROM " + 
+			"Recipe_ingredient_amount WHERE mname = '#{keyword}' AND title like '%'||#{keyword}||'% '")
+	public List<RecipeVO> getRecipeListOfRecommend(String keyword);
 
 }

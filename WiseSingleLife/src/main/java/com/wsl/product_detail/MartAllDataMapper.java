@@ -30,27 +30,20 @@ public interface MartAllDataMapper {
 	 */
 	// 총 상품 수 (keyword 관련)
 	@Select("SELECT count(*) FROM keyword_mart_mapper "+
-			"where codeno =(SELECT codeno FROM keyword_mart_mapper "+		
-			"where productcode like '%'||#{productcode})")
+			"where codeno =#{codno}")
 	public int ProductAllCount(String productcode);
 	
 	//키워드 (keyword)
 	@Select("SELECT * FROM search_keyword "+
-			"where codeno =(SELECT codeno FROM keyword_mart_mapper "+		
-			"where productcode like '%'||#{productcode})")
+			"where codeno =#{codeno}")
 	public Detail_SearchKeyVO ProductKeyword(String productcode);
-	
-	
 	// 레시피 관련 정보
 	@Select("SELECT count(*) from recipe_keyword_mapper "
-		  + "WHERE codeno=(SELECT codeno FROM keyword_mart_mapper "
-		  + "WHERE productcode like '%'||#{productcode}")
+		  + "WHERE codeno=#{codeno}")
 	public int RecipeCount(String productcode);
-	
 	//
 	@Select("SELECT rno from recipe_keyword_mapper "
-		  + "WHERE codeno= (SELECT codeno FROM keyword_mart_mapper " 
-		  +"WHERE productcode like '%'||#{productcode}) and rownum <4")
+		  + "WHERE codeno = #{codeno} and rownum <4")
 	public List<Integer> RnoList(String productcode);
 	
 	@Select("SELECT * FROM recipe "

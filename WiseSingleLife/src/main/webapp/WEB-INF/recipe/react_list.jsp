@@ -14,6 +14,8 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 <script type="text/babel">
+const URL = "http://localhost:8079/web/"
+
 	class ButtonGroup extends React.Component {
 		constructor(props) {
 			super(props);
@@ -83,7 +85,7 @@
 						<div className="row justify-content-center mb-5 pb-3">
 							<div className="col-md-7 heading-section text-center">
 								<span className="subheading">{this.props.optionValue}로 검색한 결과</span>
-							  <h2 className="mb-4">{this.props.keyword}</h2>
+							  <h2 className="mb-4">{this.props.searchKeyword}</h2>
 							</div>
 						</div>
 						<div className="row d-flex">
@@ -121,7 +123,7 @@
 											</div>
 										</div>
 									</div>
-									<input className="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요." value={this.props.keyword} onChange={this.props.setKeyword}/>
+									<input onKeyDown={(e)=>{if(e.keyCode==13){this.props.setSearchResults()}}} className="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요." value={this.props.keyword} onChange={this.props.setKeyword}/>
 									<button className="sliderBtn" onClick={this.props.setSearchResults}>검색</button>
 								</div>
 							</div>
@@ -146,11 +148,12 @@
 			this.setKeyword = this.setKeyword.bind(this);
 			this.setSearchResults = this.setSearchResults.bind(this);
 			this.moreSearchResults = this.moreSearchResults.bind(this);
+			this.setSearchResults()
 		}
 
 		moreSearchResults() {
 			// 본인 port 번호에 맞게 주소 변경하면 됨 
-			axios.get("http://localhost:8081/web/recipe/search.do",{
+			axios.get(URL+"recipe/search.do",{
 				params: {
 					category:this.state.optionValue,
 					page:this.state.curpage+1,
@@ -171,7 +174,7 @@
 				totalpage:0
 			});			
 			// 본인 port 번호에 맞게 주소 변경하면 됨 
-			axios.get("http://localhost:8081/web/recipe/search.do",{
+			axios.get(URL+"recipe/search.do",{
 				params: {
 					category:this.state.optionValue,
 					page:this.state.curpage+1,
@@ -179,6 +182,7 @@
 				}
 			}).then((result)=>{
 				this.setState({
+					searchKeyword:this.state.keyword,
 					totalpage:result.data.totalpage,
 					searchResults:result.data.list,
 					curpage:this.state.curpage+1
@@ -198,7 +202,7 @@
 			return (
 				<div>
 					<SearchBar optionValue={this.state.optionValue} setOptionValue={this.setOptionValue} value={this.state.keyword} setKeyword={this.setKeyword} setSearchResults={this.setSearchResults}/>
-					<SearchResultContainer optionValue={this.state.optionValue} keyword={this.state.keyword} searchResults={this.state.searchResults}/>
+					<SearchResultContainer optionValue={this.state.optionValue} searchKeyword={this.state.searchKeyword} searchResults={this.state.searchResults}/>
 					{ this.state.totalpage===0 ? <br/> : <ButtonGroup curpage={this.state.curpage} totalpage={this.state.totalpage} moreSearchResults={this.moreSearchResults}/> }
 				</div>
 			);

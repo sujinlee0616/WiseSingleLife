@@ -73,4 +73,8 @@ public interface BoardReplyMapper {
 	@Select("SELECT pwd FROM boardreply "
 			+ "WHERE rno=#{rno}")
 	public String replyGetPwd(int rno);
+	
+	@Select("SELECT COUNT(*) FROM boardreply "
+			+ "WHERE no=#{no}")
+	public String replyCount(int no);
 }
