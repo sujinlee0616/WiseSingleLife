@@ -9,6 +9,10 @@ import org.springframework.stereotype.Component;
 @Component
 public interface RecipeMapper {
 	
+	@Select("SELECT DISTINCT no,poster,title,mname from recipe_ingredient_amount"
+			+ " WHERE mname=#{mname}")
+	public List<RecipeRecommendVO> getRecipeRecommendListByMname(String mname);
+	
 	@Select("SELECT no, title, poster, chef FROM ("
 			+ "SELECT rownum AS num, no, title, poster, chef FROM recipe_view "
 			+ "WHERE title like '%'||#{keyword}||'%') "

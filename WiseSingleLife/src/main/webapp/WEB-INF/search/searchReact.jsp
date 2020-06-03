@@ -65,7 +65,7 @@
 <script src="js/main.js"></script>
 <script type="text/babel">
 // 본인 서버 port 번호로 변경해야
-const URL = 'http://localhost:8080/web/'
+const URL = 'http://localhost:8079/web/'
 
 const {
 	XYPlot,
@@ -218,7 +218,36 @@ class Modal extends React.Component {
 }
 
 class RecipeRecommend extends React.Component {
+	constructor(props) {
+		super(props)
+		this.state = {
+			count : 4
+		}
+		this.countIncrement=this.countIncrement.bind(this)
+	}
+
+	countIncrement() {
+		this.setState({count:this.state.count+4})
+	}
+
   render() {
+	const html = this.props.list.slice(0,this.state.count).map(m=>
+			<div className="item">
+              <div className="img">
+                <a href="#">
+                  <img
+                    className="product_img"
+                    src={m.poster}
+                  />
+                </a>
+              </div>
+              <a href="#">
+                <p className="product">{m.title}</p>
+                <p className="price mb-0">{m.mname}</p>
+              </a>
+            </div>
+	)
+
     return (
       <div className="row">
         <div className="saved">
@@ -226,21 +255,11 @@ class RecipeRecommend extends React.Component {
             <h5 className="saved_title">추천 레시피</h5>
           </div>
           <div className="savedItemArea">
-            <div className="item">
-              <div className="img">
-                <a href="#">
-                  <img
-                    className="product_img"
-                    src="https://recipe1.ezmember.co.kr/cache/recipe/2015/09/21/8120c5f993593892442603f5e246eb671.jpg"
-                  />
-                </a>
-              </div>
-              <a href="#">
-                <p className="product">까르보나라 떡볶이</p>
-                <p className="price mb-0">떡볶이,까르보나라</p>
-              </a>
-            </div>
+            {html}
           </div>
+			<div className="text-right">
+				{ this.state.count>this.props.list.length ? null : <h6 className="btn btn-sm" onClick={this.countIncrement}><font color="white">+ 더 보기({this.state.count}/{this.props.list.length})&nbsp;&nbsp;</font></h6> }
+			</div>
         </div>
       </div>
     );
@@ -763,11 +782,11 @@ class App extends React.Component {
 		params : {keyword: wordlist}
 			});
 
-		axios.get(URL+'recipeRecommend.do',{
+		axios.get(URL+'jhsRecommend.do',{
 			params :  {keyword: wordlist}
-			
-			});
-console.log("recommend")
+		}).then((res)=>{
+			this.setState({recipeRecommendList:res.data})
+		});
 		
     }
 	
@@ -804,7 +823,7 @@ console.log("recommend")
                         />
 						<MartTable martdata={this.state.martdata} showModalBtn={this.showModalBtn} setCheckItems={this.setCheckItems}/>
 						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
-						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend /> : null }
+						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend list={this.state.recipeRecommendList}/> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
 						{JSON.stringify(searchKeywordList)}
           	</div>
