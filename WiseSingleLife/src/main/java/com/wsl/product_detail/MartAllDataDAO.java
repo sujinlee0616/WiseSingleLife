@@ -27,17 +27,17 @@ public class MartAllDataDAO {
 		}
 		return vo;
 	}
-	public int ProductAllCount(String productcode){
-		return MAData_mapper.ProductAllCount(productcode);
+	public int ProductAllCount(String codeno){
+		return MAData_mapper.ProductAllCount(codeno);
 	}
-	public Detail_SearchKeyVO productKeyowrd(String productcode){
-		return MAData_mapper.ProductKeyword(productcode);
+	public Detail_SearchKeyVO productKeyowrd(String codeno){
+		return MAData_mapper.ProductKeyword(codeno);
 	}
-	public List<Integer> rno(String productcode){
-		return MAData_mapper.RnoList(productcode);
+	public List<Integer> rno(String codeno){
+		return MAData_mapper.RnoList(codeno);
 	}
-	public int RecipeCount(String productcode){
-		return MAData_mapper.RecipeCount(productcode);
+	public int RecipeCount(String codeno){
+		return MAData_mapper.RecipeCount(codeno);
 	}
 	public Detail_RecipeVO RecipeList_detail(int no){
 		return MAData_mapper.RecipeList_detail(no);
