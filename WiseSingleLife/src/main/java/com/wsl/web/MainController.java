@@ -67,7 +67,8 @@ public class MainController {
 	}
 
 	@RequestMapping("detail.do")
-	public String detail_page(Model model,String productcode){
+	public String detail_page(Model model,String productcode,String codeno){
+		System.out.println("codeno값 확인 : "+codeno);
 		MartAllDataVO vo = dao.SearchDetail(productcode);	
 		List<Detail_RecipeVO> rlist = new ArrayList<Detail_RecipeVO>();
 		Detail_SearchKeyVO svo = new Detail_SearchKeyVO();
@@ -80,14 +81,16 @@ public class MainController {
 			}else if(vo.getName().indexOf("_")!= -1){
 				temp =vo.getName().substring(0,vo.getName().indexOf("_"));
 			}
-			svo = dao.productKeyowrd(productcode);
+			svo = dao.productKeyowrd(codeno);
 		}catch(Exception ex){
+			System.out.println("확인 : "+ex.getMessage());
+			ex.printStackTrace();
 			temp ="#";
 		}
 		System.out.println(temp);
 		// 상품 코드와 관련된 전체 상품 수
 		try{
-			vo.setProductsCount(dao.ProductAllCount(productcode));
+			vo.setProductsCount(dao.ProductAllCount(codeno));
 			vo.setKeyword(svo.getKeyword());
 			vo.setSearchCount(svo.getCount());
 			vo.setBrand(temp);
@@ -98,7 +101,7 @@ public class MainController {
 			vo.setRecipeCount(0);
 		}
 		try {
-		List<Integer> list = dao.rno(productcode);
+		List<Integer> list = dao.rno(codeno);
 		for(int i : list){
 			Detail_RecipeVO rvo = dao.RecipeList_detail(i);
 			rlist.add(rvo);
