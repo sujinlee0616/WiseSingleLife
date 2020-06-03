@@ -58,14 +58,12 @@ public class SearchDAO {
 			if (!Folder.exists()) {
 				try{
 				    Folder.mkdir(); //폴더 생성
-				    System.out.println("폴더가 생성되었습니다.");
+				    //System.out.println("폴더가 생성되었습니다.");
 			        } 
 			        catch(Exception e){
 				    e.getStackTrace();
 				}        
-		    } else {
-				System.out.println("이미 폴더가 생성되어 있습니다.");
-			}
+		    } 
 			
 			// 그림그릴 준비 - 저장위치에 그림을 png로 그려라
 			rc.voidEval("png(\"C:/wslImage/"+no+".png\",width=550,height=450)");

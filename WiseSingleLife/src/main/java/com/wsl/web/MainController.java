@@ -133,7 +133,7 @@ public class MainController {
 			for(SearchVO vo:slist){
 				String strKeyword=vo.getKeyword();
 				strKeyword=strKeyword.substring(1,strKeyword.lastIndexOf("]"));
-				System.out.println(strKeyword);
+				//System.out.println(strKeyword);
 				StringTokenizer st=new StringTokenizer(strKeyword, ",");
 				while(st.hasMoreTokens()) {
 					String temp=st.nextToken();
