@@ -54,7 +54,7 @@ $(function (){
 							<c:if test="${status.count!=1 }">
 								<li class="pop" id="pop${status.count}" data-no="${status.count }">
 							</c:if>
-								<a href="#">
+								<a href="search_react.do?keyword=${vo.keyword }">
 									<div class="num">${status.count }</div>
 									<span class="pk">${vo.keyword }</span>
 									<!-- <span class="rank_chg">▲</span> -->

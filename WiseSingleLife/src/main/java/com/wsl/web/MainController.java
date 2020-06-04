@@ -35,9 +35,9 @@ public class MainController {
 	public String main_page(Model model)
 	{
 		List<SearchKeywordVO> list=maindao.getPopularTop10();
-		/*wordCloud(list);*/
+		wordCloud(list);
 		
-		/*model.addAttribute("list", list);*/
+		model.addAttribute("list", list);
 		
 		return "main";
 	}
