@@ -71,7 +71,7 @@
 						<div class="block-18 text-center">
 							<div class="text">
 								<!-- 평점 -->
-								<span>RATE</span> <strong class="number" id="rate">${MaData_vo.rate}</strong>
+								<span>RATE</span><strong class="number" id="rate">${MaData_vo.rate}</strong>
 							</div>
 						</div>
 					</div>

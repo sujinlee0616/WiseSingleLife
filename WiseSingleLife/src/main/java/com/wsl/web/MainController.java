@@ -100,22 +100,12 @@ public class MainController {
 			vo.setKeyword("없음");
 			vo.setRecipeCount(0);
 		}
-		try {
-		List<Integer> list = dao.rno(codeno);
-		for(int i : list){
-			Detail_RecipeVO rvo = dao.RecipeList_detail(i);
-			rlist.add(rvo);
-		}
-		System.out.println(rlist.size());
-		}catch(Exception ex) {
-			RecipeCheck=true;
-		}
+		
 		model.addAttribute("check",RecipeCheck);
 		model.addAttribute("rlist",rlist);
 		model.addAttribute("MaData_vo", vo);
 		return "search/detail";
 	}
-	
 	
 	@Async
 	public void wordCloud(List<SearchKeywordVO> list) {
@@ -129,7 +119,6 @@ public class MainController {
 			/*for(SearchVO vo:slist) {
 				System.out.println(vo.getKeyword());
 			}*/
-			
 			
 			// 라면 김치 치즈 
 			String text="";

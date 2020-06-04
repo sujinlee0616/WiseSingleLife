@@ -20,6 +20,9 @@ public class MartAllDataDAO {
 			vo= MAData_mapper.EmartDetail(productcode);
 		}else if(Check.equals("hp")){
 			vo= MAData_mapper.HomeplusDetail(productcode);
+			double temp = vo.getRate();
+			temp = (temp*5.0)/100;
+			vo.setRate(temp);
 		}else if(Check.equals("LM")){
 			vo=MAData_mapper.LotteMartDetail(productcode);
 		}else{
