@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
 <script type="text/javascript">
@@ -25,8 +24,8 @@ $(function (){
 			<h1 class="slider_txt1">슬기로운 자취생활</h1>
 			<h5 class="slider_txt2">프로 자취러를 위한 식료품 가격비교 서비스</h5>
 			<div class="slider_search_area">
-				<form action="search.do" method="get">
-					<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요.">
+				<form action="search_react.do" method="get">
+					<input class="img_slider_search" name="keyword" type="search" placeholder="검색어를 입력하세요." required>
 					<button class="sliderBtn">검색</button>
 				</form>
 			</div>
