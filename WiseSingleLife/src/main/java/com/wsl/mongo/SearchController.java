@@ -30,7 +30,7 @@ public class SearchController {
         String decodedString = URLDecoder.decode(keyword, "UTF-8");
         //System.out.println(decodedString);
 		//keyword="라면,만두,떡"; ///////// 임시
-
+        System.out.println(decodedString);
 		SearchVO vo=new SearchVO();
 		vo.setKeyword(decodedString);
 		dao.searchInsert(vo);

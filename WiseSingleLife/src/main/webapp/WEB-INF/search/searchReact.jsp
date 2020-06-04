@@ -809,7 +809,6 @@ class App extends React.Component {
 
     render() {
 		const { searchKeywordList } = this.state;
-		console.log(searchKeywordList)
         return (
         	  <div>
 				<SearchBar
@@ -825,7 +824,6 @@ class App extends React.Component {
 						{this.state.saveItems.length!=0 ? <SaveItems saveItems={this.state.saveItems} setSaveItems={this.setSaveItems}/> : null }
 						{this.state.recipeRecommendList.length!=0 ? <RecipeRecommend list={this.state.recipeRecommendList}/> : null }
 						{this.state.visible ? <Modal modalItems={this.state.modalItems}/> : null }
-						{JSON.stringify(searchKeywordList)}
           	</div>
         );
     }
