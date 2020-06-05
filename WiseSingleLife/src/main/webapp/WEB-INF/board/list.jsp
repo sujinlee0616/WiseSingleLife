@@ -158,19 +158,15 @@
 	<script src="https://unpkg.com/react-vis/dist/dist.min.js"></script>
 <!-- <script src="/socket.io/socket.io.js"></script> -->
 <!-- <script src="https://www.unpkg.com/browse/socket.io@2.3.0/"></script> -->
-<script src="https://unpkg.com/socket.io-client@2.3.0/lib/index.js"></script>
+<script src="https://unpkg.com/socket.io-client@2.3.0/dist/socket.io.js"></script>
 	
 <script type="text/babel">
 // chat-server.js에서 만든 socket과 연결
-const {
-	io
-} = socket.io-client
-
 const socket=io.connect('http://211.238.142.193:7777');
 
 
 // =================================== class App ===================================
-class App extends Component{
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state={
@@ -241,7 +237,7 @@ class App extends Component{
 }
 
 // =================================== class ChatMain ===================================
-class ChatMain extends Component{
+class ChatMain extends React.Component{
   render() {
     const html=this.props.logs.map((m)=> // App에서 넘겨준 props로 logs 데이터 받은거 사용.
         <div className={"message right"}>
@@ -267,7 +263,7 @@ class ChatMain extends Component{
 }
 
 // =================================== class ChatForm ===================================
-class ChatForm extends Component{
+class ChatForm extends React.Component{
   constructor(props) {
     super(props);
     this.state={
