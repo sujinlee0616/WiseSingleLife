@@ -20,6 +20,9 @@ public class MartAllDataDAO {
 			vo= MAData_mapper.EmartDetail(productcode);
 		}else if(Check.equals("hp")){
 			vo= MAData_mapper.HomeplusDetail(productcode);
+			double temp = vo.getRate();
+			temp = (temp*5.0)/100;
+			vo.setRate(temp);
 		}else if(Check.equals("LM")){
 			vo=MAData_mapper.LotteMartDetail(productcode);
 		}else{
@@ -27,17 +30,17 @@ public class MartAllDataDAO {
 		}
 		return vo;
 	}
-	public int ProductAllCount(String productcode){
-		return MAData_mapper.ProductAllCount(productcode);
+	public int ProductAllCount(String codeno){
+		return MAData_mapper.ProductAllCount(codeno);
 	}
-	public Detail_SearchKeyVO productKeyowrd(String productcode){
-		return MAData_mapper.ProductKeyword(productcode);
+	public Detail_SearchKeyVO productKeyowrd(String codeno){
+		return MAData_mapper.ProductKeyword(codeno);
 	}
-	public List<Integer> rno(String productcode){
-		return MAData_mapper.RnoList(productcode);
+	public List<Integer> rno(String codeno){
+		return MAData_mapper.RnoList(codeno);
 	}
-	public int RecipeCount(String productcode){
-		return MAData_mapper.RecipeCount(productcode);
+	public int RecipeCount(String codeno){
+		return MAData_mapper.RecipeCount(codeno);
 	}
 	public Detail_RecipeVO RecipeList_detail(int no){
 		return MAData_mapper.RecipeList_detail(no);

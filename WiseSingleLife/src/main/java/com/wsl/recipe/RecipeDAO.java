@@ -12,6 +12,10 @@ public class RecipeDAO {
 	@Resource(name="recipeMapper")
 	private RecipeMapper mapper;
 	
+	public List<RecipeRecommendVO> getRecipeRecommendListByMname(String mname) {
+		return mapper.getRecipeRecommendListByMname(mname);
+	}
+	
 	public List<RecipeVO> getRecipeListByTitleSearch(Map map) {
 		return mapper.getRecipeListByTitleSearch(map);
 	}

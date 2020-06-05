@@ -67,7 +67,8 @@ public class MainController {
 	}
 
 	@RequestMapping("detail.do")
-	public String detail_page(Model model,String productcode){
+	public String detail_page(Model model,String productcode,String codeno){
+		System.out.println("codeno값 확인 : "+codeno);
 		MartAllDataVO vo = dao.SearchDetail(productcode);	
 		List<Detail_RecipeVO> rlist = new ArrayList<Detail_RecipeVO>();
 		Detail_SearchKeyVO svo = new Detail_SearchKeyVO();
@@ -80,14 +81,16 @@ public class MainController {
 			}else if(vo.getName().indexOf("_")!= -1){
 				temp =vo.getName().substring(0,vo.getName().indexOf("_"));
 			}
-			svo = dao.productKeyowrd(productcode);
+			svo = dao.productKeyowrd(codeno);
 		}catch(Exception ex){
+			System.out.println("확인 : "+ex.getMessage());
+			ex.printStackTrace();
 			temp ="#";
 		}
 		System.out.println(temp);
 		// 상품 코드와 관련된 전체 상품 수
 		try{
-			vo.setProductsCount(dao.ProductAllCount(productcode));
+			vo.setProductsCount(dao.ProductAllCount(codeno));
 			vo.setKeyword(svo.getKeyword());
 			vo.setSearchCount(svo.getCount());
 			vo.setBrand(temp);
@@ -97,22 +100,12 @@ public class MainController {
 			vo.setKeyword("없음");
 			vo.setRecipeCount(0);
 		}
-		try {
-		List<Integer> list = dao.rno(productcode);
-		for(int i : list){
-			Detail_RecipeVO rvo = dao.RecipeList_detail(i);
-			rlist.add(rvo);
-		}
-		System.out.println(rlist.size());
-		}catch(Exception ex) {
-			RecipeCheck=true;
-		}
+		
 		model.addAttribute("check",RecipeCheck);
 		model.addAttribute("rlist",rlist);
 		model.addAttribute("MaData_vo", vo);
 		return "search/detail";
 	}
-	
 	
 	@Async
 	public void wordCloud(List<SearchKeywordVO> list) {
@@ -127,13 +120,12 @@ public class MainController {
 				System.out.println(vo.getKeyword());
 			}*/
 			
-			
 			// 라면 김치 치즈 
 			String text="";
 			for(SearchVO vo:slist){
 				String strKeyword=vo.getKeyword();
 				strKeyword=strKeyword.substring(1,strKeyword.lastIndexOf("]"));
-				System.out.println(strKeyword);
+				//System.out.println(strKeyword);
 				StringTokenizer st=new StringTokenizer(strKeyword, ",");
 				while(st.hasMoreTokens()) {
 					String temp=st.nextToken();

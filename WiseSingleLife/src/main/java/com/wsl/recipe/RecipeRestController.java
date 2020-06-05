@@ -3,11 +3,16 @@ package com.wsl.recipe;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import java.util.Vector;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +26,45 @@ public class RecipeRestController {
 	
 	@Autowired
 	private RecipeDAO dao;
+	
+	@RequestMapping("jhsRecommend.do")
+	public String jhsRecommend(String keyword) {	
+		List<RecipeRecommendVO> totalList = new ArrayList<RecipeRecommendVO>();
+		
+		String keywords="";
+		try {
+			keywords = URLDecoder.decode(keyword,"UTF-8");
+		} catch (UnsupportedEncodingException e) {}
+		keywords = keywords.replaceAll("[\\[\\]\"]", "");
+		
+		String[] mnames = keywords.split(",");
+		for(String mname : mnames) {
+			List<RecipeRecommendVO> list = dao.getRecipeRecommendListByMname(mname);
+			if(totalList.size()==0) {
+				totalList = list;
+			} else {
+				adding : for(RecipeRecommendVO adding : list) {
+					for(RecipeRecommendVO origin : totalList) {
+						if(origin.getNo()==adding.getNo()) {
+							origin.setMname(origin.getMname()+","+adding.getMname());
+							origin.setCount(origin.getCount()+1);
+							continue adding;
+						}
+					}
+					totalList.add(adding);
+				}
+			}
+		}
+		
+		Vector<RecipeRecommendVO> result = new Vector<RecipeRecommendVO>();
+		for(RecipeRecommendVO vo : totalList) { 
+			if(vo.getTitle().contains(mnames[0]))
+				result.add(vo);
+		}
+		
+		Collections.sort(result);
+		return new Gson().toJson(result);
+	}
 	
 	@RequestMapping("recipe/search.do")
 	public String recipe_search(String category, int page, String keyword) {
