@@ -1,1 +1,2 @@
-*.css           text
+./WiseSingleLife/src/main/webapp/css/* linguist-vendored
+WiseSingleLife/src/main/webapp/css/* linguist-vendored
