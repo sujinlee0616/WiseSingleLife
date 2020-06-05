@@ -250,7 +250,7 @@ class RecipeRecommend extends React.Component {
 
     return (
       <div className="row">
-        <div className="saved">
+        <div className="saved my-5">
           <div className="title">
             <h5 className="saved_title">추천 레시피</h5>
           </div>
@@ -282,8 +282,8 @@ class SaveItems extends React.Component {
      ));
 
     return (
-      <div className="row">
-        <div className="saved">
+      <div className="row mb-0">
+        <div className="saved mt-5">
           <div className="title">
             <h5 className="saved_title">저장한 상품</h5>
           </div>
@@ -412,7 +412,7 @@ class MartTable extends React.Component {
 		let html = this.props.martdata.map((m) => <MartRow kw_data={m} showModalBtn={this.props.showModalBtn} setCheckItems={this.props.setCheckItems}/> )
 		const { martdata } = this.props.martdata
         return (
-            <section className="list-section mb-3 bg-light">
+            <section className="list-section mb-3">
                 <div className="container">
                     <div className="row">
                         <table className="result">
@@ -469,7 +469,7 @@ class SearchBar extends React.Component {
 
 
         return (
-            <section className="ftco-search bg-light">
+            <section className="ftco-search">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-12 search-wrap">

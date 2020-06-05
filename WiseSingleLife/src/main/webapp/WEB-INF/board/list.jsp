@@ -200,10 +200,10 @@ class App extends React.Component {
 
     //스크롤이벤트가 발생하면
     $(window).scroll(function(){
-      var yPosition = $win.scrollTop()+300;
+      var yPosition = $win.scrollTop()+600;
       if (yPosition< 0)
       {
-        yPosition = $win.scrollTop()+300;
+        yPosition = $win.scrollTop()+600;
       }
       $layer.animate({"top":yPosition }, {duration:speed, easing:easing, queue:false});
     });
@@ -229,7 +229,6 @@ class App extends React.Component {
            {/* {html}*/}
           {/*</div>*/}
           <ChatMain logs={this.state.logs}/>
-<h1>TEST</h1>
           {/* App에서 props를 받았는데 ChatMain에서 출력해야함 ==> ChatMain에 props 값 넘겨준다. */}
         </React.Fragment>
     )
