@@ -24,6 +24,6 @@
  - 회의록: https://docs.google.com/spreadsheets/d/1ESh00BDjID0TwaIf6cctPqL65jkaGpLDCCgqRas9q9o/edit?usp=sharing       
            
 #### 시연 (동영상)  
- - [시연 영상](https://youtu.be/2gtL_Qoe7Nw)은 아래의 Youtube url에서 확인하실 수 있습니다.    
- Youtube url : https://youtu.be/2gtL_Qoe7Nw          
- [![Foodle 시연 영상](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FbYzRNU%2FbtqEL4960HE%2FoTjkOsnHA80lEvg3fFx8E0%2Fimg.png)](https://youtu.be/2gtL_Qoe7Nw)  
+ - [시연 영상](https://youtu.be/RnZudC0NQcY)은 아래의 Youtube url에서 확인하실 수 있습니다.    
+ Youtube url : https://youtu.be/RnZudC0NQcY         
+ [![시연 영상](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fk.kakaocdn.net%2Fdn%2FbYzRNU%2FbtqEL4960HE%2FoTjkOsnHA80lEvg3fFx8E0%2Fimg.png)](https://youtu.be/RnZudC0NQcY)  
