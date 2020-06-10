@@ -14,7 +14,7 @@
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 </body>
 <script type="text/babel">
-	const URL = "http://localhost:8079/web/"
+	const URL = "http://211.238.142.186:8079/web/"
 
 	class App extends React.Component{
 		constructor(props) {

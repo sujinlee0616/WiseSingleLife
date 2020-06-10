@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery.js"></script>
+
 <script type="text/javascript">
 $(function (){
 	$('.pop').mouseover(function(){
@@ -15,6 +16,81 @@ $(function (){
 	})
 }) 
 </script>
+<!-- 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/babel">
+const URL = "http://localhost:8079/web/"
+
+class App extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state={
+			result:[],
+			no:1
+		}
+		this.mouseOver2=this.mouseOver2.bind(this);
+	}
+
+	mouseOver2(e)
+	{
+		var no=e.target.dataset.no;
+		this.setState({no:no})
+		console.log('no='+this.state.no)
+	}
+
+	componentDidMount() {
+		axios.get(URL+"main/popular.do").then((res)=>{
+			console.log(res.data)
+			this.setState({result:res.data})
+		})
+	}
+
+	render() {
+		const html=this.state.result.map((m)=>
+			<li className={m.no===1?"pop on":"pop"} data-no={m.no} >
+				<a href={"search_react.do?keyword="+m.keyword} data-no={m.no} onMouseOver={this.mouseOver2}>
+					<div className="num">{m.no}</div>
+					<span className="pk">{m.keyword}</span>
+				</a> 
+			</li>
+	
+		)
+
+		return (
+			<div>
+				<div className="col-md-6 pk_area">
+				  <ol className="popular_keyword mb-0"> 
+					{html}
+		 		 </ol>
+				</div>	
+				<WordCloud no={this.state.no}/>
+			</div>
+		)
+	}
+}
+
+class WordCloud extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	render(){
+		return(
+			<div className="col-md-6 rk_area">
+				<p className="mt-5" id="wcimg">
+					<img src={"/wslimg/"+this.props.no+".png"} width="530" height="450"/>
+				</p>
+			</div>
+		)
+	}
+	
+
+}
+
+ReactDOM.render(<App />, document.getElementById('popular_keyword'));
+</script>-->
 </head>
 <body>
 <!-- ================================ IMAGE SLIDER ================================ -->
@@ -42,10 +118,10 @@ $(function (){
 				  <h2 class="mb-4">실시간 인기검색어</h2>
 				</div>
 			</div>
-			<div class="row">
+			<div class="row" id="popular_keyword">
 				<div class="col-md-6 pk_area ftco-animate">
 					<!-- 인기검색어 (좌측) -->
-					<ol class="popular_keyword mb-0">
+					<ol class="popular_keyword mb-0"> 
 						<c:forEach var="vo" items="${list }" varStatus="status">
 							<c:if test="${status.count==1 }">
 								<li class="pop on" id="pop${status.count}" data-no="${status.count }">
@@ -57,7 +133,7 @@ $(function (){
 									<div class="num">${status.count }</div>
 									<span class="pk">${vo.keyword }</span>
 									<!-- <span class="rank_chg">▲</span> -->
-								</a>
+								</a> 
 							</li>
 						</c:forEach>
 					</ol>

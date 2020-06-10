@@ -65,7 +65,7 @@
 <script src="js/main.js"></script>
 <script type="text/babel">
 // 본인 서버 port 번호로 변경해야
-const URL = 'http://localhost:8079/web/'
+const URL = 'http://211.238.142.186:8079/web/'
 
 const {
 	XYPlot,
@@ -234,14 +234,14 @@ class RecipeRecommend extends React.Component {
 	const html = this.props.list.slice(0,this.state.count).map(m=>
 			<div className="item">
               <div className="img">
-                <a href="#">
+                <a href={"recipe_detail.do?no="+m.no}>
                   <img
                     className="product_img"
                     src={m.poster}
                   />
                 </a>
               </div>
-              <a href="#">
+              <a href={"recipe_detail.do?no="+m.no}>
                 <p className="product">{m.title}</p>
                 <p className="price mb-0">{m.mname}</p>
               </a>
