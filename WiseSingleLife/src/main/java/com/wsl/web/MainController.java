@@ -3,9 +3,13 @@ package com.wsl.web;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.StringTokenizer;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.scheduling.annotation.EnableAsync;
@@ -14,7 +18,9 @@ import org.springframework.ui.Model;
 
 import com.wsl.product_detail.*;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
 import com.wsl.emart.EmartDAO;
 import com.wsl.mongo.SearchDAO;
 import com.wsl.mongo.SearchVO;
@@ -109,6 +115,7 @@ public class MainController {
 	
 	@Async
 	public void wordCloud(List<SearchKeywordVO> list) {
+		
 		for(int i=0;i<10;i++) {
 			String keyword=list.get(i).getKeyword();
 			
@@ -147,6 +154,23 @@ public class MainController {
 			
 			sdao.rGraph(i+1);
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping("main/popular.do")
+	public String main_popular() {
+		List<SearchKeywordVO> list=maindao.getPopularTop10();
+		JSONArray arr=new JSONArray();
+		for(int i=0;i<list.size();i++) {
+			String keyword=list.get(i).getKeyword();
+			JSONObject obj=new JSONObject();
+			obj.put("no", i+1);
+			obj.put("keyword", keyword);
+			arr.add(obj);
+		}
+		String result=arr.toJSONString();
+		System.out.println("result: "+result);
+		return result;
 	}
 	
 }
